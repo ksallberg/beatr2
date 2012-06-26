@@ -176,8 +176,8 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		try {
 			PdBase.setReceiver(receiver);
 			PdBase.subscribe("android");
-			InputStream in = res.openRawResource(R.raw.test);
-			patchFile = IoUtils.extractResource(in, "test.pd", getCacheDir());
+			InputStream in = res.openRawResource(R.raw.twosawsandfilter);
+			patchFile = IoUtils.extractResource(in, "twosawsandfilter.pd", getCacheDir());
 			PdBase.openPatch(patchFile);
 			startAudio();
 		} catch (IOException e) {
@@ -235,10 +235,10 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.left_box:
-			PdBase.sendFloat("left", left.isChecked() ? 1 : 0);
+			PdBase.sendFloat( "phasleft",  (float) (left.isChecked() ? 100.5 : 0) );
 			break;
 		case R.id.right_box:
-			PdBase.sendFloat("right", right.isChecked() ? 1 : 0);
+			PdBase.sendFloat( "phasright", right.isChecked() ? 100 : 0 );
 			break;
 		case R.id.mic_box:
 			PdBase.sendFloat("mic", mic.isChecked() ? 1 : 0);

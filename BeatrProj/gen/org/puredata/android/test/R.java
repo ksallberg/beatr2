@@ -39,17 +39,12 @@ public final class R {
         public static final int pd_test_menu=0x7f090000;
     }
     public static final class raw {
-        public static final int drumcenter01=0x7f050000;
-        public static final int efficientdrums=0x7f050001;
-        public static final int efficientfmhh=0x7f050002;
-        public static final int efficientkick=0x7f050003;
-        public static final int efficientsnare=0x7f050004;
-        public static final int extra_abs=0x7f050005;
-        public static final int extra_ext=0x7f050006;
-        public static final int extra_ext_v7a=0x7f050007;
-        public static final int silence=0x7f050008;
-        public static final int t3fastline=0x7f050009;
-        public static final int test=0x7f05000a;
+        public static final int extra_abs=0x7f050000;
+        public static final int extra_ext=0x7f050001;
+        public static final int extra_ext_v7a=0x7f050002;
+        public static final int silence=0x7f050003;
+        public static final int test=0x7f050004;
+        public static final int twosawsandfilter=0x7f050005;
     }
     public static final class string {
         public static final int about_msg=0x7f070015;
