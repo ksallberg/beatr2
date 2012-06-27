@@ -1,4 +1,3 @@
 INDEX VERSION 1.126+/Users/kristian/Documents/dev/android/beatr/.metadata/.plugins/org.eclipse.jdt.core
 122305154.index
-3634971374.index
 777959964.index

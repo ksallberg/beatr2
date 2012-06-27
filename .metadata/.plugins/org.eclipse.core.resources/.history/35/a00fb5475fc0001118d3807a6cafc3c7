@@ -139,14 +139,9 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		ImageView imageView = new ImageView( getApplicationContext() );
-		imageView.setBackgroundResource( R.drawable.beatr );
-		imageView.layout( 20, 20, 200, 200 );
-		
-		Log.d("taggeen height", "" + imageView.getHeight());
-		Log.d("taggeen width", "" + imageView.getWidth());
-		
-		setContentView( imageView );
+		ImageView view = new ImageView( getApplicationContext() );
+		view.setBackgroundResource( R.drawable.beatr );
+		setContentView( view );
 		
 		/*
 		PdPreferences.initPreferences(getApplicationContext());

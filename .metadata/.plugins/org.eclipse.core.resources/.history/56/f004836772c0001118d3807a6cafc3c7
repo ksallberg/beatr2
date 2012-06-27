@@ -143,6 +143,8 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		imageView.setBackgroundResource( R.drawable.beatr );
 		imageView.layout( 20, 20, 200, 200 );
 		
+		imageView.
+		
 		Log.d("taggeen height", "" + imageView.getHeight());
 		Log.d("taggeen width", "" + imageView.getWidth());
 		
