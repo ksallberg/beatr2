@@ -128,7 +128,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 			pdService = ((PdService.PdBinder)service).getService();
 			initPd();
 		}
-
+		
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			// this method will never be called
@@ -137,16 +137,18 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 
 	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		
 		ImageView imageView = new ImageView( getApplicationContext() );
 		imageView.setBackgroundResource( R.drawable.beatr );
-		imageView.layout( 20, 20, 200, 200 );
 		
 		Log.d("taggeen height", "" + imageView.getHeight());
 		Log.d("taggeen width", "" + imageView.getWidth());
 		
-		setContentView( imageView );
+		View ins = new InstrumentKeeper( getApplicationContext() );
+		
+		setContentView( ins );
 		
 		/*
 		PdPreferences.initPreferences(getApplicationContext());

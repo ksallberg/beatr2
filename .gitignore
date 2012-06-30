@@ -3,6 +3,7 @@
 bin
 .settings
 .classpath
+.metadata
 
 # Compiled source #
 ###################
