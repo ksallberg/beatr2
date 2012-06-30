@@ -1,4 +1,4 @@
-package org.puredata.android.test;
+package se.purestyle.beatr.view.instrumentmixer.volumeobject;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,11 +8,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class BoxViewClickable extends View {
+public class VolumeDraggerView extends View {
 
 	float drawToX = 100;
 	
-	public BoxViewClickable(Context c) {
+	public VolumeDraggerView(Context c) {
 		
 		super( c );
 		

@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package org.puredata.android.test;
+package se.purestyle.beatr;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

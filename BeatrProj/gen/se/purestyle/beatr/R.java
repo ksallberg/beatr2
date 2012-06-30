@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package org.puredata.android.test;
+package se.purestyle.beatr;
 
 public final class R {
     public static final class array {

@@ -1,13 +1,14 @@
-package org.puredata.android.test;
+package se.purestyle.beatr.view.instrumentmixer.volumeobject;
+
 
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class InstrumentMixerView extends LinearLayout {
+public class InstrumentView extends LinearLayout {
 
-	public InstrumentMixerView( Context context ) {
+	public InstrumentView( Context context ) {
 	
 		super( context );
 		
@@ -15,7 +16,7 @@ public class InstrumentMixerView extends LinearLayout {
 		
 		Button btn1 = new Button( context );
 		btn1.setText("oooooo");
-		View bv = new BoxViewClickable( context );
+		View bv = new VolumeDraggerView( context );
 		Button btn2 = new Button( context );
 		btn2.setText("uuuuuu");
 		

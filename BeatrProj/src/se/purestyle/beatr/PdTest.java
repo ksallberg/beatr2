@@ -9,7 +9,7 @@
  * 
  */
 
-package org.puredata.android.test;
+package se.purestyle.beatr;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,9 +21,12 @@ import java.util.Scanner;
 
 import org.puredata.android.service.PdPreferences;
 import org.puredata.android.service.PdService;
+import se.purestyle.beatr.R;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
 import org.puredata.core.utils.IoUtils;
+
+import se.purestyle.beatr.view.instrumentmixer.InstrumentMixerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -146,7 +149,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		Log.d("taggeen height", "" + imageView.getHeight());
 		Log.d("taggeen width", "" + imageView.getWidth());
 		
-		View ins = new InstrumentKeeper( getApplicationContext() );
+		View ins = new InstrumentMixerView( getApplicationContext() );
 		
 		setContentView( ins );
 		
