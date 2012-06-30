@@ -11,6 +11,4 @@ public class MainmenuView extends AbstractView {
 		
 		
 	}
-	
-	
 }

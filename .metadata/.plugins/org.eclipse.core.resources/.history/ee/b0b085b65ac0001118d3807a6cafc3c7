@@ -1,8 +1,0 @@
-package org.puredata.android.test;
-
-import android.app.Activity;
-
-public class PictureTest extends Activity {
-	
-	
-}
