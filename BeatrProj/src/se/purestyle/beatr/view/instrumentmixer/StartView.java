@@ -14,6 +14,8 @@ public class StartView extends LinearLayout {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
 		
+		
+		
 		setOrientation( VERTICAL );
 		
 		setBackgroundResource( R.drawable.bg );
