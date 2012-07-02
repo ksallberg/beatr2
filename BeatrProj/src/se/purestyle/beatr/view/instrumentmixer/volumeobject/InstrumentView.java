@@ -4,6 +4,7 @@ import org.puredata.android.service.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,6 @@ public class InstrumentView extends LinearLayout {
 		//This LinearLayout holds 3 objects and they should be aligned after each other, horizontally
 		setOrientation( HORIZONTAL );
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 100 ) );
-		setBackgroundColor( 0xff0000 );
 		
 		init( context );
 	}
@@ -34,6 +34,9 @@ public class InstrumentView extends LinearLayout {
 	 * @param context
 	 */
 	private void init( Context context ) {
+		
+		setBackgroundColor( Color.YELLOW ); //debug
+		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
 		
 		rewindInstrumentBtn = new Button( context );
 		rewindInstrumentBtn.setBackgroundResource( R.drawable.rewindinstrument );
