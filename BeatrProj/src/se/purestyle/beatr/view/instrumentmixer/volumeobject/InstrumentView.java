@@ -4,6 +4,7 @@ import org.puredata.android.service.R;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +35,7 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		
 		setBackgroundColor( Color.YELLOW ); //debug
 		
-		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, 59 + 5 );
 		params.gravity = Gravity.CENTER;
 		
 		setLayoutParams( params );
@@ -43,11 +44,27 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		
 		rewindInstrumentBtn = new Button( context );
 		rewindInstrumentBtn.setBackgroundResource( R.drawable.rewindinstrument );
+		rewindInstrumentBtn.setOnClickListener( new OnClickListener() {
+			
+			@Override
+			public void onClick( View v ) {
+				
+				Log.i( "InstrumentView: ", "REWIND!" );
+			}
+		} );
 		
 		volumeDragger = new VolumeDraggerView( context );
 		
 		editInstrumentBtn = new Button( context );
 		editInstrumentBtn.setBackgroundResource( R.drawable.editinstrument );
+		editInstrumentBtn.setOnClickListener( new OnClickListener() {
+			
+			@Override
+			public void onClick( View v ) {
+				
+				Log.i( "InstrumentView: ", "EDIT!" );
+			}
+		} );
 		
 		addView( rewindInstrumentBtn );
 		addView( volumeDragger );
