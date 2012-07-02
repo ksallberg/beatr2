@@ -27,6 +27,7 @@ import org.puredata.core.PdReceiver;
 import org.puredata.core.utils.IoUtils;
 
 import se.purestyle.beatr.view.instrumentmixer.InstrumentMixerView;
+import se.purestyle.beatr.view.instrumentmixer.StartView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -141,12 +142,10 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		
-		super.onCreate(savedInstanceState);
+		super.onCreate( savedInstanceState );
 		
-		View ins = new InstrumentMixerView( getApplicationContext() );
+		View ins = new StartView( getApplicationContext() );
 		setContentView( ins );
-		
-	//	setContentView( R.layout.main );
 		
 		/*
 		PdPreferences.initPreferences(getApplicationContext());
@@ -154,7 +153,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		initGui();
 		bindService(new Intent(this, PdService.class), pdConnection, BIND_AUTO_CREATE);
 		*/
-	};
+	}
 
 	@Override
 	protected void onDestroy() {
