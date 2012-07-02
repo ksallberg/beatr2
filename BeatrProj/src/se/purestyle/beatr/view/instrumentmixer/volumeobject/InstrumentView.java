@@ -46,12 +46,5 @@ public class InstrumentView extends LinearLayout {
 		addView( rewindInstrumentBtn );
 		addView( volumeDragger );
 		addView( editInstrumentBtn );
-		
-		ImageView view = new ImageView(context);
-		view.setBackgroundResource(R.drawable.rewindinstrument);
-		addView( view );
-		
-		
-		Log.i( "rewindInstrumentVIEW", "" + view.getWidth() );
 	}
 }
