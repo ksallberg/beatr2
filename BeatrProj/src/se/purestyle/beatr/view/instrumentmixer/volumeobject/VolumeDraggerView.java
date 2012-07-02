@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 public class VolumeDraggerView extends View {
@@ -16,7 +18,12 @@ public class VolumeDraggerView extends View {
 		
 		super( c );
 		
-		setLayoutParams( new LinearLayout.LayoutParams( 100,100 ) );
+		WindowManager wm = (WindowManager) c.getSystemService( Context.WINDOW_SERVICE );
+		Display d = wm.getDefaultDisplay();
+		
+		Log.i("VOLUMEDRAGGER", "" + d.getWidth() );
+		
+		setLayoutParams( new LinearLayout.LayoutParams( 100, 59 ) );
 		
 		setOnTouchListener(new OnTouchListener() {
 			

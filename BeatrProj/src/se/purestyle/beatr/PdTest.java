@@ -143,15 +143,10 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		
 		super.onCreate(savedInstanceState);
 		
-		ImageView imageView = new ImageView( getApplicationContext() );
-		imageView.setBackgroundResource( R.drawable.beatr );
-		
-		Log.d("taggeen height", "" + imageView.getHeight());
-		Log.d("taggeen width", "" + imageView.getWidth());
-		
 		View ins = new InstrumentMixerView( getApplicationContext() );
-		
 		setContentView( ins );
+		
+	//	setContentView( R.layout.main );
 		
 		/*
 		PdPreferences.initPreferences(getApplicationContext());
@@ -174,6 +169,8 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 
 	private void initGui() {
 		setContentView(R.layout.main);
+		
+		/*
 		left = (CheckBox) findViewById(R.id.left_box);
 		left.setOnClickListener(this);
 		right = (CheckBox) findViewById(R.id.right_box);
@@ -186,6 +183,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		prefs.setOnClickListener(this);
 		logs = (TextView) findViewById(R.id.log_box);
 		logs.setMovementMethod(new ScrollingMovementMethod());
+		*/
 	}
 
 	private void initPd() {
@@ -251,6 +249,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 
 	@Override
 	public void onClick(View v) {
+		/*
 		switch (v.getId()) {
 		case R.id.left_box:
 			PdBase.sendFloat( "phasleft",  (float) (left.isChecked() ? 100.5 : 0) );
@@ -266,7 +265,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 			break;
 		default:
 			break;
-		}
+		}*/
 	}
 
 	@Override

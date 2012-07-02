@@ -1,27 +1,57 @@
 package se.purestyle.beatr.view.instrumentmixer.volumeobject;
 
+import org.puredata.android.service.R;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class InstrumentView extends LinearLayout {
 
+	private Button 	rewindInstrumentBtn;
+	private View	volumeDragger;
+	private Button 	editInstrumentBtn;
+	
 	public InstrumentView( Context context ) {
 	
 		super( context );
 		
+		//This LinearLayout holds 3 objects and they should be aligned after each other, horizontally
 		setOrientation( HORIZONTAL );
+		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 100 ) );
+		setBackgroundColor( 0xff0000 );
 		
-		Button btn1 = new Button( context );
-		btn1.setText("oooooo");
-		View bv = new VolumeDraggerView( context );
-		Button btn2 = new Button( context );
-		btn2.setText("uuuuuu");
+		init( context );
+	}
+	
+	/**
+	 * Create views and add them as  
+	 * 
+	 * @param context
+	 */
+	private void init( Context context ) {
 		
-		addView( btn1 );
-		addView( bv );
-		addView( btn2 );
+		rewindInstrumentBtn = new Button( context );
+		rewindInstrumentBtn.setBackgroundResource( R.drawable.rewindinstrument );
+		
+		volumeDragger = new VolumeDraggerView( context );
+		
+		editInstrumentBtn = new Button( context );
+		editInstrumentBtn.setBackgroundResource( R.drawable.editinstrument );
+		
+		addView( rewindInstrumentBtn );
+		addView( volumeDragger );
+		addView( editInstrumentBtn );
+		
+		ImageView view = new ImageView(context);
+		view.setBackgroundResource(R.drawable.rewindinstrument);
+		addView( view );
+		
+		
+		Log.i( "rewindInstrumentVIEW", "" + view.getWidth() );
 	}
 }

@@ -22,16 +22,13 @@ public final class R {
     }
     public static final class drawable {
         public static final int beatr=0x7f020000;
-        public static final int icon=0x7f020001;
+        public static final int editinstrument=0x7f020001;
+        public static final int icon=0x7f020002;
+        public static final int rewindinstrument=0x7f020003;
     }
     public static final class id {
-        public static final int about_item=0x7f0a0006;
-        public static final int left_box=0x7f0a0000;
-        public static final int log_box=0x7f0a0005;
-        public static final int mic_box=0x7f0a0002;
-        public static final int msg_box=0x7f0a0003;
-        public static final int pref_button=0x7f0a0004;
-        public static final int right_box=0x7f0a0001;
+        public static final int about_item=0x7f0a0001;
+        public static final int imageView1=0x7f0a0000;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -43,9 +40,10 @@ public final class R {
         public static final int extra_abs=0x7f050000;
         public static final int extra_ext=0x7f050001;
         public static final int extra_ext_v7a=0x7f050002;
-        public static final int silence=0x7f050003;
-        public static final int test=0x7f050004;
-        public static final int twosawsandfilter=0x7f050005;
+        public static final int rewindinstrument=0x7f050003;
+        public static final int silence=0x7f050004;
+        public static final int test=0x7f050005;
+        public static final int twosawsandfilter=0x7f050006;
     }
     public static final class string {
         public static final int about_msg=0x7f070015;
