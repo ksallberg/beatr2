@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 public class VolumeDraggerView extends View {
 
-	float drawToX = 100;
+	float drawToX = 190;
 	
 	public VolumeDraggerView(Context c) {
 		
@@ -23,7 +23,7 @@ public class VolumeDraggerView extends View {
 		
 		Log.i("VOLUMEDRAGGER", "" + d.getWidth() );
 		
-		setLayoutParams( new LinearLayout.LayoutParams( 100, 59 ) );
+		setLayoutParams( new LinearLayout.LayoutParams( (int) drawToX, 59 ) );
 		
 		setOnTouchListener(new OnTouchListener() {
 			
@@ -55,7 +55,7 @@ public class VolumeDraggerView extends View {
 		p.setColor( 0x00ff00 );
 		p.setAlpha( 255 );
 		
-		can.clipRect( 0, 0, drawToX, 100);
+		can.clipRect( 0, 0, drawToX, 100 );
 		can.drawRect( 0, 0, drawToX, 100, p );
 	}
 }

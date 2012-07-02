@@ -1,29 +1,47 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
-import se.purestyle.beatr.R;
+import se.purestyle.beatr.view.instrumentmixer.volumeobject.IInstrumentView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 
-public class InstrumentMixerView extends LinearLayout {
+public class InstrumentMixerView extends LinearLayout implements IInstrumentMixer {
 
 	public InstrumentMixerView( Context context ) {
 	
 		super( context );
 		
-		setBackgroundColor( 0xd3d3d3 );
-		setBackgroundResource(R.drawable.editinstrument);
-		
-		InstrumentView i1 = new InstrumentView( context );
-		InstrumentView i2 = new InstrumentView( context );
-		InstrumentView i3 = new InstrumentView( context );
-		
 		setOrientation( VERTICAL );
 		
-		addView( i1 );
-		addView( i2 );
-		addView( i3 );
+		setBackgroundColor( Color.RED );
 		
-		setBackgroundColor( 0xffffff );
+		//LayoutParams params = new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT );
+		//params.gravity = Gravity.CENTER;
+		//setLayoutParams( params );
+		
+		init( context );
+	}
+	
+	private void init( Context context ) {
+		
+		for( int i = 0; i < 6; i ++ ) {
+			
+			addInstrumentView( new InstrumentView( context ) );
+		}
+	}
+
+	@Override
+	public void addInstrumentView(IInstrumentView view) {
+		
+		addView( (View) view );
+	}
+
+	@Override
+	public void removeInstrumentView(IInstrumentView view) {
+		
+		
 	}
 }

@@ -28,7 +28,7 @@ public final class R {
     }
     public static final class id {
         public static final int about_item=0x7f0a0001;
-        public static final int imageView1=0x7f0a0000;
+        public static final int toggleButton1=0x7f0a0000;
     }
     public static final class layout {
         public static final int main=0x7f030000;

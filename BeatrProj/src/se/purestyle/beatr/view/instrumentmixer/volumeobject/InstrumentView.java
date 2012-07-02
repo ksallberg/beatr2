@@ -3,15 +3,13 @@ package se.purestyle.beatr.view.instrumentmixer.volumeobject;
 import org.puredata.android.service.R;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class InstrumentView extends LinearLayout {
+public class InstrumentView extends LinearLayout implements IInstrumentView {
 
 	private Button 	rewindInstrumentBtn;
 	private View	volumeDragger;
@@ -23,20 +21,25 @@ public class InstrumentView extends LinearLayout {
 		
 		//This LinearLayout holds 3 objects and they should be aligned after each other, horizontally
 		setOrientation( HORIZONTAL );
-		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 100 ) );
 		
 		init( context );
 	}
 	
 	/**
-	 * Create views and add them as  
+	 * 
 	 * 
 	 * @param context
 	 */
 	private void init( Context context ) {
 		
 		setBackgroundColor( Color.YELLOW ); //debug
-		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
+		
+		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+		params.gravity = Gravity.CENTER;
+		
+		setLayoutParams( params );
+		
+		setHorizontalGravity( HORIZONTAL );
 		
 		rewindInstrumentBtn = new Button( context );
 		rewindInstrumentBtn.setBackgroundResource( R.drawable.rewindinstrument );
