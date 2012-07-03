@@ -2,17 +2,25 @@ package se.purestyle.beatr.view.instrumentmixer;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class FooterView extends RelativeLayout {
 
+	private AddInstrumentView view;
+	
 	public FooterView( Context context ) {
 		
 		super( context );
 		
 		init( context );
+	}
+	
+	public void setAddIn( AddInstrumentView view ) {
+		
+		this.view = view;
 	}
 	
 	private void init( Context context ) {
@@ -26,6 +34,14 @@ public class FooterView extends RelativeLayout {
 		Button btn1 = new Button( context );
 		btn1.setText( "(+) add instrument" );
 		btn1.setLayoutParams( params );
+		btn1.setOnClickListener( new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				view.show();
+			}
+		} );
 		addView( btn1 );
 		
 		RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
@@ -42,7 +58,5 @@ public class FooterView extends RelativeLayout {
 		Button btn3 = new Button( context );
 		btn3.setText( ">" );
 		arrowKeeper.addView( btn3 );
-		
-		
 	}
 }

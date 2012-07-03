@@ -34,17 +34,24 @@ public class StartView extends RelativeLayout {
 		View ins = new InstrumentMixerView( context );
 		holder.addView( ins );
 		
+		AddInstrumentView addInstrumentView = new AddInstrumentView( context );
+		
+		// Footer!
+		RelativeLayout.LayoutParams footerParams = new RelativeLayout.LayoutParams( new MarginLayoutParams( RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
+		footerParams.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE );
+		footerParams.addRule( RelativeLayout.ALIGN_LEFT, RelativeLayout.TRUE );
+		
 		FooterView footerView = new FooterView( context );
-		holder.addView( footerView );
+		footerView.setLayoutParams( footerParams );
+		footerView.setAddIn( addInstrumentView );
+		addView( footerView );
 		
 		// 行行行行行行行 Overlay, add instruments!
-		
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(new MarginLayoutParams(100, 100));
-		params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-		params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( new MarginLayoutParams( 200, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
+		params.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE );
+		params.addRule( RelativeLayout.ALIGN_LEFT, RelativeLayout.TRUE );
 		
 		//Add overlay
-		AddInstrumentView addInstrumentView = new AddInstrumentView( context );
 		addInstrumentView.setLayoutParams( params );
 		addView( addInstrumentView );
 	}
