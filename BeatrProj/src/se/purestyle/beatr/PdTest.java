@@ -26,7 +26,7 @@ import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
 import org.puredata.core.utils.IoUtils;
 
-import se.purestyle.beatr.view.instrumentmixer.InstrumentMixerView;
+import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
 import se.purestyle.beatr.view.instrumentmixer.StartView;
 
 import android.app.Activity;

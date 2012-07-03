@@ -32,7 +32,7 @@ public class StartView extends RelativeLayout {
 		HeaderView headerView = new HeaderView( context );
 		holder.addView( headerView );
 		
-		View ins = new InstrumentMixerView( context );
+		View ins = new InstrumentHolderView( context );
 		holder.addView( ins );
 		
 		AddInstrumentView addInstrumentView = new AddInstrumentView( context );
