@@ -46,6 +46,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -143,6 +144,8 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		
 		super.onCreate( savedInstanceState );
+		
+		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
 		View ins = new StartView( getApplicationContext() );
 		setContentView( ins );

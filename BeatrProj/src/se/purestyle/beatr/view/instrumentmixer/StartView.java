@@ -5,18 +5,17 @@ import org.puredata.android.service.R;
 import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class StartView extends LinearLayout {
+public class StartView extends RelativeLayout {
 
+	private LinearLayout holder;
+	
 	public StartView( Context context ) {
 		
 		super( context );
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
-		
-		
-		
-		setOrientation( VERTICAL );
 		
 		setBackgroundResource( R.drawable.bg );
 		
@@ -25,13 +24,28 @@ public class StartView extends LinearLayout {
 	
 	private void init( Context context ) {
 		
+		holder = new LinearLayout( context );
+		holder.setOrientation( LinearLayout.VERTICAL );
+		addView( holder );
+		
 		HeaderView headerView = new HeaderView( context );
-		addView( headerView );
+		holder.addView( headerView );
 		
 		View ins = new InstrumentMixerView( context );
-		addView( ins );
+		holder.addView( ins );
 		
 		FooterView footerView = new FooterView( context );
-		addView( footerView );
+		holder.addView( footerView );
+		
+		// 行行行行行行行 Overlay, add instruments!
+		
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(new MarginLayoutParams(100, 100));
+		params.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+		params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+		
+		//Add overlay
+		AddInstrumentView addInstrumentView = new AddInstrumentView( context );
+		addInstrumentView.setLayoutParams( params );
+		addView( addInstrumentView );
 	}
 }
