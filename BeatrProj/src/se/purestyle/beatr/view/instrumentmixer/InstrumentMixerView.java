@@ -24,7 +24,7 @@ public class InstrumentMixerView extends LinearLayout implements IInstrumentMixe
 	
 	private void init( Context context ) {
 		
-		for( int i = 0; i < 5; i ++ ) {
+		for( int i = 0; i < 6; i ++ ) {
 			
 			addInstrumentView( new InstrumentView( context ) );
 		}
