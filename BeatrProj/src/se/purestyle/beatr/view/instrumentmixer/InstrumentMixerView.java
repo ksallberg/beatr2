@@ -17,7 +17,7 @@ public class InstrumentMixerView extends LinearLayout implements IInstrumentMixe
 		
 		setBackgroundColor( Color.RED );
 		
-		setLayoutParams( new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT ) );
+		setLayoutParams( new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.FILL_PARENT ) );
 		
 		init( context );
 	}

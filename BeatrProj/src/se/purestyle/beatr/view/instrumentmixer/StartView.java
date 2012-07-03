@@ -26,6 +26,7 @@ public class StartView extends RelativeLayout {
 		
 		holder = new LinearLayout( context );
 		holder.setOrientation( LinearLayout.VERTICAL );
+		holder.setLayoutParams( new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.FILL_PARENT ) );
 		addView( holder );
 		
 		HeaderView headerView = new HeaderView( context );

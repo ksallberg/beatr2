@@ -52,11 +52,11 @@ public class FooterView extends RelativeLayout {
 		addView( arrowKeeper );
 		
 		Button btn2 = new Button( context );
-		btn2.setText( "<" );
+		btn2.setText( "(<) prev" );
 		arrowKeeper.addView( btn2 );
 		
 		Button btn3 = new Button( context );
-		btn3.setText( ">" );
+		btn3.setText( "next (>)" );
 		arrowKeeper.addView( btn3 );
 	}
 }
