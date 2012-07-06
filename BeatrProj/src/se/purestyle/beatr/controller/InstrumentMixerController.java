@@ -42,6 +42,9 @@ public class InstrumentMixerController extends AbstractController {
 		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
 		
 		//Set instrumentHolderView's model to instrumentholderView from InstrumentHolderController
+		
+		Log.i( "MODDEEEL??", holderSub.getModels().get(InstrumentHolderController.MODEL ).toString() );
+		
 		( (InstrumentHolderView) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).setModel( holderSub.getModels().get(InstrumentHolderController.MODEL ) );
 	}
 
@@ -89,7 +92,7 @@ public class InstrumentMixerController extends AbstractController {
 			
 			InstrumentHolderView holder = ( InstrumentHolderView ) getViews().get( INSTRUMENT_MIXER_VIEW ).getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW );
 			
-			holder.addView( (InstrumentView) event.getNewValue() );
+			holder.addInstrumentView( (InstrumentView) event.getNewValue() );
 		}
 	}
 }

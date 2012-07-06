@@ -28,6 +28,8 @@ public class InstrumentHolderController extends AbstractController {
 		
 		//addModel( MODEL, new InstrumentHolderModel() );
 		model = new InstrumentHolderModel();
+		
+		addModel( MODEL, model );
 	}
 
 	@Override
