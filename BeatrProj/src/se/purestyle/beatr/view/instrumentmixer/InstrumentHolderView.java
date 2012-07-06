@@ -1,14 +1,20 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
+import com.purestyle.amvc.model.IModel;
+
+import se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel;
+import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.IInstrumentView;
-import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 public class InstrumentHolderView extends LinearLayout implements IInstrumentMixer {
 
+	private InstrumentHolderModel model;
+	
 	public InstrumentHolderView( Context context ) {
 	
 		super( context );
@@ -19,21 +25,32 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 		
 		setLayoutParams( new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.FILL_PARENT ) );
 		
+		setTag( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW );
+		
 		init( context );
 	}
 	
 	private void init( Context context ) {
 		
-		for( int i = 0; i < 6; i ++ ) {
-			
-			addInstrumentView( new InstrumentView( context ) );
-		}
+		
 	}
 
+	public void setModel( IModel model ) {
+		
+		this.model = (InstrumentHolderModel) model;
+	}
+	
 	@Override
 	public void addInstrumentView(IInstrumentView view) {
 		
-		addView( (View) view );
+		if( getHeight() < model.getNumberOfInstruments() * 59 ) {
+			
+			Log.i( "HOHOHOHOOH", "NU €R DET F…R MNGA; SKAPA EN NY SIDA!" );
+		
+		} else {
+			
+			addView( (View) view );
+		}
 	}
 
 	@Override

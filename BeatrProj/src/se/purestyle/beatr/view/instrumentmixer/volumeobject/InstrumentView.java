@@ -2,6 +2,8 @@ package se.purestyle.beatr.view.instrumentmixer.volumeobject;
 
 import org.puredata.android.service.R;
 
+import com.purestyle.amvc.model.IModelUser;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
@@ -12,8 +14,12 @@ import android.widget.LinearLayout;
 
 public class InstrumentView extends LinearLayout implements IInstrumentView {
 
+	public static final String REWIND_BUTTON = "rewindButton";
+	public static final String VOLUME_DRAGGER = "volumeDragger";
+	public static final String EDIT_BUTTON = "editButton";
+	
 	private Button 	rewindInstrumentBtn;
-	private View	volumeDragger;
+	private IModelUser	volumeDragger;
 	private Button 	editInstrumentBtn;
 	
 	public InstrumentView( Context context ) {
@@ -33,7 +39,7 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 	 */
 	private void init( Context context ) {
 		
-		setBackgroundColor( Color.YELLOW ); //debug
+		setBackgroundColor( Color.YELLOW );
 		
 		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, 59 + 5 );
 		params.gravity = Gravity.CENTER;
@@ -43,6 +49,7 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		setHorizontalGravity( HORIZONTAL );
 		
 		rewindInstrumentBtn = new Button( context );
+		rewindInstrumentBtn.setTag( REWIND_BUTTON );
 		rewindInstrumentBtn.setBackgroundResource( R.drawable.rewindinstrument );
 		rewindInstrumentBtn.setOnClickListener( new OnClickListener() {
 			
@@ -54,8 +61,11 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		} );
 		
 		volumeDragger = new VolumeDraggerView( context );
+//		((VolumeDraggerView) volumeDragger).init();
+		((VolumeDraggerView) volumeDragger).setTag( VOLUME_DRAGGER );
 		
 		editInstrumentBtn = new Button( context );
+		editInstrumentBtn.setTag( EDIT_BUTTON );
 		editInstrumentBtn.setBackgroundResource( R.drawable.editinstrument );
 		editInstrumentBtn.setOnClickListener( new OnClickListener() {
 			
@@ -67,7 +77,12 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		} );
 		
 		addView( rewindInstrumentBtn );
-		addView( volumeDragger );
+		addView( (VolumeDraggerView) volumeDragger );
 		addView( editInstrumentBtn );
+	}
+	
+	public VolumeDraggerView getVolumeDraggerView() {
+		
+		return (VolumeDraggerView) volumeDragger;
 	}
 }

@@ -1,26 +1,19 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
+import se.purestyle.beatr.view.InstrumentMixerView;
 import android.content.Context;
 import android.graphics.Color;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class FooterView extends RelativeLayout {
-
-	private AddInstrumentView view;
 	
 	public FooterView( Context context ) {
 		
 		super( context );
 		
 		init( context );
-	}
-	
-	public void setAddIn( AddInstrumentView view ) {
-		
-		this.view = view;
 	}
 	
 	private void init( Context context ) {
@@ -33,15 +26,8 @@ public class FooterView extends RelativeLayout {
 		
 		Button btn1 = new Button( context );
 		btn1.setText( "(+) add instrument" );
+		btn1.setTag( InstrumentMixerView.ADD_INSTRUMENT_BUTTON );
 		btn1.setLayoutParams( params );
-		btn1.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				view.show();
-			}
-		} );
 		addView( btn1 );
 		
 		RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
@@ -53,10 +39,12 @@ public class FooterView extends RelativeLayout {
 		
 		Button btn2 = new Button( context );
 		btn2.setText( "(<) prev" );
+		btn2.setTag( InstrumentMixerView.PREV_PAGE_BUTTON );
 		arrowKeeper.addView( btn2 );
 		
 		Button btn3 = new Button( context );
 		btn3.setText( "next (>)" );
+		btn3.setTag( InstrumentMixerView.NEXT_PAGE_BUTTON );
 		arrowKeeper.addView( btn3 );
 	}
 }

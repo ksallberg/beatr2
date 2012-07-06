@@ -16,7 +16,6 @@ public class AddInstrumentView extends LinearLayout implements IOverlay {
 		setOrientation( VERTICAL );
 		setBackgroundColor( Color.BLUE );
 		
-		hide();
 		init( context );
 	}
 

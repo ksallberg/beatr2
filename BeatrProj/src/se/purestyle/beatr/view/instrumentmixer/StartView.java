@@ -8,8 +8,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class StartView extends RelativeLayout {
-
+	
 	private LinearLayout holder;
+	private FooterView footerView;
+	private AddInstrumentView addInstrumentView;
 	
 	public StartView( Context context ) {
 		
@@ -35,16 +37,16 @@ public class StartView extends RelativeLayout {
 		View ins = new InstrumentHolderView( context );
 		holder.addView( ins );
 		
-		AddInstrumentView addInstrumentView = new AddInstrumentView( context );
+		addInstrumentView = new AddInstrumentView( context );
+		hideOverlay();
 		
 		// Footer!
 		RelativeLayout.LayoutParams footerParams = new RelativeLayout.LayoutParams( new MarginLayoutParams( RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
 		footerParams.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE );
 		footerParams.addRule( RelativeLayout.ALIGN_LEFT, RelativeLayout.TRUE );
 		
-		FooterView footerView = new FooterView( context );
+		footerView = new FooterView( context );
 		footerView.setLayoutParams( footerParams );
-		footerView.setAddIn( addInstrumentView );
 		addView( footerView );
 		
 		// 行行行行行行行 Overlay, add instruments!
@@ -55,5 +57,15 @@ public class StartView extends RelativeLayout {
 		//Add overlay
 		addInstrumentView.setLayoutParams( params );
 		addView( addInstrumentView );
+	}
+	
+	public void showOverlay() {
+		
+		addInstrumentView.show();
+	}
+	
+	public void hideOverlay() {
+		
+		addInstrumentView.hide();
 	}
 }
