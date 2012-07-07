@@ -4,7 +4,7 @@ import org.puredata.android.service.R;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -25,7 +25,7 @@ public class StartView extends RelativeLayout {
 		init( context );
 	}
 	
-	private void init( Context context ) {
+	private void init( final Context context ) {
 		
 		holder = new LinearLayout( context );
 		holder.setOrientation( LinearLayout.VERTICAL );
@@ -35,7 +35,7 @@ public class StartView extends RelativeLayout {
 		HeaderView headerView = new HeaderView( context );
 		holder.addView( headerView );
 		
-		InstrumentHolderView instrumentHolderView = new InstrumentHolderView( context );
+		final InstrumentHolderView instrumentHolderView = new InstrumentHolderView( context );
 		holder.addView( instrumentHolderView );
 		
 		addInstrumentView = new AddInstrumentView( context );
@@ -59,6 +59,19 @@ public class StartView extends RelativeLayout {
 		addInstrumentView.setLayoutParams( overlayParams );
 		addView( addInstrumentView );
 		
+//______ 
+		ViewTreeObserver vto = instrumentHolderView.getViewTreeObserver();
+		vto.addOnGlobalLayoutListener( new ViewTreeObserver.OnGlobalLayoutListener() {
+		  
+		    @Override
+		    public void onGlobalLayout() {
+		    	
+		        ViewTreeObserver obs = instrumentHolderView.getViewTreeObserver();
+		        obs.removeGlobalOnLayoutListener( this );
+		        
+		        instrumentHolderView.init( context, footerView.getHeight() );
+		    }
+		} );
 	}
 	
 	public void showOverlay() {

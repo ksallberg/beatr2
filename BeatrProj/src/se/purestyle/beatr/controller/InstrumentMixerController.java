@@ -72,6 +72,8 @@ public class InstrumentMixerController extends AbstractController {
 		public void onClick( View v ) {
 			
 			Log.i( "InstrumentMixerController", "Previous Page" );
+			
+			( (InstrumentHolderView) getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).prevPage();
 		}
 	};
 	
@@ -81,6 +83,8 @@ public class InstrumentMixerController extends AbstractController {
 		public void onClick( View v ) {
 			
 			Log.i( "InstrumentMixerController", "Next Page" );
+			
+			( (InstrumentHolderView) getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).nextPage();
 		}
 	};
 	

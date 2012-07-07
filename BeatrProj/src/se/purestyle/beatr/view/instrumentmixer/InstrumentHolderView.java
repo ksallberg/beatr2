@@ -16,9 +16,7 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 	private InstrumentHolderModel model;
 	
 	private int instrumentsPerPage;
-	private int currentInstrumentsOnScreen;
-	
-	private float holderHeight;
+	private int currentFirstInstrument = 0; //The current first instrument of this page
 	
 	public InstrumentHolderView( Context context ) {
 	
@@ -31,13 +29,19 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 		setLayoutParams( new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.FILL_PARENT ) );
 		
 		setTag( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW );
-		
-		init( context );
 	}
-	
-	private void init( Context context ) {
+
+	/**
+	 * This method is called when 
+	 * 
+	 * @param context
+	 * @param layoutHeight
+	 */
+	public void init( Context context, int footerViewHeight ) {
+
+		instrumentsPerPage = (int) Math.floor( Math.round( ( getHeight() - footerViewHeight ) / InstrumentMixerView.INSTRUMENT_VIEW_HEIGHT ) );
 		
-		
+		Log.i( "instrumentsPerPage", "" + instrumentsPerPage );
 	}
 
 	public void setModel( IModel model ) {
@@ -64,6 +68,18 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 	
 	@Override
 	public void removeInstrumentView(IInstrumentView view) {
+		
+		
+	}
+	
+	public void nextPage() {
+		
+		removeAllViews();
+		
+		model.getInstruments();
+	}
+	
+	public void prevPage() {
 		
 		
 	}
