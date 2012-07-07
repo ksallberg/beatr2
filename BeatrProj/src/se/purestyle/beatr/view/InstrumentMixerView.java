@@ -10,11 +10,14 @@ import com.purestyle.amvc.view.AbstractView;
 
 public class InstrumentMixerView extends AbstractView {
 
-	public static final String START_VIEW				= "startView";
-	public static final String INSTRUMENT_HOLDER_VIEW	= "instrumentHolderView";
-	public static final String ADD_INSTRUMENT_BUTTON	= "addInstrumentButton";
-	public static final String PREV_PAGE_BUTTON			= "prevPageButton";
-	public static final String NEXT_PAGE_BUTTON			= "nextPageButton";
+	public static final String 	START_VIEW				= "startView";
+	public static final String 	INSTRUMENT_HOLDER_VIEW	= "instrumentHolderView";
+	public static final String 	ADD_INSTRUMENT_BUTTON	= "addInstrumentButton";
+	public static final String 	PREV_PAGE_BUTTON		= "prevPageButton";
+	public static final String 	NEXT_PAGE_BUTTON		= "nextPageButton";
+	
+	public static final int 	FOOTER_VIEW_HEIGHT		= 60;
+	public static final int		INSTRUMENT_VIEW_HEIGHT	= 64;
 	
 	private StartView startView;
 	

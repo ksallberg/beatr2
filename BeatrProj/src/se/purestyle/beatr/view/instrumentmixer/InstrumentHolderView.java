@@ -15,6 +15,11 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 
 	private InstrumentHolderModel model;
 	
+	private int instrumentsPerPage;
+	private int currentInstrumentsOnScreen;
+	
+	private float holderHeight;
+	
 	public InstrumentHolderView( Context context ) {
 	
 		super( context );
@@ -46,11 +51,8 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 	@Override
 	public void addInstrumentView(IInstrumentView view) {
 		
-		Log.i( "ADDINSTRUMENT", "ADDINSTRUMENT!!!" + getHeight() );
-		Log.i( "ADDDDDDDDDDDD", "ADDODODO" + (model.getNumberOfInstruments() * (59 + 5)) );
-		
 		//If the combined height of all instruments is higher than the holder view, create a new page instead
-		if( getHeight() - 60 < model.getNumberOfInstruments() * ( 59 + 5 ) ) {
+		if( getHeight() - InstrumentMixerView.FOOTER_VIEW_HEIGHT < model.getNumberOfInstruments() * InstrumentMixerView.INSTRUMENT_VIEW_HEIGHT ) {
 			
 			Log.i( "HOHOHOHOOH", "NU €R DET F…R MNGA; SKAPA EN NY SIDA!" );
 		
@@ -59,7 +61,7 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 			addView( (View) view );
 		}
 	}
-
+	
 	@Override
 	public void removeInstrumentView(IInstrumentView view) {
 		

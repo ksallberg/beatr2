@@ -3,6 +3,7 @@ package se.purestyle.beatr.view.instrumentmixer;
 import org.puredata.android.service.R;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -34,8 +35,8 @@ public class StartView extends RelativeLayout {
 		HeaderView headerView = new HeaderView( context );
 		holder.addView( headerView );
 		
-		View ins = new InstrumentHolderView( context );
-		holder.addView( ins );
+		InstrumentHolderView instrumentHolderView = new InstrumentHolderView( context );
+		holder.addView( instrumentHolderView );
 		
 		addInstrumentView = new AddInstrumentView( context );
 		hideOverlay();
@@ -50,13 +51,14 @@ public class StartView extends RelativeLayout {
 		addView( footerView );
 		
 		// 行行行行行行行 Overlay, add instruments!
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( new MarginLayoutParams( 200, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
-		params.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE );
-		params.addRule( RelativeLayout.ALIGN_LEFT, RelativeLayout.TRUE );
+		RelativeLayout.LayoutParams overlayParams = new RelativeLayout.LayoutParams( new MarginLayoutParams( 200, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
+		overlayParams.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM );
+		overlayParams.addRule( RelativeLayout.ALIGN_LEFT, RelativeLayout.TRUE );
 		
 		//Add overlay
-		addInstrumentView.setLayoutParams( params );
+		addInstrumentView.setLayoutParams( overlayParams );
 		addView( addInstrumentView );
+		
 	}
 	
 	public void showOverlay() {
