@@ -34,6 +34,13 @@ public class VolumeDraggerView extends View implements IModelUser {
 		p.setColor( 0x00ff00 );
 		p.setAlpha( 255 );
 		
+		Paint bg = new Paint();
+		bg.setColor( 0x333333 );
+		bg.setAlpha( 255 );
+		
+		can.clipRect( 0, 0, getWidth(), 100 );
+		can.drawRect( 0, 0, getWidth(), 100, bg );
+		
 		can.clipRect( 0, 0, model.getDrawToX(), 100 );
 		can.drawRect( 0, 0, model.getDrawToX(), 100, p );
 	}
