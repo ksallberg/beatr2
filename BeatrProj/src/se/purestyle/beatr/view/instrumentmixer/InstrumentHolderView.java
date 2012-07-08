@@ -7,7 +7,6 @@ import se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.IInstrumentView;
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -24,8 +23,6 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 		super( context );
 		
 		setOrientation( VERTICAL );
-		
-		setBackgroundColor( Color.RED );
 		
 		setLayoutParams( new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.FILL_PARENT ) );
 		
@@ -57,11 +54,7 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 	public void addInstrumentView(IInstrumentView view) {
 		
 		//If the combined height of all instruments is higher than the holder view, create a new page instead
-		if( (model.getInstruments().size() - 1) - currentFirstInstrument >= instrumentsPerPage ) {
-			
-			Log.i( "HOHOHOHOOH", "NU €R DET F…R MNGA; SKAPA EN NY SIDA!" );
-		
-		} else {
+		if( !((model.getInstruments().size() - 1) - currentFirstInstrument >= instrumentsPerPage) ) {
 			
 			addView( (View) view );
 		}

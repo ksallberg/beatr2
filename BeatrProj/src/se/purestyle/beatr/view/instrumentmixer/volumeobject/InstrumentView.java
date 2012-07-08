@@ -5,7 +5,6 @@ import org.puredata.android.service.R;
 import com.purestyle.amvc.model.IModelUser;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -39,8 +38,6 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 	 */
 	private void init( Context context ) {
 		
-		setBackgroundColor( Color.YELLOW );
-		
 		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, 59 + 5 );
 		params.gravity = Gravity.CENTER;
 		
@@ -61,7 +58,6 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		} );
 		
 		volumeDragger = new VolumeDraggerView( context );
-//		((VolumeDraggerView) volumeDragger).init();
 		((VolumeDraggerView) volumeDragger).setTag( VOLUME_DRAGGER );
 		
 		editInstrumentBtn = new Button( context );

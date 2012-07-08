@@ -19,11 +19,7 @@ public class VolumeDraggerView extends View implements IModelUser {
 	
 	public VolumeDraggerView( Context c ) {
 		
-		super( c );
-		
-//		WindowManager wm = (WindowManager) c.getSystemService( Context.WINDOW_SERVICE );
-//		Display d = wm.getDefaultDisplay();
-	}
+		super( c );}
 	
 	@Override
 	public void init() {

@@ -1,7 +1,6 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -17,7 +16,6 @@ public class HeaderView extends RelativeLayout {
 	private void init( Context context ) {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 60 ) );
-		setBackgroundColor( Color.MAGENTA );
 		
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
 		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);

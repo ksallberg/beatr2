@@ -19,7 +19,6 @@ public class FooterView extends RelativeLayout {
 	private void init( Context context ) {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, InstrumentMixerView.FOOTER_VIEW_HEIGHT ) );
-		setBackgroundColor( Color.CYAN );
 		
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
 		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
