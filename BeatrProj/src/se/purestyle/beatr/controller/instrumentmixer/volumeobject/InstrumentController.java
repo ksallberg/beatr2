@@ -18,11 +18,19 @@ public class InstrumentController extends AbstractController {
 	private InstrumentView view;
 	private InstrumentModel model;
 	
+	private String instrumentType;
+	
+	public InstrumentController( String instrumentType ) {
+		
+		this.instrumentType = instrumentType;
+	}
+	
 	@Override
 	public void setup() {
 		
 		//Create and add model
 		model = new InstrumentModel();
+		model.setInstrumentType( instrumentType );
 		
 		//Create view (android View not IView)
 		view = new InstrumentView( ResourceManager.getContext() );

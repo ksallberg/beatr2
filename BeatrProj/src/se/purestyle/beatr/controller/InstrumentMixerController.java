@@ -4,7 +4,9 @@ import java.beans.PropertyChangeEvent;
 
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.model.InstrumentMixerModel;
+import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
+import se.purestyle.beatr.view.instrumentmixer.AddInstrumentView;
 import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
@@ -20,11 +22,13 @@ public class InstrumentMixerController extends AbstractController {
 	public static final String INSTRUMENT_MIXER_MODEL			= "instrumentMixerModel";
 	public static final String INSTRUMENT_HOLDER_CONTROLLER 	= "instrumentHolderController";
 	
+	private InstrumentMixerView insMixView;
+	
 	@Override
 	public void setup() {
 		
 		//Create and add view object for this MVC triple (InstrumentMixer)
-		InstrumentMixerView insMixView = new InstrumentMixerView();
+		insMixView = new InstrumentMixerView();
 		addView( INSTRUMENT_MIXER_VIEW, insMixView );
 		
 		//Create and add model object for this MVC triple
@@ -40,6 +44,8 @@ public class InstrumentMixerController extends AbstractController {
 		insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_BUTTON ).setOnClickListener( addInstrumentHandler );
 		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( prevPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
+		insMixView.getViews().get( InstrumentMixerView.SYNTH_BUTTON ).setOnClickListener( addSynthButton );
+		insMixView.getViews().get( InstrumentMixerView.DRUM_BUTTON ).setOnClickListener( addDrumButton );
 		
 		//Set instrumentHolderView's model to instrumentholderView from InstrumentHolderController
 		
@@ -59,10 +65,9 @@ public class InstrumentMixerController extends AbstractController {
 		@Override
 		public void onClick( View v ) {
 			
-			
 			Log.i( "InstrumentMixerController", "Add instrument" );
 			
-			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument();
+			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).show();
 		}
 	};
 	
@@ -73,7 +78,7 @@ public class InstrumentMixerController extends AbstractController {
 			
 			Log.i( "InstrumentMixerController", "Previous Page" );
 			
-			( (InstrumentHolderView) getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).prevPage();
+			( (InstrumentHolderView) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).prevPage();
 		}
 	};
 	
@@ -84,7 +89,27 @@ public class InstrumentMixerController extends AbstractController {
 			
 			Log.i( "InstrumentMixerController", "Next Page" );
 			
-			( (InstrumentHolderView) getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).nextPage();
+			( (InstrumentHolderView) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).nextPage();
+		}
+	};
+	
+	OnClickListener addDrumButton = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).hide();
+			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument( InstrumentModel.DRUM );
+		}
+	};
+	
+	OnClickListener addSynthButton = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).hide();
+			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument( InstrumentModel.SYNTH );
 		}
 	};
 	

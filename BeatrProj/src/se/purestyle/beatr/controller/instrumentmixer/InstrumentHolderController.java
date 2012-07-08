@@ -33,9 +33,9 @@ public class InstrumentHolderController extends AbstractController {
 		
 	}
 	
-	public void addNewInstrument() {
+	public void addNewInstrument( String instrumentType ) {
 		
-		InstrumentController newInstrument = new InstrumentController();
+		InstrumentController newInstrument = new InstrumentController( instrumentType );
 		newInstrument.setup();
 		
 		model.storeInstrument( newInstrument );

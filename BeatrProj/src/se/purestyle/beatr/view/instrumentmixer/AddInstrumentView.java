@@ -1,8 +1,8 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
+import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.generic.IOverlay;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,41 +14,26 @@ public class AddInstrumentView extends LinearLayout implements IOverlay {
 		super( context );
 		
 		setOrientation( VERTICAL );
-		setBackgroundColor( Color.BLUE );
 		
 		init( context );
 	}
 
 	private void init( Context context ) {
 		
-		Button btn1 = new Button( context );
-		btn1.setText("Button1!");
+		Button synthButton = new Button( context );
+		synthButton.setText("Synth");
+		synthButton.setTag( InstrumentMixerView.SYNTH_BUTTON );
 		
-		Button btn2 = new Button( context );
-		btn2.setText("Button2!");
+		Button drumButton = new Button( context );
+		drumButton.setText("Drum");
+		drumButton.setTag( InstrumentMixerView.DRUM_BUTTON );
 		
-		Button btn3 = new Button( context );
-		btn3.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				hide();
-			}
-		});
-		btn3.setText("Button3!");
+		addView( synthButton );
+		addView( drumButton );
 		
-		Button btn4 = new Button( context );
-		btn4.setText("Button4!");
-		
-		Button btn5 = new Button( context );
-		btn5.setText("Button5!");
-		
-		addView( btn1 );
-		addView( btn2 );
-		addView( btn3 );
-		addView( btn4 );
-		addView( btn5 );
+		View v = new View( context );
+		v.setLayoutParams( new LayoutParams( 0, 50 ) );
+		addView( v );
 	}
 	
 	@Override

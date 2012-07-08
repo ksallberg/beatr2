@@ -2,6 +2,7 @@ package se.purestyle.beatr.view.instrumentmixer;
 
 import com.purestyle.amvc.model.IModel;
 
+import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.IInstrumentView;
@@ -50,13 +51,13 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 	}
 	
 	/**
-	 * Work as
+	 * Work as 
 	 */
 	@Override
 	public void addInstrumentView(IInstrumentView view) {
 		
 		//If the combined height of all instruments is higher than the holder view, create a new page instead
-		if( getHeight() - InstrumentMixerView.FOOTER_VIEW_HEIGHT < model.getNumberOfInstruments() * InstrumentMixerView.INSTRUMENT_VIEW_HEIGHT ) {
+		if( (model.getInstruments().size() - 1) - currentFirstInstrument >= instrumentsPerPage ) {
 			
 			Log.i( "HOHOHOHOOH", "NU €R DET F…R MNGA; SKAPA EN NY SIDA!" );
 		
@@ -72,15 +73,58 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 		
 	}
 	
+	/**
+	 * Show the previous @instrumentsPerPage number of instruments, but don't go behind the instruments in the list
+	 */
 	public void nextPage() {
+		
+		if( currentFirstInstrument + instrumentsPerPage > model.getInstruments().size() - 1 ) {
+			
+			return;
+		}
+		
+		currentFirstInstrument += instrumentsPerPage;
+		
+		addInstrumentGroup();
+	}
+	
+	/**
+	 * Show the previous @instrumentsPerPage number of instruments, but don't go behind 0
+	 */
+	public void prevPage() {
+		
+		if( currentFirstInstrument <= 0 ) {
+			
+			return;
+		}
+		
+		currentFirstInstrument -= instrumentsPerPage;
+		
+		addInstrumentGroup();
+	}
+	
+	/**
+	 * Remove all current instruments from this view
+	 * 
+	 */
+	private void addInstrumentGroup() {
 		
 		removeAllViews();
 		
-		model.getInstruments();
-	}
-	
-	public void prevPage() {
-		
-		
+		//Add new instruments
+		for( int i = currentFirstInstrument; i < currentFirstInstrument + instrumentsPerPage; i ++ ) {
+			
+			if( i > model.getInstruments().size() - 1 ) {
+				
+				break;
+			}
+			
+			InstrumentController c = model.getInstruments().get( i );
+			
+			if( c != null ) {
+				
+				addView( c.getView() );
+			}
+		}
 	}
 }
