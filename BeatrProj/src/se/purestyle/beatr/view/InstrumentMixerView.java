@@ -9,15 +9,16 @@ import com.purestyle.amvc.view.AbstractView;
 
 public class InstrumentMixerView extends AbstractView {
 
-	public static final String 	START_VIEW				= "startView";
-	public static final String 	INSTRUMENT_HOLDER_VIEW	= "instrumentHolderView";
-	public static final String 	ADD_INSTRUMENT_VIEW		= "addInstrumentView";
-	public static final String 	ADD_INSTRUMENT_BUTTON	= "addInstrumentButton";
-	public static final String 	PREV_PAGE_BUTTON		= "prevPageButton";
-	public static final String 	NEXT_PAGE_BUTTON		= "nextPageButton";
+	public static final String	START_VIEW				= "startView";
+	public static final String	INSTRUMENT_HOLDER_VIEW	= "instrumentHolderView";
+	public static final String	ADD_INSTRUMENT_VIEW		= "addInstrumentView";
+	public static final String	MASTER_VOLUME_VIEW		= "masterVolumeView";
+	public static final String	ADD_INSTRUMENT_BUTTON	= "addInstrumentButton";
+	public static final String	PREV_PAGE_BUTTON		= "prevPageButton";
+	public static final String	NEXT_PAGE_BUTTON		= "nextPageButton";
 	
-	public static final String 	SYNTH_BUTTON			= "synthButton";
-	public static final String 	DRUM_BUTTON				= "drumButton";
+	public static final String	SYNTH_BUTTON			= "synthButton";
+	public static final String	DRUM_BUTTON				= "drumButton";
 	
 	public static final int 	FOOTER_VIEW_HEIGHT		= 60;
 	public static final int		INSTRUMENT_VIEW_HEIGHT	= 64;
@@ -36,6 +37,7 @@ public class InstrumentMixerView extends AbstractView {
 		views.put( INSTRUMENT_HOLDER_VIEW,  startView.findViewWithTag( INSTRUMENT_HOLDER_VIEW ) );
 		views.put( SYNTH_BUTTON,  			startView.findViewWithTag( SYNTH_BUTTON ) );
 		views.put( DRUM_BUTTON,  			startView.findViewWithTag( DRUM_BUTTON ) );
+		views.put( MASTER_VOLUME_VIEW,		startView.findViewWithTag( MASTER_VOLUME_VIEW ) );
 	}
 	
 	@Override

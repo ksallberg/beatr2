@@ -3,11 +3,13 @@ package se.purestyle.beatr.controller;
 import java.beans.PropertyChangeEvent;
 
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
+import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
 import se.purestyle.beatr.model.InstrumentMixerModel;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.AddInstrumentView;
 import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
+import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
 import android.util.Log;
@@ -21,6 +23,7 @@ public class InstrumentMixerController extends AbstractController {
 	public static final String INSTRUMENT_MIXER_VIEW			= "instrumentMixerView";
 	public static final String INSTRUMENT_MIXER_MODEL			= "instrumentMixerModel";
 	public static final String INSTRUMENT_HOLDER_CONTROLLER 	= "instrumentHolderController";
+	public static final String MASTER_VOLUME_CONTROLLER			= "masterVolumeController";
 	
 	private InstrumentMixerView insMixView;
 	
@@ -41,6 +44,12 @@ public class InstrumentMixerController extends AbstractController {
 		addSubcontroller( INSTRUMENT_HOLDER_CONTROLLER, holderSub );
 		holderSub.addObserver( this );
 		
+		//Create and add subcontroller for the master volume controller
+		MasterVolumeController masterVolumeSub = new MasterVolumeController();
+		masterVolumeSub.setup();
+		masterVolumeSub.setView( ( MasterVolumeView ) insMixView.getViews().get( InstrumentMixerView.MASTER_VOLUME_VIEW ) );
+		addSubcontroller( MASTER_VOLUME_CONTROLLER, masterVolumeSub );
+		
 		insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_BUTTON ).setOnClickListener( addInstrumentHandler );
 		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( prevPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
@@ -51,7 +60,7 @@ public class InstrumentMixerController extends AbstractController {
 		
 		Log.i( "MODDEEEL??", holderSub.getModels().get(InstrumentHolderController.MODEL ).toString() );
 		
-		( (InstrumentHolderView) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).setModel( holderSub.getModels().get(InstrumentHolderController.MODEL ) );
+		( ( InstrumentHolderView ) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).setModel( holderSub.getModels().get(InstrumentHolderController.MODEL ) );
 	}
 
 	@Override

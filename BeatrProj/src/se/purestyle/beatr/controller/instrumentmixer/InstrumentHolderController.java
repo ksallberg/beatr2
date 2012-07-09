@@ -5,8 +5,6 @@ import java.beans.PropertyChangeEvent;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel;
 
-import android.util.Log;
-
 import com.purestyle.amvc.controller.AbstractController;
 
 public class InstrumentHolderController extends AbstractController {
@@ -18,8 +16,6 @@ public class InstrumentHolderController extends AbstractController {
 	
 	@Override
 	public void setup() {
-		
-		Log.i( "InstrumentHolderController", "INIT!!!" );
 		
 		//addModel( MODEL, new InstrumentHolderModel() );
 		model = new InstrumentHolderModel();

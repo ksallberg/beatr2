@@ -1,30 +1,26 @@
 package se.purestyle.beatr.view.instrumentmixer.volumeobject;
 
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
+import se.purestyle.beatr.view.generic.AbstractVolumeView;
 
-import com.purestyle.amvc.model.IModel;
 import com.purestyle.amvc.model.IModelUser;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-//import android.view.Display;
-import android.view.View;
-//import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-public class VolumeDraggerView extends View implements IModelUser {
-	
-	private InstrumentModel model;
+public class VolumeDraggerView extends AbstractVolumeView implements IModelUser {
 	
 	public VolumeDraggerView( Context c ) {
 		
-		super( c );}
+		super( c );
+	}
 	
 	@Override
 	public void init() {
 		
-		setLayoutParams( new LinearLayout.LayoutParams( (int) model.getDrawToX(), 59 ) );
+		setLayoutParams( new LinearLayout.LayoutParams( (int) ((InstrumentModel) model).getDrawToX(), 59 ) );
 	}
 	
 	@Override
@@ -41,13 +37,7 @@ public class VolumeDraggerView extends View implements IModelUser {
 		can.clipRect( 0, 0, getWidth(), 100 );
 		can.drawRect( 0, 0, getWidth(), 100, bg );
 		
-		can.clipRect( 0, 0, model.getDrawToX(), 100 );
-		can.drawRect( 0, 0, model.getDrawToX(), 100, p );
-	}
-
-	@Override
-	public void setModel( IModel model ) {
-		
-		this.model = (InstrumentModel) model;
+		can.clipRect( 0, 0, ((InstrumentModel) model).getDrawToX(), 100 );
+		can.drawRect( 0, 0, ((InstrumentModel) model).getDrawToX(), 100, p );
 	}
 }

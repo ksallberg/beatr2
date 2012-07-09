@@ -1,7 +1,11 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
+import org.puredata.android.service.R;
+
+import se.purestyle.beatr.view.InstrumentMixerView;
+
 import android.content.Context;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 public class HeaderView extends RelativeLayout {
@@ -19,18 +23,20 @@ public class HeaderView extends RelativeLayout {
 		
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
 		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+		params.setMargins( 6, 6, 0, 0);
 		
-		Button btn1 = new Button( context );
-		btn1.setText( "mstr volume" );
-		btn1.setLayoutParams( params );
-		addView( btn1 );
+		MasterVolumeView masterVolume = new MasterVolumeView( context );
+		masterVolume.setTag( InstrumentMixerView.MASTER_VOLUME_VIEW );
+		masterVolume.setLayoutParams( params );
+		addView( masterVolume );
 		
-		RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
-		params2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+		RelativeLayout.LayoutParams logoParams = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+		logoParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+		logoParams.setMargins( 0, 3, 0, 0 );
 		
-		Button btn2 = new Button( context );
-		btn2.setText( "logo" );
-		btn2.setLayoutParams( params2 );
-		addView( btn2 );
+		ImageView logo = new ImageView( context );
+		logo.setBackgroundResource( R.drawable.logo );
+		logo.setLayoutParams( logoParams );
+		addView( logo );
 	}
 }
