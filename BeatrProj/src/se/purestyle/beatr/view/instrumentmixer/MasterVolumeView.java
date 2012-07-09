@@ -14,6 +14,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.view.ViewGroup.LayoutParams;
 
 public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
@@ -38,7 +40,9 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		Paint p = new Paint();
 		p.setColor( Color.parseColor( "#40e8de" ) );
 		
-		can.clipRect( 0, 0, totalWidth, totalHeight );
+		Path path = new Path();
+		path.addRoundRect( new RectF( 0, 0, totalWidth, totalHeight), 7, 7, Path.Direction.CW );
+		can.clipPath( path );
 		can.drawRect( 0, 0, ( ( MasterVolumeModel ) model ).getDrawToX(), totalHeight, p );
 	}
 }
