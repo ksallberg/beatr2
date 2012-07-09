@@ -44,6 +44,8 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		Bitmap bmp = BitmapFactory.decodeResource( getResources(), R.drawable.mastervolumebg );
 		can.drawBitmap( bmp, new Matrix(), null );
 		
+		can.save();
+		
 		Paint p = new Paint();
 		p.setAntiAlias( true );
 		p.setColor( Color.parseColor( "#40e8de" ) );
@@ -58,6 +60,9 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		m.setScale( 7, 1 );
 		can.drawBitmap( foreGroundBmp, m, null );
 		
+		//Clip for the text
+		can.restore();
+		
 		Paint textPaint = new Paint();
 		textPaint.setAntiAlias( true );
 		textPaint.setColor( Color.parseColor( "#ffffff" ) );
@@ -68,12 +73,9 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		textPaint.setMaskFilter( new BlurMaskFilter( 2, Blur.OUTER ) );
 		textPaint.setAlpha( 1000 );
 		
-		//Clip for the text
-		can.restore();
-		
-		can.drawText( "mastervolume", 17, 37, textPaint );
-		can.drawText( "mastervolume", 17, 37, textPaint );
-		can.drawText( "mastervolume", 17, 37, textPaint );
-		can.drawText( "mastervolume", 17, 37, textPaint );
+		can.drawText( "mastervolume", 10, 31, textPaint );
+		can.drawText( "mastervolume", 10, 31, textPaint );
+		can.drawText( "mastervolume", 10, 31, textPaint );
+		can.drawText( "mastervolume", 10, 31, textPaint );
 	}
 }

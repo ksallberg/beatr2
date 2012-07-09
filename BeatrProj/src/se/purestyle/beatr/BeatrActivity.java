@@ -1,6 +1,7 @@
 package se.purestyle.beatr;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
+import se.purestyle.beatr.model.FemaleNames;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import android.app.Activity;
 import android.util.Log;
@@ -22,6 +23,7 @@ public class BeatrActivity extends Activity {
 		
 		//Give ResourceManager a context
 		ResourceManager.setContext( getApplicationContext() );
+		FemaleNames.populate();
 		
 		mixerController = new InstrumentMixerController();
 		mixerController.setup();

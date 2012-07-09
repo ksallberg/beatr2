@@ -10,16 +10,24 @@ import com.purestyle.amvc.model.IModelUser;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.BlurMaskFilter.Blur;
 import android.widget.LinearLayout;
 
 public class VolumeDraggerView extends AbstractVolumeView implements IModelUser {
 	
-	public VolumeDraggerView( Context c ) {
+	private Context context;
+	
+	public VolumeDraggerView( Context context ) {
 		
-		super( c );
+		super( context );
+		
+		this.context = context;
 	}
 	
 	@Override
@@ -31,8 +39,16 @@ public class VolumeDraggerView extends AbstractVolumeView implements IModelUser 
 	@Override
 	public void onDraw( Canvas can ) {
 		
+		//TODO: Make the bar-color selection in a nicer way, UGLY so far
 		Paint p = new Paint();
-		p.setColor( 0x00ff00 );
+		if( ( ( InstrumentModel ) model ).getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+			
+			p.setColor( 0xe94700 );
+		
+		} else if ( ( ( InstrumentModel ) model ).getInstrumentType().equals( InstrumentModel.SYNTH ) ) {
+			
+			p.setColor( 0x642974 );
+		}
 		p.setAlpha( 255 );
 		
 		Paint bg = new Paint();
@@ -52,12 +68,29 @@ public class VolumeDraggerView extends AbstractVolumeView implements IModelUser 
 		can.save();
 		can.clipRect( 0, 0, getWidth(), 100 );
 		
-		
 		Bitmap overlay = BitmapFactory.decodeResource( getResources(), R.drawable.volumebaroverlay );
 		Matrix overlayMatrix = new Matrix();
 		overlayMatrix.setScale( 8, 1 );
 		can.drawBitmap( overlay, overlayMatrix, null );
 		
 		can.restore();
+		
+		//Draw the text on top of everything
+		Paint textPaint = new Paint();
+		textPaint.setAntiAlias( true );
+		textPaint.setColor( Color.parseColor( "#ffffff" ) );
+		
+		Typeface fvAlmelo = Typeface.createFromAsset( context.getAssets(), "fonts/fvalmelo.ttf" );
+		textPaint.setTypeface( fvAlmelo );
+		textPaint.setTextSize( 25 );
+		textPaint.setMaskFilter( new BlurMaskFilter( 2, Blur.OUTER ) );
+		textPaint.setAlpha( 1000 );
+		
+		InstrumentModel mod = ((InstrumentModel) model);
+		
+		for( int i = 0; i < 4; i ++ ) {
+			
+			can.drawText( mod.getInstrumentType() + ": " + mod.getName(), 10, 39, textPaint );
+		}
 	}
 }
