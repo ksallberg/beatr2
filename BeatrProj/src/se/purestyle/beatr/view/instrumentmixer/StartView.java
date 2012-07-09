@@ -49,9 +49,10 @@ public class StartView extends RelativeLayout {
 		addView( footerView );
 		
 		// 行行行行行行行 Overlay, add instruments!
-		RelativeLayout.LayoutParams overlayParams = new RelativeLayout.LayoutParams( new MarginLayoutParams( 150, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
+		RelativeLayout.LayoutParams overlayParams = new RelativeLayout.LayoutParams( new MarginLayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT ) );
 		overlayParams.addRule( RelativeLayout.ALIGN_PARENT_BOTTOM );
 		overlayParams.addRule( RelativeLayout.ALIGN_LEFT );
+		overlayParams.setMargins( 5, 0, 0, 0 );
 		
 		//Add overlay
 		addInstrumentView = new AddInstrumentView( context );
