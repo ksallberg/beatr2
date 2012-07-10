@@ -1,4 +1,4 @@
-package se.purestyle.beatr;
+package se.purestyle.beatr.puredataconnections;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,9 @@ import org.puredata.android.service.PdService;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
 import org.puredata.core.utils.IoUtils;
+
+import se.purestyle.beatr.BeatrActivity;
+import se.purestyle.beatr.R;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -103,7 +106,7 @@ public class PdConnector {
 		String name = activity.getResources().getString(R.string.app_name);
 		try {
 			pdService.initAudio(-1, -1, -1, -1);   // negative values will be replaced with defaults/preferences
-			pdService.startAudio(new Intent(activity, PdTest.class), R.drawable.icon, name, "Return to " + name + ".");
+			pdService.startAudio(new Intent(activity, BeatrActivity.class), R.drawable.icon, name, "Return to " + name + ".");
 		} catch (IOException e) {
 			//toast(e.toString());
 		}
@@ -123,3 +126,74 @@ public class PdConnector {
 		PdBase.sendFloat( str, fl );
 	}
 }
+
+//Just so I will not forget how to use this:
+
+/*
+private void evaluateMessage(String s) {
+	String dest = "test", symbol = null;
+	boolean isAny = s.length() > 0 && s.charAt(0) == ';';
+	Scanner sc = new Scanner(isAny ? s.substring(1) : s);
+	if (isAny) {
+		if (sc.hasNext()) dest = sc.next();
+		else {
+			toast("Message not sent (empty recipient)");
+			return;
+		}
+		if (sc.hasNext()) symbol = sc.next();
+		else {
+			toast("Message not sent (empty symbol)");
+		}
+	}
+	List<Object> list = new ArrayList<Object>();
+	while (sc.hasNext()) {
+		if (sc.hasNextInt()) {
+			list.add(new Float(sc.nextInt()));
+		} else if (sc.hasNextFloat()) {
+			list.add(sc.nextFloat());
+		} else {
+			list.add(sc.next());
+		}
+	}
+	if (isAny) {
+		PdBase.sendMessage(dest, symbol, list.toArray());
+	} else {
+		switch (list.size()) {
+		case 0:
+			PdBase.sendBang(dest);
+			break;
+		case 1:
+			Object x = list.get(0);
+			if (x instanceof String) {
+				PdBase.sendSymbol(dest, (String) x);
+			} else {
+				PdBase.sendFloat(dest, (Float) x);
+			}
+			break;
+		default:
+			PdBase.sendList(dest, list.toArray());
+			break;
+		}
+	}
+}*/
+
+
+
+/*
+switch (v.getId()) {
+	case R.id.left_box:
+		PdBase.sendFloat( "phasleft",  (float) (left.isChecked() ? 100.5 : 0) );
+		break;
+	case R.id.right_box:
+		PdBase.sendFloat( "phasright", right.isChecked() ? 100 : 0 );
+		break;
+	case R.id.mic_box:
+		PdBase.sendFloat("mic", mic.isChecked() ? 1 : 0);
+		break;
+	case R.id.pref_button:
+		startActivity(new Intent(this, PdPreferences.class));
+		break;
+	default:
+		break;
+		
+		*/

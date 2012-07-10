@@ -2,6 +2,7 @@ package se.purestyle.beatr;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
 import se.purestyle.beatr.model.FemaleNames;
+import se.purestyle.beatr.puredataconnections.PdConnector;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import android.app.Activity;
 import android.os.Bundle;
