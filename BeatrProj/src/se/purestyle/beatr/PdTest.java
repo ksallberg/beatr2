@@ -21,13 +21,9 @@ import java.util.Scanner;
 
 import org.puredata.android.service.PdPreferences;
 import org.puredata.android.service.PdService;
-import se.purestyle.beatr.R;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
 import org.puredata.core.utils.IoUtils;
-
-import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
-import se.purestyle.beatr.view.instrumentmixer.StartView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -46,7 +42,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -55,7 +50,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-public class PdTest extends Activity implements OnClickListener, OnEditorActionListener, SharedPreferences.OnSharedPreferenceChangeListener {
+public class PdTest extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
 	private static final String TAG = "Pd Test";
 
@@ -133,7 +128,7 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 			pdService = ((PdService.PdBinder)service).getService();
 			initPd();
 		}
-		
+
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			// this method will never be called
@@ -142,21 +137,24 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 
 	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		
-		super.onCreate( savedInstanceState );
+		ImageView imageView = new ImageView( getApplicationContext() );
+		imageView.setBackgroundResource( R.drawable.beatr );
+		imageView.layout( 20, 20, 200, 200 );
 		
-		requestWindowFeature( Window.FEATURE_NO_TITLE );
+		Log.d("taggeen height", "" + imageView.getHeight());
+		Log.d("taggeen width", "" + imageView.getWidth());
 		
-		View ins = new StartView( getApplicationContext() );
-		setContentView( ins );
+		setContentView( imageView );
 		
-		/*
+		
 		PdPreferences.initPreferences(getApplicationContext());
 		PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).registerOnSharedPreferenceChangeListener(this);
-		initGui();
+		//initGui();
 		bindService(new Intent(this, PdService.class), pdConnection, BIND_AUTO_CREATE);
-		*/
-	}
+		
+	};
 
 	@Override
 	protected void onDestroy() {
@@ -169,10 +167,9 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		startAudio();
 	}
 
+	/*
 	private void initGui() {
 		setContentView(R.layout.main);
-		
-		/*
 		left = (CheckBox) findViewById(R.id.left_box);
 		left.setOnClickListener(this);
 		right = (CheckBox) findViewById(R.id.right_box);
@@ -185,9 +182,8 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		prefs.setOnClickListener(this);
 		logs = (TextView) findViewById(R.id.log_box);
 		logs.setMovementMethod(new ScrollingMovementMethod());
-		*/
 	}
-
+*/
 	private void initPd() {
 		Resources res = getResources();
 		File patchFile = null;
@@ -249,9 +245,9 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 		return true;
 	}
 
+	/*
 	@Override
 	public void onClick(View v) {
-		/*
 		switch (v.getId()) {
 		case R.id.left_box:
 			PdBase.sendFloat( "phasleft",  (float) (left.isChecked() ? 100.5 : 0) );
@@ -267,14 +263,9 @@ public class PdTest extends Activity implements OnClickListener, OnEditorActionL
 			break;
 		default:
 			break;
-		}*/
+		}
 	}
-
-	@Override
-	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		evaluateMessage(msg.getText().toString());
-		return true;
-	}
+*/
 
 	private void evaluateMessage(String s) {
 		String dest = "test", symbol = null;
