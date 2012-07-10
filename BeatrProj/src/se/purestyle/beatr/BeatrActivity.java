@@ -2,7 +2,6 @@ package se.purestyle.beatr;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
 import se.purestyle.beatr.model.FemaleNames;
-import se.purestyle.beatr.puredataconnections.PureDataProxy;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +13,8 @@ public class BeatrActivity extends Activity {
 	//Main controller
 	InstrumentMixerController mixerController;
 	
+	private static PdConnector conn;
+	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		
@@ -23,10 +24,13 @@ public class BeatrActivity extends Activity {
 		//Remove the standard top bar stating the application name, I use a logo instead
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
-		PureDataProxy.createInstance( getApplicationContext(), this );
+		conn = new PdConnector( getApplicationContext(), this );
+		
+//		PureDataProxy.createInstance( getApplicationContext(), this );
 		
 		//Give ResourceManager a context
 		ResourceManager.setContext( getApplicationContext() );
+		
 		FemaleNames.populate();
 		
 		mixerController = new InstrumentMixerController();
@@ -42,6 +46,12 @@ public class BeatrActivity extends Activity {
 		
 		super.onDestroy();
 		
-		PureDataProxy.getInstance().destroy();
+		conn.cleanup();
+//		PureDataProxy.getInstance().destroy();
 	};
+	
+	public static void sendToPureData( String str ) {
+		
+		conn.sendToPd( str, 22.3f );
+	}
 }

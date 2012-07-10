@@ -11,7 +11,7 @@ import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
 import org.puredata.core.utils.IoUtils;
 
-import se.purestyle.beatr.BeatrActivity;
+import se.purestyle.beatr.PdTest;
 import se.purestyle.beatr.R;
 import android.app.Activity;
 import android.content.ComponentName;
@@ -26,7 +26,10 @@ import android.util.Log;
 
 public class PureDataProxy implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-	private static PureDataProxy instance = null;
+	//Stuff that I take to here just to not need to have synth proxy/communication code in the Activity subclass
+	private static PureDataProxy 	instance = null;
+	private PdService				pdService = null; //instantiated by the ServiceConnection pdConnection
+	private Activity				activity;
 	
 	//Cannot do a normal singletone since this class requires a context and an activity
 	public static void createInstance( Context context, Activity activity ) {
@@ -50,24 +53,22 @@ public class PureDataProxy implements SharedPreferences.OnSharedPreferenceChange
 		}
 	}
 	
-	private PdService			pdService = null; //instantiated by the ServiceConnection pdConnection
 	
-	//Stuff that I take to here just to not need to have synth proxy/communication code in the Activity subclass
-	private Activity			activity;
 	
 	private final ServiceConnection pdConnection = new ServiceConnection() {
-		
 		@Override
-		public void onServiceDisconnected( ComponentName name ) {} //Not used by PD
-		
-		@Override
-		public void onServiceConnected( ComponentName name, IBinder service ) {
-			
-			pdService = ( ( PdService.PdBinder ) service ).getService();
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			pdService = ((PdService.PdBinder)service).getService();
 			initPd();
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			// this method will never be called
 		}
 	};
 	
+	/*
 	private void initPd() {
 		
 		Resources res = activity.getResources();
@@ -99,8 +100,27 @@ public class PureDataProxy implements SharedPreferences.OnSharedPreferenceChange
 				patchFile.delete();
 			}
 		}
+	}*/
+	
+	private void initPd() {
+		Resources res = activity.getResources();
+		File patchFile = null;
+		try {
+			PdBase.setReceiver(receiver);
+			PdBase.subscribe("android");
+			InputStream in = res.openRawResource(R.raw.twosawsandfilter);
+			patchFile = IoUtils.extractResource(in, "twosawsandfilter.pd", activity.getCacheDir());
+			PdBase.openPatch(patchFile);
+			startAudio();
+		} catch (IOException e) {
+//			Log.e(TAG, e.toString());
+			activity.finish();
+		} finally {
+			if (patchFile != null) patchFile.delete();
+		}
 	}
 	
+	/*
 	private void startAudio() {
 		
 		String name = activity.getResources().getString( R.string.app_name );
@@ -114,48 +134,51 @@ public class PureDataProxy implements SharedPreferences.OnSharedPreferenceChange
 			
 			Log.e( "PureDataProxy", e.toString() );
 		}
+	}*/
+	
+	private void startAudio() {
+		String name = activity.getResources().getString(R.string.app_name);
+		try {
+			pdService.initAudio(-1, -1, -1, -1);   // negative values will be replaced with defaults/preferences
+			pdService.startAudio(new Intent(activity, PdTest.class), R.drawable.icon, name, "Return to " + name + ".");
+		} catch (IOException e) {
+			
+		}
 	}
 	
 	private PdReceiver receiver = new PdReceiver() {
 
-		private void pdPost( String msg ) {
+		private void pdPost(String msg) {
 			
-//			toast("Pure Data says, \"" + msg + "\"");
 		}
 
 		@Override
-		public void print( String s ) {
-			
-//			post(s);
+		public void print(String s) {
+			//post(s);
 		}
 
 		@Override
-		public void receiveBang( String source ) {
-			
+		public void receiveBang(String source) {
 			pdPost("bang");
 		}
 
 		@Override
-		public void receiveFloat( String source, float x ) {
-			
+		public void receiveFloat(String source, float x) {
 			pdPost("float: " + x);
 		}
 
 		@Override
-		public void receiveList( String source, Object... args ) {
-			
+		public void receiveList(String source, Object... args) {
 			pdPost("list: " + Arrays.toString(args));
 		}
 
 		@Override
-		public void receiveMessage( String source, String symbol, Object... args ) {
-			
+		public void receiveMessage(String source, String symbol, Object... args) {
 			pdPost("message: " + Arrays.toString(args));
 		}
 
 		@Override
-		public void receiveSymbol( String source, String symbol ) {
-			
+		public void receiveSymbol(String source, String symbol) {
 			pdPost("symbol: " + symbol);
 		}
 	};
@@ -181,7 +204,9 @@ public class PureDataProxy implements SharedPreferences.OnSharedPreferenceChange
 	}
 
 	@Override
-	public void onSharedPreferenceChanged( SharedPreferences sharedPreferences, String key ) {
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+		
+		Log.i( "PUREDATA", "____onShared" );
 		
 		startAudio();
 	}
