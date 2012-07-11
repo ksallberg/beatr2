@@ -23,8 +23,8 @@ import android.view.ViewGroup.LayoutParams;
 
 public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 
-	private float totalWidth = 212;
-	private float totalHeight = 43;
+	private final float totalWidth = 212;
+	private final float totalHeight = 43;
 	
 	private Context context;
 	
