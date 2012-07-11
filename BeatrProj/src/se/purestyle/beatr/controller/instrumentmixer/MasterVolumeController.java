@@ -55,8 +55,7 @@ public class MasterVolumeController extends AbstractController {
 			v.postInvalidate();
 			
 			//Post change to PD
-			PdConnector.sendToPd( "left", ( ( MasterVolumeModel ) model ).getPercentage() );
-			PdConnector.sendToPd( "right", ( ( MasterVolumeModel ) model ).getPercentage() );
+			PdConnector.sendToPd( "right", ( ( MasterVolumeModel ) model ).getPercentage() * 500 );
 			
 			return true;
 		}

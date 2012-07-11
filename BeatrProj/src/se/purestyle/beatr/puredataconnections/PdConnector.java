@@ -94,8 +94,8 @@ public class PdConnector {
 		try {
 			PdBase.setReceiver(receiver);
 			PdBase.subscribe("android");
-			InputStream in = res.openRawResource(R.raw.twosawsandfilter);
-			patchFile = IoUtils.extractResource(in, "twosawsandfilter.pd", activity.getCacheDir());
+			InputStream in = res.openRawResource(R.raw.smalletst);
+			patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
 			PdBase.openPatch(patchFile);
 			startAudio();
 		} catch (IOException e) {
