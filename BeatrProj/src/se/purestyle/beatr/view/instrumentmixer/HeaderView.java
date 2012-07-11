@@ -21,13 +21,13 @@ public class HeaderView extends RelativeLayout {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 60 ) );
 		
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
-		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-		params.setMargins( 6, 6, 0, 0);
+		RelativeLayout.LayoutParams masterVolumeParams = new RelativeLayout.LayoutParams( (int) MasterVolumeView.TOTAL_WIDTH, (int) MasterVolumeView.TOTAL_HEIGHT );
+		masterVolumeParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+		masterVolumeParams.setMargins( 6, 6, 0, 0);
 		
 		MasterVolumeView masterVolume = new MasterVolumeView( context );
 		masterVolume.setTag( InstrumentMixerView.MASTER_VOLUME_VIEW );
-		masterVolume.setLayoutParams( params );
+		masterVolume.setLayoutParams( masterVolumeParams );
 		addView( masterVolume );
 		
 		RelativeLayout.LayoutParams logoParams = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );

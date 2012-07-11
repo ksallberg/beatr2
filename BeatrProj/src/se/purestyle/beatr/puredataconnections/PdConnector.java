@@ -24,11 +24,14 @@ import android.os.IBinder;
 
 public class PdConnector {
 
-	private Activity activity;
+	private Activity activity = null;
+	private static boolean initialized = false;
 	
 	public PdConnector( Context context, Activity activity ) {
 		
 		this.activity = activity;
+		
+		initialized = true;
 		
 		PdPreferences.initPreferences( context );
 		
@@ -121,7 +124,12 @@ public class PdConnector {
 		}
 	}
 	
-	public void sendToPd( String str, float fl ) {
+	public static void sendToPd( String str, float fl ) {
+		
+		if( !initialized ) {
+			
+			throw new RuntimeException( "Cannot run this method, the class is not initialized." );
+		}
 		
 		PdBase.sendFloat( str, fl );
 	}

@@ -50,9 +50,4 @@ public class BeatrActivity extends Activity {
 		conn.cleanup();
 //		PureDataProxy.getInstance().destroy();
 	};
-	
-	public static void sendToPureData( String str ) {
-		
-		conn.sendToPd( str, 22.3f );
-	}
 }

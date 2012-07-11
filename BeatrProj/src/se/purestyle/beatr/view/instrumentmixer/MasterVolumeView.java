@@ -19,12 +19,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.view.ViewGroup.LayoutParams;
 
 public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 
-	private final float totalWidth = 212;
-	private final float totalHeight = 43;
+	public static final float TOTAL_WIDTH = 212;
+	public static final float TOTAL_HEIGHT = 43;
 	
 	private Context context;
 	
@@ -33,8 +32,6 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		super( context );
 		
 		this.context = context;
-		
-		setLayoutParams( new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT ) );
 	}
 	
 	@Override
@@ -51,9 +48,9 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		p.setColor( Color.parseColor( "#40e8de" ) );
 		
 		Path path = new Path();
-		path.addRoundRect( new RectF( 0, 0, totalWidth, totalHeight), 7, 7, Path.Direction.CW );
+		path.addRoundRect( new RectF( 0, 0, TOTAL_WIDTH, TOTAL_HEIGHT ), 7, 7, Path.Direction.CW );
 		can.clipPath( path );
-		can.clipRect(0, 0, ( ( MasterVolumeModel ) model ).getDrawToX(), totalHeight );
+		can.clipRect(0, 0, ( ( MasterVolumeModel ) model ).getDrawToX(), TOTAL_HEIGHT );
 		
 		Bitmap foreGroundBmp = BitmapFactory.decodeResource( getResources(), R.drawable.mastervolumefg );
 		Matrix m = new Matrix();

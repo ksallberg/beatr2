@@ -1,6 +1,7 @@
 package se.purestyle.beatr.controller.instrumentmixer;
 
 import se.purestyle.beatr.model.instrumentmixer.MasterVolumeModel;
+import se.purestyle.beatr.puredataconnections.PdConnector;
 import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
 
 import android.view.MotionEvent;
@@ -43,6 +44,7 @@ public class MasterVolumeController extends AbstractController {
 		@Override
 		public boolean onTouch( View v, MotionEvent event ) {
 			
+			//Redraw view
 			( ( MasterVolumeModel ) model ).setDrawToX( event.getRawX() - v.getLeft() );
 			
 			if ( event.getAction() == MotionEvent.ACTION_UP ) {
@@ -51,6 +53,10 @@ public class MasterVolumeController extends AbstractController {
 			}
 			
 			v.postInvalidate();
+			
+			//Post change to PD
+			PdConnector.sendToPd( "left", ( ( MasterVolumeModel ) model ).getPercentage() );
+			PdConnector.sendToPd( "right", ( ( MasterVolumeModel ) model ).getPercentage() );
 			
 			return true;
 		}
