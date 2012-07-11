@@ -12,7 +12,6 @@ import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
 import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -58,8 +57,6 @@ public class InstrumentMixerController extends AbstractController {
 		
 		//Set instrumentHolderView's model to instrumentholderView from InstrumentHolderController
 		
-		Log.i( "MODDEEEL??", holderSub.getModels().get(InstrumentHolderController.MODEL ).toString() );
-		
 		( ( InstrumentHolderView ) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).setModel( holderSub.getModels().get(InstrumentHolderController.MODEL ) );
 	}
 
@@ -74,8 +71,6 @@ public class InstrumentMixerController extends AbstractController {
 		@Override
 		public void onClick( View v ) {
 			
-			Log.i( "InstrumentMixerController", "Add instrument" );
-			
 			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).show();
 		}
 	};
@@ -85,8 +80,6 @@ public class InstrumentMixerController extends AbstractController {
 		@Override
 		public void onClick( View v ) {
 			
-			Log.i( "InstrumentMixerController", "Previous Page" );
-			
 			( (InstrumentHolderView) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).prevPage();
 		}
 	};
@@ -95,8 +88,6 @@ public class InstrumentMixerController extends AbstractController {
 		
 		@Override
 		public void onClick( View v ) {
-			
-			Log.i( "InstrumentMixerController", "Next Page" );
 			
 			( (InstrumentHolderView) insMixView.getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW ) ).nextPage();
 		}
