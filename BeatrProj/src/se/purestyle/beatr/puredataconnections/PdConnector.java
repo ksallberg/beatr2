@@ -35,7 +35,7 @@ public class PdConnector {
 		
 		PdPreferences.initPreferences( context );
 		
-		activity.bindService(new Intent(activity, PdService.class), pdConnection, Activity.BIND_AUTO_CREATE);
+		activity.bindService( new Intent( activity, PdService.class ), pdConnection, Activity.BIND_AUTO_CREATE );
 	}
 	
 	private PdService pdService = null;
@@ -91,15 +91,18 @@ public class PdConnector {
 	private void initPd() {
 		Resources res = activity.getResources();
 		File patchFile = null;
+		
 		try {
+			
 			PdBase.setReceiver(receiver);
 			PdBase.subscribe("android");
-			InputStream in = res.openRawResource(R.raw.smalletst);
-			patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
-			PdBase.openPatch(patchFile);
+		//	InputStream in = res.openRawResource(R.raw.smalletst);
+		//	patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
+		//	PdBase.openPatch( patchFile );
 			startAudio();
-		} catch (IOException e) {
-			activity.finish();
+			
+//		} catch (IOException e) {
+//			activity.finish();
 		} finally {
 			if (patchFile != null) patchFile.delete();
 		}
@@ -132,6 +135,53 @@ public class PdConnector {
 		}
 		
 		PdBase.sendFloat( str, fl );
+	}
+	
+	/**
+	 * Dummy method, just for testing if it's possible to add instrumnets after startAudio()
+	 */
+	public void addSynth() {
+		
+		Resources res = activity.getResources();
+		File patchFile = null;
+		
+		try {
+			
+			PdBase.setReceiver(receiver);
+			PdBase.subscribe("android");
+			InputStream in = res.openRawResource(R.raw.smalletst);
+			patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
+			PdBase.openPatch( patchFile );
+			
+		} catch (IOException e) {
+			//activity.finish();
+		} finally {
+			if (patchFile != null) patchFile.delete();
+		}
+	}
+	
+	/**
+	 * Dummy method, just for testing if it's possible to add instrumnets after startAudio()
+	 */
+	public void addDrum() {
+		
+
+		Resources res = activity.getResources();
+		File patchFile = null;
+		
+		try {
+			
+			PdBase.setReceiver(receiver);
+			PdBase.subscribe("android");
+			InputStream in = res.openRawResource(R.raw.smalletst2);
+			patchFile = IoUtils.extractResource(in, "smalletst2.pd", activity.getCacheDir());
+			PdBase.openPatch( patchFile );
+			
+		} catch (IOException e) {
+			//activity.finish();
+		} finally {
+			if (patchFile != null) patchFile.delete();
+		}
 	}
 }
 

@@ -42,6 +42,16 @@ public class BeatrActivity extends Activity {
 		setContentView( mixerController.getViews().get( InstrumentMixerController.INSTRUMENT_MIXER_VIEW ).getViews().get( InstrumentMixerView.START_VIEW ) );
 	}
 	
+	public static void addDrum() {
+		
+		conn.addDrum();
+	}
+	
+	public static void addSynth() {
+		
+		conn.addSynth();
+	}
+	
 	@Override
 	protected void onDestroy() {
 		
