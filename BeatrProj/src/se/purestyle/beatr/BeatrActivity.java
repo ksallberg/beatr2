@@ -1,6 +1,7 @@
 package se.purestyle.beatr;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
+import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.FemaleNames;
 import se.purestyle.beatr.view.InstrumentMixerView;
@@ -23,6 +24,9 @@ public class BeatrActivity extends Activity {
 		
 		//Remove the standard top bar stating the application name, I use a logo instead
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
+		
+		//Before starting the pd connection
+		FileModifier.openFile( this, getApplicationContext() );
 		
 		conn = new PdConnector( getApplicationContext(), this );
 		
