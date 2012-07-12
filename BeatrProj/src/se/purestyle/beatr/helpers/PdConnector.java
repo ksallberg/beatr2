@@ -1,4 +1,4 @@
-package se.purestyle.beatr.puredataconnections;
+package se.purestyle.beatr.helpers;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package se.purestyle.beatr.controller.instrumentmixer;
 
+import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.instrumentmixer.MasterVolumeModel;
-import se.purestyle.beatr.puredataconnections.PdConnector;
 import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
 
 import android.view.MotionEvent;

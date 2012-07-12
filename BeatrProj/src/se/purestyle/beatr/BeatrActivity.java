@@ -1,12 +1,11 @@
 package se.purestyle.beatr;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
+import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.FemaleNames;
-import se.purestyle.beatr.puredataconnections.PdConnector;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 
 public class BeatrActivity extends Activity {
@@ -27,8 +26,6 @@ public class BeatrActivity extends Activity {
 		
 		conn = new PdConnector( getApplicationContext(), this );
 		
-//		PureDataProxy.createInstance( getApplicationContext(), this );
-		
 		//Give ResourceManager a context
 		ResourceManager.setContext( getApplicationContext() );
 		
@@ -36,8 +33,6 @@ public class BeatrActivity extends Activity {
 		
 		mixerController = new InstrumentMixerController();
 		mixerController.setup();
-		
-		Log.i( "BeatrActivity", "onCreate!" );
 		
 		setContentView( mixerController.getViews().get( InstrumentMixerController.INSTRUMENT_MIXER_VIEW ).getViews().get( InstrumentMixerView.START_VIEW ) );
 	}
@@ -58,6 +53,5 @@ public class BeatrActivity extends Activity {
 		super.onDestroy();
 		
 		conn.cleanup();
-//		PureDataProxy.getInstance().destroy();
 	};
 }
