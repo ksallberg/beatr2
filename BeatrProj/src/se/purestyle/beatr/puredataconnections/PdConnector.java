@@ -151,7 +151,12 @@ public class PdConnector {
 			PdBase.subscribe("android");
 			InputStream in = res.openRawResource(R.raw.smalletst);
 			patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
+			
+			patchFile.setWritable( true );
+			
 			PdBase.openPatch( patchFile );
+			
+			PdBase.sendMessage( "$4", "$4=apa", new Object[]{} );
 			
 		} catch (IOException e) {
 			//activity.finish();
