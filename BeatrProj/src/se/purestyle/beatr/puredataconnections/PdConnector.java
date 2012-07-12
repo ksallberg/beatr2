@@ -156,8 +156,6 @@ public class PdConnector {
 			
 			PdBase.openPatch( patchFile );
 			
-			PdBase.sendMessage( "$4", "$4=apa", new Object[]{} );
-			
 		} catch (IOException e) {
 			//activity.finish();
 		} finally {
