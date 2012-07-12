@@ -89,7 +89,7 @@ public class PdConnector {
 	};
 	
 	private void initPd() {
-		Resources res = activity.getResources();
+
 		File patchFile = null;
 		
 		try {
