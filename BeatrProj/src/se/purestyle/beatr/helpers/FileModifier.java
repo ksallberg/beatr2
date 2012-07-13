@@ -5,12 +5,11 @@ import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,9 +19,24 @@ public class FileModifier {
 	
 	private static Activity _activity;
 	private static Context _context;
+	private static int _counter = 0; //This serves as a counter to be able to have unique temp file names and not overwrite stuff
 	
-	public static void openFile( Activity activity, Context context ) {
-		
+	/**
+	 * The purpose of this class is to create new .pd files in the temp memory, where they 
+	 * have unique variable names. So several instruments will be able to use the same .pd file 
+	 * from the assets folder, and then have their own tags for the settings 
+	 * 
+	 * It takes the activity and context, needed for getting the file
+	 * It also takes a map from String -> String, where the first String is the word in the file to replace
+	 * (and replaces it with the second file)
+	 * 
+	 * Then returns the file in which the required variables were changed.
+	 * 
+	 * @param activity
+	 * @param context
+	 * @return File that has been modified
+	 */
+	public static File createIndividualizedFile( Activity activity, Context context, Map<String, String> replacementMap, String fileName ) {
 		
 		_activity = activity;
 		_context = context;
@@ -30,49 +44,55 @@ public class FileModifier {
 		InputStream in = null;
 		BufferedReader reader = null;
 		
+		//Try to create an inputstream so we can read from the original .pd file
 		try {
 			
-			in = _activity.getAssets().open( "pdfiles/smalletst.pd" );
+			in = _activity.getAssets().open( fileName ); //"pdfiles/smalletst.pd"
 			reader = new BufferedReader( new InputStreamReader( in ) );
 			
-		} catch (IOException e) {
+		} catch ( IOException e ) {
 			
 			e.printStackTrace();
 		}
 		
+		//Then, create the temp version of the file
 		File outputDir = _context.getCacheDir(); // context being the Activity pointer
 		File outputFile = null;
 		
 		try {
 			
-			outputFile = File.createTempFile( "temppdfile", "temppd", outputDir );
-			outputFile.setWritable(true);
-			outputFile.setReadable(true);
+			outputFile = File.createTempFile( "temppdfile" + _counter, "pd", outputDir );
+			outputFile.setWritable( true );
+			outputFile.setReadable( true );
 			
-		} catch (IOException e1) {
+			_counter ++; //Increment counter for the next file/run
+			
+		} catch ( IOException e1 ) {
 			
 			e1.printStackTrace();
 		}
 		
+		//Read every line 
 		try {
 			
 			String line = reader.readLine();
-			
-			FileOutputStream fOut = new FileOutputStream( outputFile );
-			
 			BufferedWriter buffWriter = new BufferedWriter( new FileWriter( outputFile ) );
 			
 			while( line != null ) {
 				
-				buffWriter.write( line ); //Write the line and then make room for a new line
-				buffWriter.newLine();
+				//Replace all variables
+				for( String key : replacementMap.keySet() ) {
+					
+					line = line.replaceAll( key, replacementMap.get( key ) );
+				}
 				
-				Log.i("FileModifier: readLine", "line: " + line );
+				buffWriter.write( line ); //Write the line with possibly modified variables
+				buffWriter.newLine(); //and then make room for a new line
 				
 				line = reader.readLine();
 			}
 			
-			fOut.close();
+			buffWriter.close();
 			
 		} catch( EOFException e ) {
 			
@@ -83,40 +103,30 @@ public class FileModifier {
 			ioE.printStackTrace();
 		}
 		
-		Log.i( "FileModifier", "Now the file should be populated." );
+//		testOpenAgain( outputFile );
 		
-		Log.i("OKOKOKOK", "utrymme: " + outputFile.getTotalSpace() );
-		
-		
-		Log.i( "SOMEHITNG COOL", "" + outputFile.length() );
-		testOpenAgain( outputFile );
+		return outputFile;
 	}
 	
+	/**
+	 * Test / debug method to read all the lines in a file
+	 * 
+	 * @param file
+	 */
+	@SuppressWarnings("unused") //It's still good to keep this for future debug testing
 	private static void testOpenAgain( File file ) {
-		
-		Log.i( "FileMod, testOpenAgain", "0" );
 		
 		try {
 			
-			Log.i( "FileMod, testOpenAgain", "1" );
-			
 			BufferedReader reader = new BufferedReader( new InputStreamReader( new FileInputStream( file ) ) );
-			
-			Log.i( "FileMod, testOpenAgain", "2" );
 			
 			String line = reader.readLine();
 			
-//			Log.i( "humpalimpa", reader.readLine() );
-			
-			Log.i( "FileMod, testOpenAgain", "3" );
-			
 			while( line != null ) {
 				
-				Log.i( "FileMod, testOpenAgain", "4" );
-				
-				Log.i("FileModifier: readLineFROM-CACHE-FILE", "CACHE-line: " + line );
-				
 				line = reader.readLine();
+				
+				Log.i( "FileModifier", "line: " + line );
 			}
 			
 		} catch( EOFException e ) {
@@ -127,7 +137,5 @@ public class FileModifier {
 			
 			ioE.printStackTrace();
 		}
-		
-		Log.i( "FileMod, testOpenAgain", "5" );
 	}
 }

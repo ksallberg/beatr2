@@ -1,5 +1,8 @@
 package se.purestyle.beatr;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import se.purestyle.beatr.controller.InstrumentMixerController;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
@@ -25,8 +28,11 @@ public class BeatrActivity extends Activity {
 		//Remove the standard top bar stating the application name, I use a logo instead
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
+		Map<String, String> replacementMap = new HashMap<String, String>();
+		replacementMap.put( "right", "heheheh" );
+		
 		//Before starting the pd connection
-		FileModifier.openFile( this, getApplicationContext() );
+		FileModifier.createIndividualizedFile( this, getApplicationContext(), replacementMap, "pdfiles/smalletst.pd" );
 		
 		conn = new PdConnector( getApplicationContext(), this );
 		
