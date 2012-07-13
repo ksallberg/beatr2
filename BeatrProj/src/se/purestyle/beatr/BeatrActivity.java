@@ -1,5 +1,6 @@
 package se.purestyle.beatr;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +33,8 @@ public class BeatrActivity extends Activity {
 		replacementMap.put( "right", "heheheh" );
 		
 		//Before starting the pd connection
-		FileModifier.createIndividualizedFile( this, getApplicationContext(), replacementMap, "pdfiles/smalletst.pd" );
+		File file = FileModifier.createIndividualizedFile( this, getApplicationContext(), replacementMap, "pdfiles/smalletst.pd" );
+		FileModifier.testOpenAgain( file );
 		
 		conn = new PdConnector( getApplicationContext(), this );
 		

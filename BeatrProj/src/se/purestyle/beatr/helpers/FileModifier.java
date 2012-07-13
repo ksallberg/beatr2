@@ -113,8 +113,7 @@ public class FileModifier {
 	 * 
 	 * @param file
 	 */
-	@SuppressWarnings("unused") //It's still good to keep this for future debug testing
-	private static void testOpenAgain( File file ) {
+	public static void testOpenAgain( File file ) {
 		
 		try {
 			
