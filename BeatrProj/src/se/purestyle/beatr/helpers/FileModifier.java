@@ -125,7 +125,7 @@ public class FileModifier {
 	 * 
 	 * @param file
 	 */
-	public static void testOpenAgain( File file ) {
+	public static void traceFile( File file ) {
 		
 		try {
 			

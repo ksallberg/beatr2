@@ -27,6 +27,8 @@ public class SynthEditorModel extends AbstractModel {
 		
 		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/smalletst.pd" );
 		
+		FileModifier.traceFile( newSynthFile );
+		
 		//Tell the pure data environmen to add a new synth
 		PdConnector.addPatch( newSynthFile );
 	}

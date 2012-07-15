@@ -169,7 +169,7 @@ public class InstrumentMixerController extends AbstractController {
 			
 			//Pass the name to the model of the InstrumentController
 			( (InstrumentModel) 
-					( ( InstrumentController ) event.getSource() ).getModels().get(InstrumentController.MODEL ) 
+					( ( InstrumentController ) event.getSource() ).getModels().get(InstrumentController.MODEL )
 			).setPdInternalName( newInstrumentName );
 			
 			//Setup the new controller
