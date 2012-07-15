@@ -1,6 +1,10 @@
-#N canvas 576 284 450 300 10;
+#N canvas 471 214 450 300 10;
 #X obj 130 181 dac~;
 #X obj 130 97 osc~ 400;
 #X obj 130 26 r osccontroller;
-#X connect 1 0 0 0;
+#X obj 198 97 r masterVol;
+#X obj 177 143 *~ 1;
+#X connect 1 0 4 0;
 #X connect 2 0 1 0;
+#X connect 3 0 4 1;
+#X connect 4 0 0 0;

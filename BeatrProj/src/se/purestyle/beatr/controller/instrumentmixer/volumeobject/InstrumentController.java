@@ -1,6 +1,7 @@
 package se.purestyle.beatr.controller.instrumentmixer.volumeobject;
 
 import se.purestyle.beatr.ResourceManager;
+import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 import android.util.Log;
@@ -66,6 +67,8 @@ public class InstrumentController extends AbstractController {
 				
 				return false;
 			}
+			
+			PdConnector.sendToPd( model.getPdInternalName() + "osccontroller", model.getPercentage() * 300 );
 			
 			v.postInvalidate();
 			
