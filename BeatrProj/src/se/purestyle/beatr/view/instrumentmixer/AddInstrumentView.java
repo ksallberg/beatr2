@@ -48,6 +48,15 @@ public class AddInstrumentView extends LinearLayout implements IOverlay {
 		drumButton.setLayoutParams( params );
 		addView( drumButton );
 		
+		Button bassButton = new Button( context );
+		bassButton.setTypeface( LHLine1Sans );
+		bassButton.setTextColor( Color.parseColor("#F6FF00") );
+		bassButton.setBackgroundResource( R.drawable.addinstrumentbutton );
+		bassButton.setText( "add bass" );
+		bassButton.setTag( InstrumentMixerView.BASS_BUTTON );
+		bassButton.setLayoutParams( params );
+		addView( bassButton );
+		
 		View v = new View( context );
 		v.setLayoutParams( new LayoutParams( 0, 49 ) );
 		addView( v );

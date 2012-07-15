@@ -8,6 +8,7 @@ public class InstrumentModel extends AbstractModel {
 	
 	public static final String SYNTH					= "synth";
 	public static final String DRUM						= "drum";
+	public static final String BASS						= "bass";
 	
 	private float 	maximumX = 190; //maximumX, used to return the 
 	private float 	drawToX = 190;

@@ -19,6 +19,7 @@ public class InstrumentMixerView extends AbstractView {
 	
 	public static final String	SYNTH_BUTTON			= "synthButton";
 	public static final String	DRUM_BUTTON				= "drumButton";
+	public static final String	BASS_BUTTON				= "bassButton";
 	
 	public static final int 	FOOTER_VIEW_HEIGHT		= 60;
 	public static final int		INSTRUMENT_VIEW_HEIGHT	= 64;
@@ -38,6 +39,7 @@ public class InstrumentMixerView extends AbstractView {
 		views.put( SYNTH_BUTTON,  			startView.findViewWithTag( SYNTH_BUTTON ) );
 		views.put( DRUM_BUTTON,  			startView.findViewWithTag( DRUM_BUTTON ) );
 		views.put( MASTER_VOLUME_VIEW,		startView.findViewWithTag( MASTER_VOLUME_VIEW ) );
+		views.put( BASS_BUTTON, 			startView.findViewWithTag( BASS_BUTTON ) );
 	}
 	
 	@Override

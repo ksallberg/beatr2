@@ -9,24 +9,23 @@ import se.purestyle.beatr.helpers.PdConnector;
 
 import com.purestyle.amvc.model.AbstractModel;
 
-public class SynthEditorModel extends AbstractModel {
+public class BassEditorModel extends AbstractModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
-	private float oscController = 400.0f;
-	private String oscControllerName;
+	private float oscController = 200.0f;
 	
 	private final String pdInternalInstrumentName;
 	
-	public SynthEditorModel( String pdInternalInstrumentName ) {
+	public BassEditorModel( String pdInternalInstrumentName ) {
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
 		
 		//Prepare a new .pd file that has variable names unique to this model
 		Map<String, String> replacementMap = new HashMap<String, String>();
-		replacementMap.put( "osccontroller", pdInternalInstrumentName + "osccontroller" );
+		replacementMap.put( "osccontroller", pdInternalInstrumentName + "osccontroller-right" );
 		replacementMap.put( "vol", pdInternalInstrumentName + "vol" );
 		
-		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/smalletst.pd" );
+		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/smallright.pd" );
 		
 		FileModifier.traceFile( newSynthFile );
 		
@@ -45,8 +44,6 @@ public class SynthEditorModel extends AbstractModel {
 		oscController = wantedPitch;
 		
 		//Tell pd to change this individual instruments osxController value
-		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName, oscController );
+		PdConnector.sendToPd( pdInternalInstrumentName + "osccontroller-right", oscController );
 	}
-	
-//	public String getInternalInstrumentName() { return pdInternalInstrumentName; }
 }

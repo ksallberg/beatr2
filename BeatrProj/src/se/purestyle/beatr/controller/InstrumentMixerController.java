@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.purestyle.beatr.controller.editors.BassEditorController;
 import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
@@ -65,7 +66,7 @@ public class InstrumentMixerController extends AbstractController {
 		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( prevPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.SYNTH_BUTTON ).setOnClickListener( addSynthButton );
-		insMixView.getViews().get( InstrumentMixerView.DRUM_BUTTON ).setOnClickListener( addDrumButton );
+		insMixView.getViews().get( InstrumentMixerView.BASS_BUTTON ).setOnClickListener( addBassButton );
 		
 		//Set instrumentHolderView's model to instrumentholderView from InstrumentHolderController
 		
@@ -105,13 +106,13 @@ public class InstrumentMixerController extends AbstractController {
 		}
 	};
 	
-	OnClickListener addDrumButton = new OnClickListener() {
+	OnClickListener addBassButton = new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
 			
 			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).hide();
-			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument( InstrumentModel.DRUM );
+			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument( InstrumentModel.BASS );
 		}
 	};
 	
@@ -158,9 +159,10 @@ public class InstrumentMixerController extends AbstractController {
 				instrumentEditorController = new SynthEditorController( newInstrumentName );
 			
 			//If a drum was added
-			} else if( modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+			} else if( modelRef.getInstrumentType().equals( InstrumentModel.BASS ) ) {
 				
-				newInstrumentName = InstrumentTracker.getNextSynthName();
+				newInstrumentName = InstrumentTracker.getNextBassName();
+				instrumentEditorController = new BassEditorController( newInstrumentName );
 			
 			} else {
 				

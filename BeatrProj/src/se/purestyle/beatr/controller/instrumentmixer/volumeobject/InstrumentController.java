@@ -68,9 +68,8 @@ public class InstrumentController extends AbstractController {
 				return false;
 			}
 			
-			Log.i("InstrumentController", model.getPdInternalName() + "osccontroller" );
-			
-			PdConnector.sendToPd( model.getPdInternalName() + "osccontroller", model.getPercentage() * 300 );
+			//Set the local volume
+			PdConnector.sendToPd( model.getPdInternalName() + "vol", model.getPercentage() );
 			
 			v.postInvalidate();
 			
