@@ -2,14 +2,14 @@ package se.purestyle.beatr.helpers;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+//import java.io.InputStream;
 import java.util.Arrays;
 
 import org.puredata.android.service.PdPreferences;
 import org.puredata.android.service.PdService;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
-import org.puredata.core.utils.IoUtils;
+//import org.puredata.core.utils.IoUtils;
 
 import se.purestyle.beatr.BeatrActivity;
 import se.purestyle.beatr.R;
@@ -19,8 +19,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.res.Resources;
+//import android.content.res.Resources;
 import android.os.IBinder;
+import android.util.Log;
 
 public class PdConnector {
 
@@ -139,7 +140,8 @@ public class PdConnector {
 	
 	/**
 	 * Dummy method, just for testing if it's possible to add instrumnets after startAudio()
-	 */
+	 
+	
 	public void addSynth() {
 		
 		Resources res = activity.getResources();
@@ -162,10 +164,11 @@ public class PdConnector {
 			if (patchFile != null) patchFile.delete();
 		}
 	}
+	*/
 	
 	/**
 	 * Dummy method, just for testing if it's possible to add instrumnets after startAudio()
-	 */
+	
 	public void addDrum() {
 		
 
@@ -184,6 +187,32 @@ public class PdConnector {
 			//activity.finish();
 		} finally {
 			if (patchFile != null) patchFile.delete();
+		}
+	}
+	
+	 */
+	
+	public static void addPatch( File patchFile ) {
+		
+		if( !initialized ) {
+			
+			throw new RuntimeException( "Cannot run this method, the class is not initialized." );
+		}
+		
+		try {
+			
+			PdBase.openPatch( patchFile );
+		
+		} catch( IOException e ) {
+			
+			Log.e( "PdConnector: ERROR: ", e.toString() );
+		
+		} finally {
+			
+			if( patchFile != null ) {
+				
+				patchFile.delete();
+			}
 		}
 	}
 }

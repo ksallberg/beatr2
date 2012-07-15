@@ -36,6 +36,6 @@ public class InstrumentHolderController extends AbstractController {
 		
 		model.storeInstrument( newInstrument );
 		
-		observers.firePropertyChange( new PropertyChangeEvent( this, NEW_INSTRUMENT_ADDED, null, newInstrument.getView() ) );
+		observers.firePropertyChange( new PropertyChangeEvent( newInstrument, NEW_INSTRUMENT_ADDED, null, newInstrument.getView() ) );
 	}
 }

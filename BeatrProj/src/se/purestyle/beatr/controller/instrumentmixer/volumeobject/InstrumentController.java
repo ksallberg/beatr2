@@ -13,6 +13,7 @@ import com.purestyle.amvc.controller.AbstractController;
 
 public class InstrumentController extends AbstractController {
 
+	public static final String MODEL					= "model";
 	public static final String VOLUME_DRAGGER_MODEL		= "volumeDraggerModel";
 	
 	private InstrumentView view;
@@ -31,6 +32,7 @@ public class InstrumentController extends AbstractController {
 		//Create and add model
 		model = new InstrumentModel();
 		model.setInstrumentType( instrumentType );
+		addModel( MODEL, model );
 		
 		//Create view (android View not IView)
 		view = new InstrumentView( ResourceManager.getContext() );

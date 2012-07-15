@@ -1,9 +1,14 @@
 package se.purestyle.beatr.controller;
 
 import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
+import java.util.List;
 
+import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
+import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
+import se.purestyle.beatr.helpers.InstrumentTracker;
 import se.purestyle.beatr.model.InstrumentMixerModel;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
@@ -12,6 +17,7 @@ import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
 import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -24,10 +30,16 @@ public class InstrumentMixerController extends AbstractController {
 	public static final String INSTRUMENT_HOLDER_CONTROLLER 	= "instrumentHolderController";
 	public static final String MASTER_VOLUME_CONTROLLER			= "masterVolumeController";
 	
-	private InstrumentMixerView insMixView;
+	public static final String NEW_INSTRUMENT_ADDED				= "newInstrumentAdded"; //This also exists in InstrumentHolderController, 
+																						//but I want it here as well to make this class more independent
+	
+	private InstrumentMixerView 		insMixView;
+	private List<AbstractController>	instrumentEditors;
 	
 	@Override
 	public void setup() {
+		
+		instrumentEditors = new ArrayList<AbstractController>();
 		
 		//Create and add view object for this MVC triple (InstrumentMixer)
 		insMixView = new InstrumentMixerView();
@@ -113,15 +125,58 @@ public class InstrumentMixerController extends AbstractController {
 		}
 	};
 	
-	//PropertyListeners
+	/**
+	 * event.getNewValue() is an InstrumentView
+	 * 
+	 * event.getSource() is the callee, an InstrumentController
+	 */
 	@Override
 	public void propertyChange( PropertyChangeEvent event ) {
 		
 		if( event.getPropertyName().equals( InstrumentHolderController.NEW_INSTRUMENT_ADDED ) ) {
 			
+			//Create the mixer/volume part 
 			InstrumentHolderView holder = ( InstrumentHolderView ) getViews().get( INSTRUMENT_MIXER_VIEW ).getViews().get( InstrumentMixerView.INSTRUMENT_HOLDER_VIEW );
 			
 			holder.addInstrumentView( (InstrumentView) event.getNewValue() );
+			
+			//Get a unique instrument name, so that it can be stored in the pd system
+			String newInstrumentName = null;
+			
+			//InstrumentController
+			AbstractController instrumentEditorController = null;
+			
+			//Create the editor/instrument part
+			//If a synth was added
+			InstrumentModel modelRef = (InstrumentModel) ( ( InstrumentController ) event.getSource() ).getModels().get( InstrumentController.MODEL );
+			
+			Log.i( "InstrumentMixerController: instrumenttype:", modelRef.getInstrumentType() );
+			
+			if( modelRef.getInstrumentType().equals( InstrumentModel.SYNTH ) ) {
+				
+				newInstrumentName = InstrumentTracker.getNextSynthName();
+				instrumentEditorController = new SynthEditorController( newInstrumentName );
+			
+			//If a drum was added
+			} else if( modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+				
+				newInstrumentName = InstrumentTracker.getNextSynthName();
+			
+			} else {
+				
+				Log.e( "InstrumentMixerController", "Error: No instrument matching!" );
+			}
+			
+			//Pass the name to the model of the InstrumentController
+			( (InstrumentModel) 
+					( ( InstrumentController ) event.getSource() ).getModels().get(InstrumentController.MODEL ) 
+			).setPdInternalName( newInstrumentName );
+			
+			//Setup the new controller
+			instrumentEditorController.setup();
+			
+			//Add this editor to the list of all editors
+			instrumentEditors.add( instrumentEditorController );
 		}
 	}
 }

@@ -1,6 +1,6 @@
 #N canvas 576 284 450 300 10;
 #X obj 130 181 dac~;
 #X obj 130 97 osc~ 400;
-#X obj 130 26 r right;
+#X obj 130 26 r osccontroller;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;

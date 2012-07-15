@@ -16,6 +16,8 @@ public abstract class AbstractController implements IController {
 	protected Map<String,IController> subcontrollers 	= new HashMap<String,IController>();
 	protected PropertyChangeSupport observers 			= new PropertyChangeSupport(this);
 	
+	public static final String MODEL = "model";
+	
 	@Override
 	public Map<String, IView> getViews() {
 

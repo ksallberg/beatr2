@@ -21,6 +21,16 @@ public class FileModifier {
 	private static Context _context;
 	private static int _counter = 0; //This serves as a counter to be able to have unique temp file names and not overwrite stuff
 	
+	private static boolean initialized = false;
+	
+	public static void init( Activity activity, Context context ) {
+		
+		_activity = activity;
+		_context = context;
+		
+		initialized = true; //It's now OK to call methods of this class
+	}
+	
 	/**
 	 * The purpose of this class is to create new .pd files in the temp memory, where they 
 	 * have unique variable names. So several instruments will be able to use the same .pd file 
@@ -36,10 +46,12 @@ public class FileModifier {
 	 * @param context
 	 * @return File that has been modified
 	 */
-	public static File createIndividualizedFile( Activity activity, Context context, Map<String, String> replacementMap, String fileName ) {
+	public static File createIndividualizedFile( Map<String, String> replacementMap, String fileName ) {
 		
-		_activity = activity;
-		_context = context;
+		if( !initialized ) {
+			
+			throw new RuntimeException( "FileModifier not yet initialized!" );
+		}
 		
 		InputStream in = null;
 		BufferedReader reader = null;

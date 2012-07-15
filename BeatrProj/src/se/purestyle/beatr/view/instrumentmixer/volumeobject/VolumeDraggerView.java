@@ -90,7 +90,7 @@ public class VolumeDraggerView extends AbstractVolumeView implements IModelUser 
 		
 		for( int i = 0; i < 4; i ++ ) {
 			
-			can.drawText( mod.getInstrumentType() + ": " + mod.getName(), 10, 39, textPaint );
+			can.drawText( mod.getInstrumentType() + ": " + mod.getVisibleName(), 10, 39, textPaint );
 		}
 	}
 }
