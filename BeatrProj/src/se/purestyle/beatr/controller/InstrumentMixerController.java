@@ -4,7 +4,10 @@ import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.puredata.core.PdBase;
+
 import se.purestyle.beatr.controller.editors.BassEditorController;
+import se.purestyle.beatr.controller.editors.DrumEditorController;
 import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
@@ -67,6 +70,7 @@ public class InstrumentMixerController extends AbstractController {
 		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.SYNTH_BUTTON ).setOnClickListener( addSynthButton );
 		insMixView.getViews().get( InstrumentMixerView.BASS_BUTTON ).setOnClickListener( addBassButton );
+		insMixView.getViews().get( InstrumentMixerView.DRUM_BUTTON ).setOnClickListener( addDrumButton );
 		
 		//Set instrumentHolderView's model to instrumentholderView from InstrumentHolderController
 		
@@ -126,11 +130,21 @@ public class InstrumentMixerController extends AbstractController {
 		}
 	};
 	
+	OnClickListener addDrumButton = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).hide();
+			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument( InstrumentModel.DRUM );
+		}
+	};
 	/**
 	 * event.getNewValue() is an InstrumentView
 	 * 
 	 * event.getSource() is the callee, an InstrumentController
 	 */
+	//TODO: Behöver nåt snyggare creation pattern
 	@Override
 	public void propertyChange( PropertyChangeEvent event ) {
 		
@@ -164,10 +178,18 @@ public class InstrumentMixerController extends AbstractController {
 				newInstrumentName = InstrumentTracker.getNextBassName();
 				instrumentEditorController = new BassEditorController( newInstrumentName );
 			
+			} else if( modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+				
+				newInstrumentName = InstrumentTracker.getNextDrumName();
+				instrumentEditorController = new DrumEditorController( newInstrumentName );
+				
 			} else {
+				
 				
 				Log.e( "InstrumentMixerController", "Error: No instrument matching!" );
 			}
+			
+			PdBase.sendPitchBend( 3, 6);
 			
 			//Pass the name to the model of the InstrumentController
 			( (InstrumentModel) 

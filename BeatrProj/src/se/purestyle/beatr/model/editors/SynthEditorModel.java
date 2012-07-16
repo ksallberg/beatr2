@@ -26,7 +26,7 @@ public class SynthEditorModel extends AbstractModel {
 		replacementMap.put( "osccontroller", pdInternalInstrumentName + "osccontroller" );
 		replacementMap.put( "vol", pdInternalInstrumentName + "vol" );
 		
-		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/smalletst.pd" );
+		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/threecosdynamic.pd" );
 		
 		FileModifier.traceFile( newSynthFile );
 		
