@@ -1,15 +1,20 @@
 package se.purestyle.beatr;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import se.purestyle.beatr.controller.InstrumentMixerController;
+import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.FemaleNames;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
-public class BeatrActivity extends Activity {
+public class BeatrActivity extends Activity implements PropertyChangeListener {
 	
 	//Main controller
 	private InstrumentMixerController mixerController;
@@ -37,6 +42,7 @@ public class BeatrActivity extends Activity {
 		
 		mixerController = new InstrumentMixerController();
 		mixerController.setup();
+		mixerController.addListener( this );
 		
 		setContentView( mixerController.getViews().get( InstrumentMixerController.INSTRUMENT_MIXER_VIEW ).getViews().get( InstrumentMixerView.START_VIEW ) );
 	}
@@ -47,5 +53,15 @@ public class BeatrActivity extends Activity {
 		super.onDestroy();
 		
 		conn.cleanup();
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		
+		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {
+			
+			
+			Log.i( "BeatrActivity", "" + event.getNewValue() );
+		}
 	}
 }

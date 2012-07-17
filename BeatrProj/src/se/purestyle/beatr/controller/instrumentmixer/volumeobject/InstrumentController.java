@@ -1,5 +1,8 @@
 package se.purestyle.beatr.controller.instrumentmixer.volumeobject;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 import se.purestyle.beatr.ResourceManager;
 import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
@@ -17,9 +20,12 @@ public class InstrumentController extends AbstractController {
 	public static final String MODEL					= "model";
 	public static final String VOLUME_DRAGGER_MODEL		= "volumeDraggerModel";
 	
+	public static final String EDIT_EVENT				= "editEvent";
+	
 	private InstrumentView view;
 	private InstrumentModel model;
-	
+
+	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
 	private String instrumentType;
 	
 	public InstrumentController( String instrumentType ) {
@@ -77,12 +83,17 @@ public class InstrumentController extends AbstractController {
 		}
 	};
 	
+	public void addEditEventListener( PropertyChangeListener listener ) {
+		
+		eventFirer.addPropertyChangeListener( listener );
+	}
+	
 	OnClickListener editHandler = new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
-			
-			Log.i( "InstrumentController", "Edit!" );
+
+			eventFirer.firePropertyChange( EDIT_EVENT, null, instrumentType );
 		}
 	};
 	

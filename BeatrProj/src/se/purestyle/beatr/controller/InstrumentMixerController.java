@@ -1,6 +1,8 @@
 package se.purestyle.beatr.controller;
 
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class InstrumentMixerController extends AbstractController {
 	
 	private InstrumentMixerView 		insMixView;
 	private List<AbstractController>	instrumentEditors;
+	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
 	
 	@Override
 	public void setup() {
@@ -56,6 +59,7 @@ public class InstrumentMixerController extends AbstractController {
 		//Create and add subcontroller for the part of this app that actually holds the instruments to mix
 		InstrumentHolderController holderSub = new InstrumentHolderController();
 		holderSub.setup();
+		holderSub.addListener( this );
 		addSubcontroller( INSTRUMENT_HOLDER_CONTROLLER, holderSub );
 		holderSub.addObserver( this );
 		
@@ -139,6 +143,12 @@ public class InstrumentMixerController extends AbstractController {
 			( ( InstrumentHolderController ) getSubcontollers().get( INSTRUMENT_HOLDER_CONTROLLER ) ).addNewInstrument( InstrumentModel.DRUM );
 		}
 	};
+	
+	public void addListener( PropertyChangeListener listener ) {
+		
+		eventFirer.addPropertyChangeListener( listener );
+	}
+	
 	/**
 	 * event.getNewValue() is an InstrumentView
 	 * 
@@ -185,7 +195,6 @@ public class InstrumentMixerController extends AbstractController {
 				
 			} else {
 				
-				
 				Log.e( "InstrumentMixerController", "Error: No instrument matching!" );
 			}
 			
@@ -201,6 +210,13 @@ public class InstrumentMixerController extends AbstractController {
 			
 			//Add this editor to the list of all editors
 			instrumentEditors.add( instrumentEditorController );
+		
+		}
+		
+		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {
+			
+			//Bubble
+			eventFirer.firePropertyChange( InstrumentController.EDIT_EVENT, null, event.getNewValue() );
 		}
 	}
 }

@@ -73,8 +73,11 @@ public class SliderTwoDirectionsView extends View {
 		
 		mousePos = newPos;
 		
+		float xPcent = ( mousePos.x - circleSize - leftMargin ) / ( getWidth() - leftMargin * 2 - circleSize * 2 );
+		float yPcent = ( mousePos.y - circleSize - topMargin ) / ( getHeight() - topMargin * 2 - circleSize * 2 );
+		
 		//Tell the world this property has changed
-		PointF newPercentages = new PointF( (mousePos.x - circleSize / 2) / getWidth(), mousePos.y - topMargin / getHeight() );
+		PointF newPercentages = new PointF( xPcent, yPcent );
 		propertyChangeSupport.fireIndexedPropertyChange( NEW_PERCENTAGES, 0, null, newPercentages );
 	}
 	
