@@ -19,6 +19,9 @@ public class SliderTwoDirectionsController extends AbstractController {
 	
 	public static final String MAIN_VIEW = "mainView";
 	
+	public static final String EVENT_UP 			= "eventUp";
+	public static final String EVENT_DOWN 			= "eventDown";
+	
 	private SliderTwoDirectionsView view;
 	private SliderTwoDirectionsModel model;
 	
@@ -48,8 +51,6 @@ public class SliderTwoDirectionsController extends AbstractController {
 		return view;
 	}
 	
-	public 
-	
 	OnTouchListener touchListener = new OnTouchListener() {
 		
 		@Override
@@ -59,8 +60,14 @@ public class SliderTwoDirectionsController extends AbstractController {
 			
 			view.invalidate();
 			
-			if ( event.getAction() == MotionEvent.ACTION_UP ) {
+			if( event.getAction() == MotionEvent.ACTION_DOWN ) {
 				
+				observers.firePropertyChange( EVENT_DOWN, 1, null );
+			}
+			
+			if( event.getAction() == MotionEvent.ACTION_UP ) {
+				
+				observers.firePropertyChange( EVENT_UP, 1, null );
 				return false;
 			}
 			
@@ -75,6 +82,8 @@ public class SliderTwoDirectionsController extends AbstractController {
 			
 			model.setXPercentage( ( ( PointF )event.getNewValue() ).x );
 			model.setYPercentage( ( ( PointF )event.getNewValue() ).y );
+			
+			observers.firePropertyChange( event );
 		}
 	}
 }

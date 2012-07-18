@@ -9,6 +9,9 @@ import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.helpers.InstrumentTracker;
 import se.purestyle.beatr.model.InstrumentMixerModel;
+import se.purestyle.beatr.model.editors.BassEditorModel;
+import se.purestyle.beatr.model.editors.DrumEditorModel;
+import se.purestyle.beatr.model.editors.SynthEditorModel;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.AddInstrumentView;
@@ -21,6 +24,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.purestyle.amvc.controller.AbstractController;
+import com.purestyle.amvc.model.AbstractModel;
 
 public class InstrumentMixerController extends AbstractController {
 
@@ -156,24 +160,29 @@ public class InstrumentMixerController extends AbstractController {
 			holder.addInstrumentView( (InstrumentView) event.getNewValue() );
 			
 			//Get a unique instrument name, so that it can be stored in the pd system
-			String newInstrumentName = null;
+			String newInstrumentName = null; //Will be set according to the type of instrument it is
 			
-			//Create the editor/instrument part
-			//If a synth was added
+			//Get a ref to the volumecontroller, to be able to tell it the name of what it's going to be modifying
 			InstrumentModel modelRef = (InstrumentModel) ( ( InstrumentController ) event.getSource() ).getModels().get( InstrumentController.MODEL );
+			
+			//Create a new editorModel, the one that's gonna start the sound and then modify and store settings about it
+			AbstractModel editorModel = null; //Will be set according to the type of instrument it is
 			
 			if( modelRef.getInstrumentType().equals( InstrumentModel.SYNTH ) ) {
 				
-				newInstrumentName = InstrumentTracker.getNextSynthName();
+				newInstrumentName 	= InstrumentTracker.getNextSynthName();
+				editorModel 		= new SynthEditorModel( newInstrumentName );
 			
 			//If a drum was added
 			} else if( modelRef.getInstrumentType().equals( InstrumentModel.BASS ) ) {
 				
-				newInstrumentName = InstrumentTracker.getNextBassName();
+				newInstrumentName 	= InstrumentTracker.getNextBassName();
+				editorModel 		= new BassEditorModel( newInstrumentName );
 				
 			} else if( modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
 				
-				newInstrumentName = InstrumentTracker.getNextDrumName();
+				newInstrumentName 	= InstrumentTracker.getNextDrumName();
+				editorModel 		= new DrumEditorModel( newInstrumentName );
 				
 			} else {
 				
@@ -184,7 +193,9 @@ public class InstrumentMixerController extends AbstractController {
 			modelRef.setPdInternalName( newInstrumentName );
 			
 			//Register the model to InstrumentTracker so it's reachable in other activities
-			InstrumentTracker.registerModel( newInstrumentName, modelRef );
+			// (the modelRef is only for controlling volume and does not need to be included to InstrumenTracker)
+			//Instrument tracker is only used for storing stuff outside of the BeatrActivity
+			InstrumentTracker.registerModel( newInstrumentName, editorModel );
 		}
 		
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {

@@ -13,7 +13,12 @@ public class SynthEditorModel extends AbstractModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
 	private float oscController = 400.0f;
-	private String oscControllerName;
+	private String oscControllerName = "osccontroller";
+	
+	private float vibController = 870.0f;
+	private String vibControllerName = "vibcontroller";
+	
+	private int onoff = 0;
 	
 	private final String pdInternalInstrumentName;
 	
@@ -23,15 +28,20 @@ public class SynthEditorModel extends AbstractModel {
 		
 		//Prepare a new .pd file that has variable names unique to this model
 		Map<String, String> replacementMap = new HashMap<String, String>();
-		replacementMap.put( "osccontroller", pdInternalInstrumentName + "osccontroller" );
+		replacementMap.put( oscControllerName, pdInternalInstrumentName + oscControllerName );
+		replacementMap.put( "phascontroller", pdInternalInstrumentName + "phascontroller" );
 		replacementMap.put( "vol", pdInternalInstrumentName + "vol" );
+		replacementMap.put( "onoff", pdInternalInstrumentName + "onoff" );
+		replacementMap.put( vibControllerName, pdInternalInstrumentName + vibControllerName );
 		
-		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/threecosdynamic.pd" );
+		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/synth.pd" );
 		
 		FileModifier.traceFile( newSynthFile );
 		
 		//Tell the pure data environmen to add a new synth
 		PdConnector.addPatch( newSynthFile );
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + "onoff", 0 ); //Turn the instrument off first thing that happens
 	}
 	
 	public float getOscController() {
@@ -45,8 +55,31 @@ public class SynthEditorModel extends AbstractModel {
 		oscController = wantedPitch;
 		
 		//Tell pd to change this individual instruments osxController value
-		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName, oscController );
+		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "left", oscController );
+		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) ); //(float) (oscController + (vibController / 870))
 	}
 	
-//	public String getInternalInstrumentName() { return pdInternalInstrumentName; }
+	public float getVibController() {
+		
+		return vibController;
+	}
+	
+	public void setVibController( float wantedPitch ) {
+		
+		vibController = wantedPitch;
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + vibControllerName, vibController );
+	}
+	
+	public void setOnoff( int onoff ) {
+		
+		this.onoff = onoff;
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + "onoff", onoff );
+	}
+	
+	public int getOnoff() {
+		
+		return onoff;
+	}
 }

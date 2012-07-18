@@ -49,6 +49,11 @@ public class InstrumentTracker {
 		editorModels.put( key, value );
 	}
 	
+	public static AbstractModel getModel( String key ) {
+		
+		return editorModels.get( key );
+	}
+	
 	public static AbstractModel unregisterModel( String key ) {
 		
 		return editorModels.remove( key );

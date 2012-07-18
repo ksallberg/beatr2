@@ -1,7 +1,5 @@
 package se.purestyle.beatr.controller.editors;
 
-import se.purestyle.beatr.model.editors.DrumEditorModel;
-
 import com.purestyle.amvc.controller.AbstractController;
 
 public class DrumEditorController extends AbstractController {
@@ -16,9 +14,7 @@ public class DrumEditorController extends AbstractController {
 	@Override
 	public void setup() {
 		
-		//Create the model and add it
-		DrumEditorModel model = new DrumEditorModel( pdInternalInstrumentName );
-		addModel( MODEL, model );
+		
 	}
 
 	@Override

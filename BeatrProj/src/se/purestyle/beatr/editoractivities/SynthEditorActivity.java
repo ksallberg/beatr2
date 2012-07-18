@@ -8,6 +8,7 @@ import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Window;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,15 +18,17 @@ public class SynthEditorActivity extends Activity {
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		
+		//Super to whatever the android framework does in activity
 		super.onCreate( savedInstanceState );
+		
+		//Remove the standard top bar stating the application name, I use a logo instead
+		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
 		LinearLayout holder = new LinearLayout( getApplicationContext() );
 		holder.setOrientation( LinearLayout.VERTICAL );
 		
 		LinearLayout insideHolder = new LinearLayout( getApplicationContext() );
-		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 225 ) );
-		
-		insideHolder.setBackgroundColor( Color.BLUE );
+		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 275 ) );
 		
 		TextView txt = new TextView( getApplicationContext() );
 		txt.setTextColor( Color.WHITE );
@@ -33,11 +36,9 @@ public class SynthEditorActivity extends Activity {
 		
 		holder.addView( insideHolder );
 		
-		//The view I'm working on
-		SliderTwoDirectionsController controller = new SliderTwoDirectionsController( getApplicationContext() );
-		controller.setup();
 		
-		insideHolder.addView( controller.getView() );
+		
+		
 		holder.addView( txt );
 		
 		setContentView( holder );
@@ -45,7 +46,9 @@ public class SynthEditorActivity extends Activity {
 		//Get the name of this instrument
 		Bundle extras = getIntent().getExtras();
 		
-		AbstractController instrumentEditorController = new SynthEditorController( extras.getString( "INSTRUMENT_NAME" ) );
+		SynthEditorController instrumentEditorController = new SynthEditorController( getApplicationContext(), extras.getString( "INSTRUMENT_NAME" ) );
 		instrumentEditorController.setup();
+		
+		insideHolder.addView( instrumentEditorController.getSliderView() );
 	}
 }

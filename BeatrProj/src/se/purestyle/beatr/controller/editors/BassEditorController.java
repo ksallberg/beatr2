@@ -1,9 +1,17 @@
 package se.purestyle.beatr.controller.editors;
 
-import se.purestyle.beatr.model.editors.BassEditorModel;
-
 import com.purestyle.amvc.controller.AbstractController;
 
+/**
+ * The corresponding models to this controller are actually not created here, 
+ * because this is a shortlived controller that will spawn and be removed when
+ * the user is in the controller mode.
+ * 
+ * Instead the corresponding model is created in the InstrumentMixerController
+ * 
+ * @author kristian
+ *
+ */
 public class BassEditorController extends AbstractController {
 	
 	private String pdInternalInstrumentName; //Keep it here just to be able to pass it to the model
@@ -16,9 +24,7 @@ public class BassEditorController extends AbstractController {
 	@Override
 	public void setup() {
 		
-		//Create the model and add it
-		BassEditorModel model = new BassEditorModel( pdInternalInstrumentName );
-		addModel( MODEL, model );
+
 	}
 
 	@Override
