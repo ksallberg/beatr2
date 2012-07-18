@@ -6,9 +6,11 @@ import se.purestyle.beatr.controller.editors.BassEditorController;
 import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class BassEditorActivity extends Activity {
 	
@@ -18,11 +20,17 @@ public class BassEditorActivity extends Activity {
 		super.onCreate( savedInstanceState );
 		
 		LinearLayout holder = new LinearLayout( getApplicationContext() );
+		holder.setOrientation( LinearLayout.VERTICAL );
 		
 		LinearLayout insideHolder = new LinearLayout( getApplicationContext() );
-		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 300 ) );
+		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 200 ) );
+		
+		TextView txt = new TextView( getApplicationContext() );
+		txt.setTextColor( Color.WHITE );
+		txt.setText( "Bass editor" );
 		
 		holder.addView( insideHolder );
+		holder.addView( txt );
 		
 		//The view I'm working on
 		SliderTwoDirectionsController controller = new SliderTwoDirectionsController( getApplicationContext() );

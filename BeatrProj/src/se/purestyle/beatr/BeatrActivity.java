@@ -5,6 +5,8 @@ import java.beans.PropertyChangeListener;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
+import se.purestyle.beatr.editoractivities.BassEditorActivity;
+import se.purestyle.beatr.editoractivities.DrumEditorActivity;
 import se.purestyle.beatr.editoractivities.SynthEditorActivity;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
@@ -75,9 +77,11 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 				
 			} else if( pair.first.equals( InstrumentModel.DRUM ) ) {
 				
+				intent = new Intent( this, DrumEditorActivity.class );
 				
 			} else if( pair.first.equals( InstrumentModel.BASS ) ) {
 				
+				intent = new Intent( this, BassEditorActivity.class );
 				
 			} else {
 				

@@ -6,9 +6,11 @@ import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class SynthEditorActivity extends Activity {
 	
@@ -18,9 +20,16 @@ public class SynthEditorActivity extends Activity {
 		super.onCreate( savedInstanceState );
 		
 		LinearLayout holder = new LinearLayout( getApplicationContext() );
+		holder.setOrientation( LinearLayout.VERTICAL );
 		
 		LinearLayout insideHolder = new LinearLayout( getApplicationContext() );
-		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 300 ) );
+		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 225 ) );
+		
+		insideHolder.setBackgroundColor( Color.BLUE );
+		
+		TextView txt = new TextView( getApplicationContext() );
+		txt.setTextColor( Color.WHITE );
+		txt.setText( "Synth editor " );
 		
 		holder.addView( insideHolder );
 		
@@ -29,6 +38,7 @@ public class SynthEditorActivity extends Activity {
 		controller.setup();
 		
 		insideHolder.addView( controller.getView() );
+		holder.addView( txt );
 		
 		setContentView( holder );
 		

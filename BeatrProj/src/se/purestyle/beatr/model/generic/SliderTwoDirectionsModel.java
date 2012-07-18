@@ -1,7 +1,5 @@
 package se.purestyle.beatr.model.generic;
 
-import android.util.Log;
-
 import com.purestyle.amvc.model.AbstractModel;
 
 /**
@@ -18,8 +16,6 @@ public class SliderTwoDirectionsModel extends AbstractModel {
 	public void setXPercentage( float xPercentage ) {
 		
 		this.xPercentage = xPercentage;
-		
-		Log.i( "SliderTwoModel, xPercentage: ", "" + xPercentage );
 	}
 	
 	public float getXPercentage() {
@@ -30,8 +26,6 @@ public class SliderTwoDirectionsModel extends AbstractModel {
 	public void setYPercentage( float yPercentage ) {
 		
 		this.yPercentage = yPercentage;
-		
-		Log.i( "SliderTwoModel, yPercentage: ", "" + yPercentage );
 	}
 	
 	public float getYPercentage() {
