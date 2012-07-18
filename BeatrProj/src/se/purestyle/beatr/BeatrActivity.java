@@ -5,13 +5,17 @@ import java.beans.PropertyChangeListener;
 
 import se.purestyle.beatr.controller.InstrumentMixerController;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
+import se.purestyle.beatr.editoractivities.SynthEditorActivity;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.helpers.ResourceManager;
 import se.purestyle.beatr.model.FemaleNames;
+import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.Pair;
 import android.view.Window;
 
 public class BeatrActivity extends Activity implements PropertyChangeListener {
@@ -56,12 +60,33 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent event) {
+	public void propertyChange( PropertyChangeEvent event ) {
 		
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {
 			
+			Intent intent = null;
 			
-			Log.i( "BeatrActivity", "" + event.getNewValue() );
+			@SuppressWarnings("unchecked")
+			Pair<String, String> pair = ( Pair<String, String> ) event.getNewValue();
+			
+			if( pair.first.equals( InstrumentModel.SYNTH ) ) {
+				
+				intent = new Intent( this, SynthEditorActivity.class );
+				
+			} else if( pair.first.equals( InstrumentModel.DRUM ) ) {
+				
+				
+			} else if( pair.first.equals( InstrumentModel.BASS ) ) {
+				
+				
+			} else {
+				
+				throw new RuntimeException( "" );
+			}
+			
+			intent.putExtra( "INSTRUMENT_NAME", pair.second );
+			
+			startActivity( intent );
 		}
 	}
 }

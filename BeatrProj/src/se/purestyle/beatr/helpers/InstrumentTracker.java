@@ -1,7 +1,14 @@
 package se.purestyle.beatr.helpers;
 
-public class InstrumentTracker {
+import java.util.HashMap;
+import java.util.Map;
 
+import com.purestyle.amvc.model.AbstractModel;
+
+public class InstrumentTracker {
+	
+	private static Map<String, AbstractModel> editorModels = new HashMap<String, AbstractModel>();
+	
 	//Normal synth
 	private static volatile int SYNTH_COUNTER = 0; //This is supposed to be reachable from all synth models, to give unique names to all separate .pd files
 	private static final String SYNTH_BASE_NAME = "synth-";
@@ -35,5 +42,15 @@ public class InstrumentTracker {
 	public static synchronized String getNextBassName() {
 		
 		return BASS_BASE_NAME + (BASS_COUNTER ++) + "-";
+	}
+	
+	public static void registerModel( String key, AbstractModel value ) {
+		
+		editorModels.put( key, value );
+	}
+	
+	public static AbstractModel unregisterModel( String key ) {
+		
+		return editorModels.remove( key );
 	}
 }

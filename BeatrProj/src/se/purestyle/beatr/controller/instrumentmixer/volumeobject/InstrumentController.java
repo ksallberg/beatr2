@@ -3,11 +3,12 @@ package se.purestyle.beatr.controller.instrumentmixer.volumeobject;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-import se.purestyle.beatr.ResourceManager;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.helpers.ResourceManager;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -92,8 +93,10 @@ public class InstrumentController extends AbstractController {
 		
 		@Override
 		public void onClick(View v) {
-
-			eventFirer.firePropertyChange( EDIT_EVENT, null, instrumentType );
+			
+			Pair<String, String> infoStorer = new Pair<String, String>( instrumentType, model.getPdInternalName() ); //Where first = instrumentType, second = instrumentName
+			
+			eventFirer.firePropertyChange( EDIT_EVENT, null, infoStorer );
 		}
 	};
 	

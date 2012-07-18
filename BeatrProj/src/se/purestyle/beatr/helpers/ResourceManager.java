@@ -1,4 +1,4 @@
-package se.purestyle.beatr;
+package se.purestyle.beatr.helpers;
 
 import android.content.Context;
 

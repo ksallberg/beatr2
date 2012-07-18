@@ -2,7 +2,7 @@ package se.purestyle.beatr.view;
 
 import java.beans.PropertyChangeEvent;
 
-import se.purestyle.beatr.ResourceManager;
+import se.purestyle.beatr.helpers.ResourceManager;
 import se.purestyle.beatr.view.instrumentmixer.StartView;
 
 import com.purestyle.amvc.view.AbstractView;

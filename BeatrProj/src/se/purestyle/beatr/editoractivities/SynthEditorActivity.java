@@ -1,12 +1,16 @@
-package se.purestyle.beatr;
+package se.purestyle.beatr.editoractivities;
 
+import com.purestyle.amvc.controller.AbstractController;
+
+import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
-public class TestActivity extends Activity {
+public class SynthEditorActivity extends Activity {
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -26,6 +30,12 @@ public class TestActivity extends Activity {
 		
 		insideHolder.addView( controller.getView() );
 		
-		setContentView( holder );		
+		setContentView( holder );
+		
+		//Get the name of this instrument
+		Bundle extras = getIntent().getExtras();
+		
+		AbstractController instrumentEditorController = new SynthEditorController( extras.getString( "INSTRUMENT_NAME" ) );
+		instrumentEditorController.setup();
 	}
 }

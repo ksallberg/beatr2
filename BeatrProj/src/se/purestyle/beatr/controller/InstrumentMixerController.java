@@ -3,14 +3,7 @@ package se.purestyle.beatr.controller;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.puredata.core.PdBase;
-
-import se.purestyle.beatr.controller.editors.BassEditorController;
-import se.purestyle.beatr.controller.editors.DrumEditorController;
-import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
@@ -40,13 +33,10 @@ public class InstrumentMixerController extends AbstractController {
 																						//but I want it here as well to make this class more independent
 	
 	private InstrumentMixerView 		insMixView;
-	private List<AbstractController>	instrumentEditors;
 	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
 	
 	@Override
 	public void setup() {
-		
-		instrumentEditors = new ArrayList<AbstractController>();
 		
 		//Create and add view object for this MVC triple (InstrumentMixer)
 		insMixView = new InstrumentMixerView();
@@ -168,49 +158,33 @@ public class InstrumentMixerController extends AbstractController {
 			//Get a unique instrument name, so that it can be stored in the pd system
 			String newInstrumentName = null;
 			
-			//InstrumentController
-			AbstractController instrumentEditorController = null;
-			
 			//Create the editor/instrument part
 			//If a synth was added
 			InstrumentModel modelRef = (InstrumentModel) ( ( InstrumentController ) event.getSource() ).getModels().get( InstrumentController.MODEL );
 			
-			Log.i( "InstrumentMixerController: instrumenttype:", modelRef.getInstrumentType() );
-			
 			if( modelRef.getInstrumentType().equals( InstrumentModel.SYNTH ) ) {
 				
 				newInstrumentName = InstrumentTracker.getNextSynthName();
-				instrumentEditorController = new SynthEditorController( newInstrumentName );
 			
 			//If a drum was added
 			} else if( modelRef.getInstrumentType().equals( InstrumentModel.BASS ) ) {
 				
 				newInstrumentName = InstrumentTracker.getNextBassName();
-				instrumentEditorController = new BassEditorController( newInstrumentName );
-			
+				
 			} else if( modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
 				
 				newInstrumentName = InstrumentTracker.getNextDrumName();
-				instrumentEditorController = new DrumEditorController( newInstrumentName );
 				
 			} else {
 				
 				Log.e( "InstrumentMixerController", "Error: No instrument matching!" );
 			}
 			
-			PdBase.sendPitchBend( 3, 6);
-			
 			//Pass the name to the model of the InstrumentController
-			( (InstrumentModel) 
-					( ( InstrumentController ) event.getSource() ).getModels().get(InstrumentController.MODEL )
-			).setPdInternalName( newInstrumentName );
+			modelRef.setPdInternalName( newInstrumentName );
 			
-			//Setup the new controller
-			instrumentEditorController.setup();
-			
-			//Add this editor to the list of all editors
-			instrumentEditors.add( instrumentEditorController );
-		
+			//Register the model to InstrumentTracker so it's reachable in other activities
+			InstrumentTracker.registerModel( newInstrumentName, modelRef );
 		}
 		
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {

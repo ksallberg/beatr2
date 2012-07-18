@@ -1,6 +1,6 @@
 package se.purestyle.beatr.controller.editors;
 
-import se.purestyle.beatr.model.editors.SynthEditorModel;
+import android.util.Log;
 
 import com.purestyle.amvc.controller.AbstractController;
 
@@ -16,9 +16,7 @@ public class SynthEditorController extends AbstractController {
 	@Override
 	public void setup() {
 		
-		//Create the model and add it
-		SynthEditorModel model = new SynthEditorModel( pdInternalInstrumentName );
-		addModel( MODEL, model );
+		Log.i( "SynthEditorController", "setup~~~~" + pdInternalInstrumentName );
 	}
 
 	@Override
