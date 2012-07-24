@@ -1,11 +1,15 @@
 package se.purestyle.beatr.model.editors;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.helpers.beatplayer.Recorder;
+
+import android.util.Pair;
 
 import com.purestyle.amvc.model.AbstractModel;
 
@@ -21,6 +25,8 @@ public class SynthEditorModel extends AbstractModel {
 	private int onoff = 0;
 	
 	private final String pdInternalInstrumentName;
+	
+	private Recorder recorder;
 	
 	public SynthEditorModel( String pdInternalInstrumentName ) {
 		
@@ -76,10 +82,24 @@ public class SynthEditorModel extends AbstractModel {
 		this.onoff = onoff;
 		
 		PdConnector.sendToPd( pdInternalInstrumentName + "onoff", onoff );
+		
+		if( recorder.isRecording() ) {
+			
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + "onoff", (float) onoff );
+			
+			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
+			
+			recorder.recordList( ls );
+		}
 	}
 	
 	public int getOnoff() {
 		
 		return onoff;
+	}
+	
+	public void registerRecorder( Recorder recorder ) {
+		
+		this.recorder = recorder;
 	}
 }
