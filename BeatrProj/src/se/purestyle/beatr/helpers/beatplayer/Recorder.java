@@ -12,7 +12,7 @@ public class Recorder implements Runnable {
 	private PropertyChangeSupport eventFirer;
 	
 	private long startedAt = 0;
-	private boolean running = true;
+	private boolean _running = false;
 	
 	private Beat beat;
 	
@@ -30,11 +30,11 @@ public class Recorder implements Runnable {
 		
 		startRecording();
 		
-		while( running ) {
+		while( _running ) {
 			
 			try {
 				
-				eventFirer.firePropertyChange( TIME_UPDATED, null, System.currentTimeMillis() - startedAt );
+				eventFirer.firePropertyChange( TIME_UPDATED, null, getTimeNow() );
 				Thread.sleep( 1 );
 				
 			} catch( InterruptedException e ) {
@@ -44,14 +44,15 @@ public class Recorder implements Runnable {
 		}
 	}
 	
-	public void startRecording() {
+	private void startRecording() {
 		
+		_running = true;
 		startedAt = System.currentTimeMillis();
 	}
 	
 	public void stopRecording() {
 		
-		running = false;
+		_running = false;
 		beat.setLength( getTimeNow() );
 	}
 	
@@ -75,13 +76,13 @@ public class Recorder implements Runnable {
 		return beat;
 	}
 	
-	public long getTimeNow() {
+	private long getTimeNow() {
 		
 		return System.currentTimeMillis() - startedAt;
 	}
 	
 	public boolean isRecording() {
 		
-		return running;
+		return _running;
 	}
 }

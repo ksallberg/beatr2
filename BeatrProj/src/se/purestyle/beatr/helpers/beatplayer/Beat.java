@@ -1,7 +1,9 @@
 package se.purestyle.beatr.helpers.beatplayer;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import android.util.Pair;
 
@@ -38,5 +40,25 @@ public class Beat {
 	public Pair<String, Float>[] getCommand( long key ) {
 		
 		return record.get( key );
+	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuilder str = new StringBuilder();
+		
+		Iterator<Entry<Long, Pair<String, Float>[]>> it = record.entrySet().iterator();
+		
+		while( it.hasNext() ) {
+			
+			Map.Entry<Long, Pair<String,Float>[]> entrySet = it.next();
+			
+			str.append( "KEY: " + entrySet.getKey() );
+			str.append( "VAL: " + entrySet.getValue() );
+			
+			it.remove();
+		}
+		
+		return str.toString();
 	}
 }

@@ -1,7 +1,6 @@
 package se.purestyle.beatr.model.editors;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +8,7 @@ import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.helpers.beatplayer.Recorder;
 
+import android.util.Log;
 import android.util.Pair;
 
 import com.purestyle.amvc.model.AbstractModel;
@@ -63,6 +63,18 @@ public class SynthEditorModel extends AbstractModel {
 		//Tell pd to change this individual instruments osxController value
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "left", oscController );
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) ); //(float) (oscController + (vibController / 870))
+		
+		Log.i( "Is recoding?", "" + recorder.isRecording() );
+		
+		if( recorder.isRecording() ) {
+			
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "left", oscController );
+			Pair<String, Float> p2 = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
+			
+			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p, p2};
+			
+			recorder.recordList( ls );
+		}
 	}
 	
 	public float getVibController() {
@@ -75,6 +87,15 @@ public class SynthEditorModel extends AbstractModel {
 		vibController = wantedPitch;
 		
 		PdConnector.sendToPd( pdInternalInstrumentName + vibControllerName, vibController );
+		
+		if( recorder.isRecording() ) {
+			
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + vibControllerName, vibController );
+			
+			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
+			
+			recorder.recordList( ls );
+		}
 	}
 	
 	public void setOnoff( int onoff ) {

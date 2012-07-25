@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 
 import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
 import se.purestyle.beatr.helpers.InstrumentTracker;
+import se.purestyle.beatr.helpers.beatplayer.Beat;
 import se.purestyle.beatr.helpers.beatplayer.Recorder;
 import se.purestyle.beatr.model.editors.SynthEditorModel;
 import se.purestyle.beatr.view.editors.SynthEditorView;
@@ -41,17 +42,18 @@ public class SynthEditorController extends AbstractController {
 		this.context = context;
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
 		this.activity = activity;
-		
-		recorder = new Recorder();
 	}
 	
 	@Override
 	public void setup() {
 		
+		recorder = new Recorder();
+		
 		slider = new SliderTwoDirectionsController( context );
 		slider.setup();
 		
 		model = (SynthEditorModel) InstrumentTracker.getModel( pdInternalInstrumentName );
+		model.registerRecorder( recorder );
 		
 		view = new SynthEditorView( context, activity );
 		view.addTwoDimensionalSlider( slider.getView() );
@@ -81,6 +83,7 @@ public class SynthEditorController extends AbstractController {
 			
 			recorder = new Recorder();
 			recorder.addObserver( _this );
+			model.registerRecorder( recorder );
 			
 			recThread = new Thread( recorder );
 			recThread.start();
@@ -99,9 +102,14 @@ public class SynthEditorController extends AbstractController {
 			recorder.stopRecording();
 			recorder.removeObserver( _this );
 			
-			recThread = null;
-			
 			Log.i( "SynthEditorController", "Stop recording!" );
+			
+			Beat b = recorder.getBeat();
+			
+			Log.i( "SynthEditorController", "lenght: " + b.getLength() );
+			b.toString();
+					
+			recThread = null;
 		}
 	};
 	
