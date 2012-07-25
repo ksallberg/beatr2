@@ -1,6 +1,8 @@
 package se.purestyle.beatr.helpers.beatplayer;
 
 import android.util.Log;
+import android.util.Pair;
+import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
 
 /**
@@ -26,6 +28,8 @@ public class Player implements Runnable, IPlayer {
 	
 	private boolean paused = true;
 	
+	private long currentlyAt = 0;
+	
 	public Player( AbstractEditorModel model ) {
 		
 		this.model = model;
@@ -40,18 +44,39 @@ public class Player implements Runnable, IPlayer {
 				
 				try {
 					
+					currentlyAt = 0; //When this is paused, reset currentlyAt
 					Thread.sleep( 1 );
 					
 				} catch( InterruptedException e ) {
 					
 					e.printStackTrace();
 				}
-				
-//				Log.i( "Player.java", "Paused" );
 			}
 			
-			//Do something
-			Log.i( "Player.java", "Now I'm running" );
+			//This is what happens when the 
+			currentlyAt ++;
+			
+			//If there's a recorded beat
+			if( model.getBeat() != null ) {
+				
+				//If we have gone further back in the Beat than it is long, reset currentlyAt
+				if( currentlyAt > model.getBeat().getLength() ) {
+					
+					currentlyAt = 0;
+				}
+				
+				//If there's something to be played at this point in time
+				if( model.getBeat().getCommand( currentlyAt ) != null ) {
+					
+					Pair<String,Float>[] messages = model.getBeat().getCommand( currentlyAt );
+					
+					//Loop through all messages
+					for( Pair<String,Float> p : messages ) {
+						
+						PdConnector.sendToPd( p.first, p.second );
+					}
+				}
+			}
 			
 			try {
 				
