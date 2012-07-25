@@ -124,4 +124,10 @@ public class SynthEditorModel extends AbstractEditorModel {
 		
 		return recorder.getBeat();
 	}
+	
+	@Override
+	public String getInstrumentName() {
+		
+		return pdInternalInstrumentName;
+	}
 }

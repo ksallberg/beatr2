@@ -99,8 +99,11 @@ public class BeatPlayer {
 			while( it.hasNext() ) {
 				
 				Log.i( "BeatPlayer.java", "calling pause" );
+				Entry<String, Player> elem = it.next(); 
 				
-				it.next().getValue().pause();
+				elem.getValue().pause();
+				elem.getValue().setInstrumentOff(); //Just a quick fix to mute all instruments before 
+														//some instrument enters its editor mode
 			}
 		
 		//Turn a single instrument on

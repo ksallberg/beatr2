@@ -104,4 +104,10 @@ public class Player implements Runnable, IPlayer {
 		
 		paused = false;
 	}
+	
+	//TODO: Find a better way to mute all instruments
+	public void setInstrumentOff() {
+		
+		PdConnector.sendToPd( model.getInstrumentName() + "onoff", 0 );
+	}
 }
