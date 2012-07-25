@@ -9,12 +9,9 @@ import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.helpers.beatplayer.Beat;
 import se.purestyle.beatr.helpers.beatplayer.Recorder;
 
-import android.util.Log;
 import android.util.Pair;
 
-import com.purestyle.amvc.model.AbstractModel;
-
-public class SynthEditorModel extends AbstractModel {
+public class SynthEditorModel extends AbstractEditorModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
 	private float oscController = 400.0f;
@@ -123,5 +120,8 @@ public class SynthEditorModel extends AbstractModel {
 		this.recorder = recorder;
 	}
 	
-	//public void 
+	public Beat getBeat() {
+		
+		return recorder.getBeat();
+	}
 }
