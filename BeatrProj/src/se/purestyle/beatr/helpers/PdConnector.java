@@ -2,14 +2,12 @@ package se.purestyle.beatr.helpers;
 
 import java.io.File;
 import java.io.IOException;
-//import java.io.InputStream;
 import java.util.Arrays;
 
 import org.puredata.android.service.PdPreferences;
 import org.puredata.android.service.PdService;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
-//import org.puredata.core.utils.IoUtils;
 
 import se.purestyle.beatr.BeatrActivity;
 import se.purestyle.beatr.R;
@@ -19,7 +17,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-//import android.content.res.Resources;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -137,61 +134,7 @@ public class PdConnector {
 		
 		PdBase.sendFloat( str, fl );
 	}
-	
-	/**
-	 * Dummy method, just for testing if it's possible to add instrumnets after startAudio()
-	 
-	
-	public void addSynth() {
-		
-		Resources res = activity.getResources();
-		File patchFile = null;
-		
-		try {
-			
-			PdBase.setReceiver(receiver);
-			PdBase.subscribe("android");
-			InputStream in = res.openRawResource(R.raw.smalletst);
-			patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
-			
-			patchFile.setWritable( true );
-			
-			PdBase.openPatch( patchFile );
-			
-		} catch (IOException e) {
-			//activity.finish();
-		} finally {
-			if (patchFile != null) patchFile.delete();
-		}
-	}
-	*/
-	
-	/**
-	 * Dummy method, just for testing if it's possible to add instrumnets after startAudio()
-	
-	public void addDrum() {
-		
 
-		Resources res = activity.getResources();
-		File patchFile = null;
-		
-		try {
-			
-			PdBase.setReceiver(receiver);
-			PdBase.subscribe("android");
-			InputStream in = res.openRawResource(R.raw.smalletst2);
-			patchFile = IoUtils.extractResource(in, "smalletst2.pd", activity.getCacheDir());
-			PdBase.openPatch( patchFile );
-			
-		} catch (IOException e) {
-			//activity.finish();
-		} finally {
-			if (patchFile != null) patchFile.delete();
-		}
-	}
-	
-	 */
-	
 	public static void addPatch( File patchFile ) {
 		
 		if( !initialized ) {
