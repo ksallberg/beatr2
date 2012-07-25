@@ -10,6 +10,7 @@ import se.purestyle.beatr.editoractivities.DrumEditorActivity;
 import se.purestyle.beatr.editoractivities.SynthEditorActivity;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 import se.purestyle.beatr.model.FemaleNames;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
@@ -47,6 +48,14 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 		mixerController.addListener( this );
 		
 		setContentView( mixerController.getViews().get( InstrumentMixerController.INSTRUMENT_MIXER_VIEW ).getViews().get( InstrumentMixerView.START_VIEW ) );
+	}
+	
+	@Override
+	protected void onResume() {
+		
+		super.onResume();
+		
+		BeatPlayer.getInstance().setMode( BeatPlayer.ALL );
 	}
 	
 	@Override

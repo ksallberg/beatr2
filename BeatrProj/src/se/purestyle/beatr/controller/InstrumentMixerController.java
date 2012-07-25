@@ -8,7 +8,9 @@ import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.helpers.InstrumentTracker;
+import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 import se.purestyle.beatr.model.InstrumentMixerModel;
+import se.purestyle.beatr.model.editors.AbstractEditorModel;
 import se.purestyle.beatr.model.editors.BassEditorModel;
 import se.purestyle.beatr.model.editors.DrumEditorModel;
 import se.purestyle.beatr.model.editors.SynthEditorModel;
@@ -25,7 +27,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.purestyle.amvc.controller.AbstractController;
-import com.purestyle.amvc.model.AbstractModel;
 
 public class InstrumentMixerController extends AbstractController {
 
@@ -174,7 +175,7 @@ public class InstrumentMixerController extends AbstractController {
 			InstrumentModel modelRef = (InstrumentModel) ( ( InstrumentController ) event.getSource() ).getModels().get( InstrumentController.MODEL );
 			
 			//Create a new editorModel, the one that's gonna start the sound and then modify and store settings about it
-			AbstractModel editorModel = null; //Will be set according to the type of instrument it is
+			AbstractEditorModel editorModel = null; //Will be set according to the type of instrument it is
 			
 			if( modelRef.getInstrumentType().equals( InstrumentModel.SYNTH ) ) {
 				
@@ -204,6 +205,9 @@ public class InstrumentMixerController extends AbstractController {
 			// (the modelRef is only for controlling volume and does not need to be included to InstrumenTracker)
 			//Instrument tracker is only used for storing stuff outside of the BeatrActivity
 			InstrumentTracker.registerModel( newInstrumentName, editorModel );
+			
+			//Add the instrument to the BeatPlayer so the BeatPlayer can play recorded Beats
+			BeatPlayer.getInstance().addEditorModel( newInstrumentName, editorModel );
 		}
 		
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {

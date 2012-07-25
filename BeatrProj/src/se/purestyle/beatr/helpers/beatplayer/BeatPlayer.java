@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import android.util.Log;
+
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
 
 /**
@@ -39,13 +41,13 @@ public class BeatPlayer {
 	public static final String ALL = "all";
 	public static final String NONE = "none";
 	
-	private Map<String, Thread> threads; //The threads that are going to send messages to the synth in a parallel manner
+	private Map<String, Player> threads; //The threads that are going to send messages to the synth in a parallel manner
 	
 	//Private constructor, this is not possible to call from outside of this class
 	private BeatPlayer() {
 		
 		//Create the "thread pool"
-		threads = new HashMap<String, Thread>();
+		threads = new HashMap<String, Player>();
 	}
 	
 	/**
@@ -61,16 +63,9 @@ public class BeatPlayer {
 		th.start();
 		
 		//Tell the thread to wait
-		try {
-			
-			th.wait();
-			
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
+		player.pause();
 		
-		threads.put( instrumentName, th );
+		threads.put( instrumentName, player );
 	}
 	
 	/**
@@ -83,32 +78,29 @@ public class BeatPlayer {
 		//Turn all instruments on
 		if( message.equals( ALL ) ) {
 			
-			Iterator<Entry<String, Thread>> it = threads.entrySet().iterator();
+			Iterator<Entry<String, Player>> it = threads.entrySet().iterator();
+			
+			Log.i("BeatPlayer", "trying to play" + it.hasNext() );
 			
 			while( it.hasNext() ) {
 				
-				it.next().getValue().notify();
-				it.remove();
+				Log.i( "BeatPlayer.java", "call play" );
+				
+				it.next().getValue().play();
 			}
 			
 		//Turn all instruments off
 		} else if ( message.equals( NONE ) ) {
 			
-			Iterator<Entry<String, Thread>> it = threads.entrySet().iterator();
+			Iterator<Entry<String, Player>> it = threads.entrySet().iterator();
+			
+			Log.i("BeatPlayer", "trying to pause" + it.hasNext() );
 			
 			while( it.hasNext() ) {
 				
-				//Try to make it wait
-				try {
-					
-					it.next().getValue().wait();
-					
-				} catch (InterruptedException e) {
-					
-					e.printStackTrace();
-				}
+				Log.i( "BeatPlayer.java", "calling pause" );
 				
-				it.remove();
+				it.next().getValue().pause();
 			}
 		
 		//Turn a single instrument on
@@ -116,7 +108,7 @@ public class BeatPlayer {
 			
 			if( threads.get( message ) != null ) {
 				
-				threads.get( message ).notify();
+				threads.get( message ).play();
 			}
 		}
 	}

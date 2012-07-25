@@ -63,8 +63,6 @@ public class Beat {
 			
 			str.append( "KEY: " + entrySet.getKey() );
 			str.append( "VAL: " + entrySet.getValue() );
-			
-			it.remove();
 		}
 		
 		return str.toString();

@@ -1,6 +1,7 @@
 package se.purestyle.beatr.editoractivities;
 
 import se.purestyle.beatr.controller.editors.SynthEditorController;
+import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -28,5 +29,9 @@ public class SynthEditorActivity extends Activity {
 		instrumentEditorController.setup();
 		
 		holder.addView( instrumentEditorController.getView() );
+		
+		//Stop all players 
+		BeatPlayer.getInstance().setMode( BeatPlayer.NONE );
+		//BeatPlayer.getInstance().setMode( extras.getString( "INSTRUMENT_NAME" ) );
 	}
 }

@@ -7,9 +7,7 @@ import java.util.Map;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
 
-import com.purestyle.amvc.model.AbstractModel;
-
-public class BassEditorModel extends AbstractModel {
+public class BassEditorModel extends AbstractEditorModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
 	private float oscController = 200.0f;

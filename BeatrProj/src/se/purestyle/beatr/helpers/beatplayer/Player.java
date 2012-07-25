@@ -1,5 +1,6 @@
 package se.purestyle.beatr.helpers.beatplayer;
 
+import android.util.Log;
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
 
 /**
@@ -17,11 +18,13 @@ import se.purestyle.beatr.model.editors.AbstractEditorModel;
  * @author kristian
  *
  */
-public class Player implements Runnable {
+public class Player implements Runnable, IPlayer {
 
 	private AbstractEditorModel model;
 	
 	private boolean running = true;
+	
+	private boolean paused = true;
 	
 	public Player( AbstractEditorModel model ) {
 		
@@ -33,7 +36,47 @@ public class Player implements Runnable {
 		
 		while( running ) {
 			
+			while( paused ) {
+				
+				try {
+					
+					Thread.sleep( 1 );
+					
+				} catch( InterruptedException e ) {
+					
+					e.printStackTrace();
+				}
+				
+//				Log.i( "Player.java", "Paused" );
+			}
 			
+			//Do something
+			Log.i( "Player.java", "Now I'm running" );
+			
+			try {
+				
+				Thread.sleep( 1 );
+				
+			} catch( InterruptedException e ) {
+				
+				e.printStackTrace();
+			}
 		}
+	}
+
+	@Override
+	public void pause() {
+		
+		Log.i( "BeatPlayer.java", "pause" );
+		
+		paused = true;
+	}
+
+	@Override
+	public void play() {
+		
+		Log.i( "BeatPlayer.java", "play" );
+		
+		paused = false;
 	}
 }

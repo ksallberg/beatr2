@@ -7,9 +7,7 @@ import java.util.Map;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
 
-import com.purestyle.amvc.model.AbstractModel;
-
-public class DrumEditorModel extends AbstractModel {
+public class DrumEditorModel extends AbstractEditorModel {
 	
 	public DrumEditorModel( String pdInternalInstrumentName ) {
 		
