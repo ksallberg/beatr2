@@ -2,8 +2,9 @@ package se.purestyle.beatr.view;
 
 import java.beans.PropertyChangeEvent;
 
-import se.purestyle.beatr.helpers.ResourceManager;
 import se.purestyle.beatr.view.instrumentmixer.StartView;
+
+import android.content.Context;
 
 import com.purestyle.amvc.view.AbstractView;
 
@@ -26,9 +27,9 @@ public class InstrumentMixerView extends AbstractView {
 	
 	private StartView startView;
 	
-	public InstrumentMixerView() {
+	public InstrumentMixerView( Context context ) {
 		
-		startView = new StartView( ResourceManager.getContext() );
+		startView = new StartView( context );
 		
 		views.put( START_VIEW, 				startView );
 		views.put( ADD_INSTRUMENT_VIEW,  	startView.findViewWithTag( ADD_INSTRUMENT_VIEW ) );

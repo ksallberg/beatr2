@@ -19,6 +19,7 @@ import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
 import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,13 +38,20 @@ public class InstrumentMixerController extends AbstractController {
 																						//but I want it here as well to make this class more independent
 	
 	private InstrumentMixerView 		insMixView;
-	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
+	private PropertyChangeSupport 		eventFirer = new PropertyChangeSupport( this );
+	
+	private Context 					context;
+	
+	public InstrumentMixerController( Context context ) {
+		
+		this.context = context;
+	}
 	
 	@Override
 	public void setup() {
 		
 		//Create and add view object for this MVC triple (InstrumentMixer)
-		insMixView = new InstrumentMixerView();
+		insMixView = new InstrumentMixerView( context );
 		addView( INSTRUMENT_MIXER_VIEW, insMixView );
 		
 		//Create and add model object for this MVC triple
@@ -51,7 +59,7 @@ public class InstrumentMixerController extends AbstractController {
 		addModel( INSTRUMENT_MIXER_MODEL, insMixModel );
 		
 		//Create and add subcontroller for the part of this app that actually holds the instruments to mix
-		InstrumentHolderController holderSub = new InstrumentHolderController();
+		InstrumentHolderController holderSub = new InstrumentHolderController( context );
 		holderSub.setup();
 		holderSub.addListener( this );
 		addSubcontroller( INSTRUMENT_HOLDER_CONTROLLER, holderSub );

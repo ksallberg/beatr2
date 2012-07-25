@@ -4,9 +4,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import se.purestyle.beatr.helpers.PdConnector;
-import se.purestyle.beatr.helpers.ResourceManager;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
+import android.content.Context;
 import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
@@ -29,9 +29,12 @@ public class InstrumentController extends AbstractController {
 	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
 	private String instrumentType;
 	
-	public InstrumentController( String instrumentType ) {
+	private Context context;
+	
+	public InstrumentController( String instrumentType, Context context ) {
 		
 		this.instrumentType = instrumentType;
+		this.context = context;
 	}
 	
 	@Override
@@ -43,7 +46,7 @@ public class InstrumentController extends AbstractController {
 		addModel( MODEL, model );
 		
 		//Create view (android View not IView)
-		view = new InstrumentView( ResourceManager.getContext() );
+		view = new InstrumentView( context );
 		view.getVolumeDraggerView().setModel( model );
 		view.getVolumeDraggerView().init();
 		

@@ -8,8 +8,7 @@ import java.util.Map.Entry;
 import android.util.Pair;
 
 /**
- * The beat class is supposed to contain information about what settings an 
- * instrument has at what points in time and also how long the clip is 
+ * Data structure to keep what happens  
  * 
  * The point is to be able to store commands to the software synth and when they are supposed to be playing
  * 
@@ -37,11 +36,20 @@ public class Beat {
 		return length;
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param key
+	 * @return
+	 */
 	public Pair<String, Float>[] getCommand( long key ) {
 		
 		return record.get( key );
 	}
 	
+	/**
+	 * Iterate through the data structure and return a long string that states all keys and values
+	 */
 	@Override
 	public String toString() {
 		

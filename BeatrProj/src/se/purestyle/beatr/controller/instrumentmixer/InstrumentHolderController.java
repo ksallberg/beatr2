@@ -7,6 +7,8 @@ import java.beans.PropertyChangeSupport;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel;
 
+import android.content.Context;
+
 import com.purestyle.amvc.controller.AbstractController;
 
 public class InstrumentHolderController extends AbstractController {
@@ -17,6 +19,13 @@ public class InstrumentHolderController extends AbstractController {
 	private InstrumentHolderModel model;
 	
 	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
+	
+	private Context context;
+	
+	public InstrumentHolderController( Context context ) {
+		
+		this.context = context;
+	}
 	
 	@Override
 	public void setup() {
@@ -35,7 +44,7 @@ public class InstrumentHolderController extends AbstractController {
 	
 	public void addNewInstrument( String instrumentType ) {
 		
-		InstrumentController newInstrument = new InstrumentController( instrumentType );
+		InstrumentController newInstrument = new InstrumentController( instrumentType, context );
 		newInstrument.addEditEventListener( this );
 		newInstrument.setup();
 		

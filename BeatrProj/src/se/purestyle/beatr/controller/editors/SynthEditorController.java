@@ -13,7 +13,6 @@ import se.purestyle.beatr.view.generic.SliderTwoDirectionsView;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PointF;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -87,8 +86,6 @@ public class SynthEditorController extends AbstractController {
 			
 			recThread = new Thread( recorder );
 			recThread.start();
-			
-			Log.i( "SynthEditorController", "Start recording!" );
 		}
 	};
 	
@@ -102,11 +99,8 @@ public class SynthEditorController extends AbstractController {
 			recorder.stopRecording();
 			recorder.removeObserver( _this );
 			
-			Log.i( "SynthEditorController", "Stop recording!" );
-			
 			Beat b = recorder.getBeat();
 			
-			Log.i( "SynthEditorController", "lenght: " + b.getLength() );
 			b.toString();
 					
 			recThread = null;

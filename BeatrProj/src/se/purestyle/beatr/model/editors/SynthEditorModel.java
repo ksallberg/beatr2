@@ -6,6 +6,7 @@ import java.util.Map;
 
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.helpers.beatplayer.Beat;
 import se.purestyle.beatr.helpers.beatplayer.Recorder;
 
 import android.util.Log;
@@ -64,8 +65,6 @@ public class SynthEditorModel extends AbstractModel {
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "left", oscController );
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) ); //(float) (oscController + (vibController / 870))
 		
-		Log.i( "Is recoding?", "" + recorder.isRecording() );
-		
 		if( recorder.isRecording() ) {
 			
 			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "left", oscController );
@@ -123,4 +122,6 @@ public class SynthEditorModel extends AbstractModel {
 		
 		this.recorder = recorder;
 	}
+	
+	//public void 
 }

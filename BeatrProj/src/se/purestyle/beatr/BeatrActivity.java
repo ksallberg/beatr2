@@ -10,7 +10,6 @@ import se.purestyle.beatr.editoractivities.DrumEditorActivity;
 import se.purestyle.beatr.editoractivities.SynthEditorActivity;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
-import se.purestyle.beatr.helpers.ResourceManager;
 import se.purestyle.beatr.model.FemaleNames;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
@@ -41,12 +40,9 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 		//Initialize the FileModifier, just need to give it an activity and context to work within
 		FileModifier.init( this, getApplicationContext() );
 		
-		//Give ResourceManager a context
-		ResourceManager.setContext( getApplicationContext() );
-		
 		FemaleNames.populate();
 		
-		mixerController = new InstrumentMixerController();
+		mixerController = new InstrumentMixerController( getApplicationContext() );
 		mixerController.setup();
 		mixerController.addListener( this );
 		
