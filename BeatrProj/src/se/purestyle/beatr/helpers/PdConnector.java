@@ -266,24 +266,3 @@ private void evaluateMessage(String s) {
 		}
 	}
 }*/
-
-
-
-/*
-switch (v.getId()) {
-	case R.id.left_box:
-		PdBase.sendFloat( "phasleft",  (float) (left.isChecked() ? 100.5 : 0) );
-		break;
-	case R.id.right_box:
-		PdBase.sendFloat( "phasright", right.isChecked() ? 100 : 0 );
-		break;
-	case R.id.mic_box:
-		PdBase.sendFloat("mic", mic.isChecked() ? 1 : 0);
-		break;
-	case R.id.pref_button:
-		startActivity(new Intent(this, PdPreferences.class));
-		break;
-	default:
-		break;
-		
-		*/
