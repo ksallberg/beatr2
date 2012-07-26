@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 public class KnobView extends View {
 	
@@ -16,8 +15,6 @@ public class KnobView extends View {
 	public KnobView( Context context ) {
 		
 		super( context );
-		
-		setLayoutParams( new RelativeLayout.LayoutParams(100,100) );
 	}
 	
 	public void setModel( KnobModel model ) {
@@ -36,25 +33,20 @@ public class KnobView extends View {
 		
 		Paint linePaint = new Paint();
 		linePaint.setColor( Color.parseColor( "#00ffe4" ) );
-		linePaint.setAlpha( 200 );
+		//linePaint.setAlpha( 200 );
 		linePaint.setAntiAlias( true );
-		
-		//Draw a line from the center to where the mouse is
-//		canvas.drawLine( model.getPointOfCentre().x, model.getPointOfCentre().y, model.getXYCoords().x, model.getXYCoords().y, linePaint );
 		
 		canvas.save();
 		
+		int[] apa = new int[ 2 ];
+		getLocationOnScreen( apa );
+		
 		Matrix m = new Matrix();
-		m.reset();
-		m.preTranslate( getWidth() * 0.75f, getHeight() * 1.5f );
+		m.preTranslate( apa[0] * 1.5f + (getWidth() / 2) * 1.5f, apa[1] * 1.5f + (getHeight() / 2) * 1.5f );
 		m.preRotate( model.getCurrentAngle() + 45 );
 		
 		canvas.setMatrix( m );
-		
 		canvas.drawCircle( 0, getHeight() / 2, 10, linePaint );
-		
-		//TODO: Remove debuglines
-//		canvas.drawLine( 0, 0, 0, 100, linePaint );
 		
 		canvas.restore();
 	}

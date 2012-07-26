@@ -56,8 +56,8 @@ public class KnobController extends AbstractController {
 				return false;
 			}
 			
+			model.setPointOfCentre( new PointF( (view.getWidth() / 2), view.getHeight() / 2 ) );
 			model.setXYCoords( new PointF( event.getX(), event.getY() ) );
-			model.setPointOfCentre( new PointF( view.getWidth() / 2, view.getHeight() / 2 ) );
 			
 			//Redraw view
 			view.invalidate();

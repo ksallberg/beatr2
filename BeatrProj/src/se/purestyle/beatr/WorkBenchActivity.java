@@ -9,7 +9,9 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 public class WorkBenchActivity extends Activity implements PropertyChangeListener {
 
@@ -20,13 +22,25 @@ public class WorkBenchActivity extends Activity implements PropertyChangeListene
 		
 		super.onCreate( test );
 		
+		//Remove the standard top bar stating the application name, I use a logo instead
+		requestWindowFeature( Window.FEATURE_NO_TITLE );
+		
 		KnobController knobController = new KnobController( getApplicationContext() );
 		knobController.setup();
 		knobController.addObserver( this );
 		
 		holder = new LinearLayout( getApplicationContext() );
-		holder.addView( knobController.getView() );
+		
 		holder.setBackgroundColor( Color.WHITE );
+		
+		LinearLayout innerHolder = new LinearLayout( getApplicationContext() );
+		LayoutParams params = new LayoutParams( 100, 100 );
+		params.setMargins( 50, 50, 0, 0 );
+		innerHolder.setLayoutParams( params );
+		
+		innerHolder.addView( knobController.getView() );
+		
+		holder.addView(innerHolder);
 		
 		setContentView( holder );
 	}
