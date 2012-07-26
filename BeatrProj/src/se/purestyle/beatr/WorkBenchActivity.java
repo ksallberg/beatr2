@@ -29,6 +29,9 @@ public class WorkBenchActivity extends Activity implements PropertyChangeListene
 		knobController.setup();
 		knobController.addObserver( this );
 		
+		KnobController knobController2 = new KnobController( getApplicationContext() );
+		knobController2.setup();
+		
 		holder = new LinearLayout( getApplicationContext() );
 		
 		holder.setBackgroundColor( Color.WHITE );
@@ -38,9 +41,18 @@ public class WorkBenchActivity extends Activity implements PropertyChangeListene
 		params.setMargins( 50, 50, 0, 0 );
 		innerHolder.setLayoutParams( params );
 		
+		LinearLayout innerHolder2 = new LinearLayout( getApplicationContext() );
+		LayoutParams params2 = new LayoutParams( 100, 100 );
+		params2.setMargins( 124, 75, 0, 0 );
+		innerHolder2.setLayoutParams( params2 );
+		
 		innerHolder.addView( knobController.getView() );
+		innerHolder2.addView( knobController2.getView() );
+		
+		holder.setOrientation( LinearLayout.VERTICAL );
 		
 		holder.addView(innerHolder);
+		holder.addView(innerHolder2);
 		
 		setContentView( holder );
 	}
