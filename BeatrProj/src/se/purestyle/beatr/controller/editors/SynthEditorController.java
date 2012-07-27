@@ -2,6 +2,7 @@ package se.purestyle.beatr.controller.editors;
 
 import java.beans.PropertyChangeEvent;
 
+import se.purestyle.beatr.controller.generic.KnobController;
 import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
 import se.purestyle.beatr.helpers.InstrumentTracker;
 import se.purestyle.beatr.helpers.beatplayer.Beat;
@@ -15,6 +16,8 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 import com.purestyle.amvc.controller.AbstractController;
 
@@ -25,7 +28,10 @@ public class SynthEditorController extends AbstractController {
 	private SynthEditorModel model;
 	private SynthEditorView view;
 	
-	//The view I'm working on
+	//Subcontroller
+	private KnobController knobController;
+	private LinearLayout knobHolder;
+	
 	private SliderTwoDirectionsController slider;
 	
 	private Context context;
@@ -58,6 +64,15 @@ public class SynthEditorController extends AbstractController {
 		view.addTwoDimensionalSlider( slider.getView() );
 		view.getRecordButton().setOnClickListener( recordButtonPressed );
 		view.getStopRecordingButton().setOnClickListener( stopRecordingButtonPressed );
+		
+		knobController = new KnobController( context );
+		knobController.setup();
+		knobHolder = new LinearLayout( context );
+		knobHolder.setLayoutParams( new LayoutParams( 100, 100 ) );
+		knobHolder.addView( knobController.getView() );
+		knobHolder.setOrientation( LinearLayout.HORIZONTAL );
+		
+		view.addView( knobHolder );
 		
 		slider.addObserver( this );
 	}

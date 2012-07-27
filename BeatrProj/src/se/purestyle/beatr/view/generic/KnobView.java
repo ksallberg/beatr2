@@ -34,27 +34,20 @@ public class KnobView extends View {
 		Paint linePaint = new Paint();
 		linePaint.setColor( Color.parseColor( "#00ffe4" ) );
 		linePaint.setAntiAlias( true );
+		linePaint.setAlpha( 200 );
 		
-		Paint redPaint = new Paint();
-		redPaint.setColor( Color.parseColor( "#ff0000" ) );
-		redPaint.setAlpha( 200 );
-		
+		//Save the current matrix state to be able to modify and go back here
 		canvas.save();
 		
-		int[] apa = new int[ 2 ];
-		getLocationOnScreen( apa );
-		
+		//The matrix to be able to rotate through the centerpoint of the view rather than (0,0)
 		Matrix m = new Matrix();
-		//m.preTranslate( apa[0] + (getWidth() ), apa[1] + (getHeight() ) );
-		//m.preTranslate( apa[0] * 1.5f + (getWidth() / 2) * 1.5f, apa[1] * 1.5f + (getHeight() / 2) * 1.5f );
-		//m.preRotate( model.getCurrentAngle() + 45 );
-		
 		m.reset();
 		m.preTranslate( (getWidth() / 2 ), (getHeight() / 2 ) );
 		m.preRotate( model.getCurrentAngle() + 45 );
 		canvas.concat(m);
-		canvas.drawCircle( 0, getHeight() / 4, getWidth() / 10, linePaint );
+		canvas.drawCircle( 0, getHeight() / 3, getWidth() / 15, linePaint );
 		
+		//Go back to the state 
 		canvas.restore();
 	}
 }
