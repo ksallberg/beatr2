@@ -50,7 +50,7 @@ public class SynthEditorView extends LinearLayout {
 		
 		//Two dimensional slider
 		twoDimensionalSliderHolder = new LinearLayout( context );
-		twoDimensionalSliderHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 275 ) );
+		twoDimensionalSliderHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 225 ) );
 		addView( twoDimensionalSliderHolder );
 		
 		recordHolder = new LinearLayout( context );
