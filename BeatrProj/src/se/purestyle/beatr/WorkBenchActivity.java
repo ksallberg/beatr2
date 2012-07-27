@@ -43,7 +43,7 @@ public class WorkBenchActivity extends Activity implements PropertyChangeListene
 		
 		LinearLayout innerHolder2 = new LinearLayout( getApplicationContext() );
 		LayoutParams params2 = new LayoutParams( 200, 200 );
-		params2.setMargins( 124, 75, 0, 0 );
+		params2.setMargins( 75, 75, 0, 0 );
 		innerHolder2.setLayoutParams( params2 );
 		
 		innerHolder.addView( knobController.getView() );

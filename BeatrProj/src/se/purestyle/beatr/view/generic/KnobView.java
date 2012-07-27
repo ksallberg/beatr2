@@ -46,7 +46,7 @@ public class KnobView extends View {
 		m.preRotate( model.getCurrentAngle() + 45 );
 		
 		canvas.setMatrix( m );
-		canvas.drawCircle( 0, getHeight() / 2, 10, linePaint );
+		canvas.drawCircle( 0, getHeight() / 2, getWidth() / 10, linePaint );
 		
 		canvas.restore();
 	}
