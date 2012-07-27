@@ -29,7 +29,7 @@ public class KnobView extends View {
 		p.setColor( Color.parseColor( "#434343" ) );
 		p.setAntiAlias( true );
 		
-		canvas.drawCircle( getWidth() / 2, getHeight() / 2, 50, p ); //( 0, 0, getWidth(), getHeight(), p );
+		canvas.drawCircle( getWidth() / 2, getHeight() / 2, getWidth() / 2, p ); //( 0, 0, getWidth(), getHeight(), p );
 		
 		Paint linePaint = new Paint();
 		linePaint.setColor( Color.parseColor( "#00ffe4" ) );

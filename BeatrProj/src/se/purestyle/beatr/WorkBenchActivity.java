@@ -42,7 +42,7 @@ public class WorkBenchActivity extends Activity implements PropertyChangeListene
 		innerHolder.setLayoutParams( params );
 		
 		LinearLayout innerHolder2 = new LinearLayout( getApplicationContext() );
-		LayoutParams params2 = new LayoutParams( 100, 100 );
+		LayoutParams params2 = new LayoutParams( 200, 200 );
 		params2.setMargins( 124, 75, 0, 0 );
 		innerHolder2.setLayoutParams( params2 );
 		
