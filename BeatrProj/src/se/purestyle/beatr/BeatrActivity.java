@@ -37,7 +37,7 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 		//Remove the standard top bar stating the application name, I use a logo instead
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
-		conn = new PdConnector( getApplicationContext(), this );
+		conn = new PdConnector( getApplicationContext(), this, BeatrActivity.class );
 		
 		//Initialize the FileModifier, just need to give it an activity and context to work within
 		FileModifier.init( this, getApplicationContext() );

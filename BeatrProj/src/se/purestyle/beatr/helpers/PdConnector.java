@@ -9,7 +9,6 @@ import org.puredata.android.service.PdService;
 import org.puredata.core.PdBase;
 import org.puredata.core.PdReceiver;
 
-import se.purestyle.beatr.BeatrActivity;
 import se.purestyle.beatr.R;
 
 import android.app.Activity;
@@ -20,14 +19,18 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
 
+@SuppressWarnings("rawtypes")
 public class PdConnector {
 
 	private Activity activity = null;
 	private static boolean initialized = false;
 	
-	public PdConnector( Context context, Activity activity ) {
+	private Class classRef; //Using Class just to get rid of a circular dependency 
+	
+	public PdConnector( Context context, Activity activity, Class classRef ) {
 		
 		this.activity = activity;
+		this.classRef = classRef;
 		
 		initialized = true;
 		
@@ -94,23 +97,19 @@ public class PdConnector {
 			
 			PdBase.setReceiver(receiver);
 			PdBase.subscribe("android");
-		//	InputStream in = res.openRawResource(R.raw.smalletst);
-		//	patchFile = IoUtils.extractResource(in, "smalletst.pd", activity.getCacheDir());
-		//	PdBase.openPatch( patchFile );
 			startAudio();
-			
-//		} catch (IOException e) {
-//			activity.finish();
+
 		} finally {
+			
 			if (patchFile != null) patchFile.delete();
 		}
 	}
 
 	private void startAudio() {
-		String name = activity.getResources().getString(R.string.app_name);
+		
 		try {
 			pdService.initAudio(-1, -1, -1, -1);   // negative values will be replaced with defaults/preferences
-			pdService.startAudio(new Intent(activity, BeatrActivity.class), R.drawable.icon, name, "Return to " + name + ".");
+			pdService.startAudio(new Intent(activity, classRef), R.drawable.icon, "beatr", "back to beatr");
 		} catch (IOException e) {
 			//toast(e.toString());
 		}
@@ -159,53 +158,3 @@ public class PdConnector {
 		}
 	}
 }
-
-//Just so I will not forget how to use this:
-
-/*
-private void evaluateMessage(String s) {
-	String dest = "test", symbol = null;
-	boolean isAny = s.length() > 0 && s.charAt(0) == ';';
-	Scanner sc = new Scanner(isAny ? s.substring(1) : s);
-	if (isAny) {
-		if (sc.hasNext()) dest = sc.next();
-		else {
-			toast("Message not sent (empty recipient)");
-			return;
-		}
-		if (sc.hasNext()) symbol = sc.next();
-		else {
-			toast("Message not sent (empty symbol)");
-		}
-	}
-	List<Object> list = new ArrayList<Object>();
-	while (sc.hasNext()) {
-		if (sc.hasNextInt()) {
-			list.add(new Float(sc.nextInt()));
-		} else if (sc.hasNextFloat()) {
-			list.add(sc.nextFloat());
-		} else {
-			list.add(sc.next());
-		}
-	}
-	if (isAny) {
-		PdBase.sendMessage(dest, symbol, list.toArray());
-	} else {
-		switch (list.size()) {
-		case 0:
-			PdBase.sendBang(dest);
-			break;
-		case 1:
-			Object x = list.get(0);
-			if (x instanceof String) {
-				PdBase.sendSymbol(dest, (String) x);
-			} else {
-				PdBase.sendFloat(dest, (Float) x);
-			}
-			break;
-		default:
-			PdBase.sendList(dest, list.toArray());
-			break;
-		}
-	}
-}*/

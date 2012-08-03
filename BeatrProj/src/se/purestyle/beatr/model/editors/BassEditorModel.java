@@ -11,10 +11,10 @@ import se.purestyle.beatr.helpers.beatplayer.Recorder;
 
 import android.util.Pair;
 
+@SuppressWarnings("unchecked")
 public class BassEditorModel extends AbstractEditorModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
-	private final float maxOsc = 400.0f;
 	private float oscController = 400.0f;
 	private final String oscControllerName = "osccontroller";
 	
@@ -68,12 +68,6 @@ public class BassEditorModel extends AbstractEditorModel {
 		//Store the 
 		oscController = wantedPitch;
 		
-		//If oscController is larger than this, set it to the maximum value
-		if( oscController > maxOsc ) {
-			
-			oscController = maxOsc;
-		}
-		
 		//Tell pd to change this individual instruments osxController value
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "left", oscController );
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
@@ -83,8 +77,6 @@ public class BassEditorModel extends AbstractEditorModel {
 			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "left", oscController );
 			Pair<String, Float> p2 = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
 			
-			//TODO: Only way to fix this is to change to an ArrayList
-			@SuppressWarnings("unchecked")
 			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p, p2};
 			
 			recorder.recordList( ls );
@@ -106,8 +98,6 @@ public class BassEditorModel extends AbstractEditorModel {
 			
 			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + vibControllerName, vibController );
 			
-			//TODO: Only way to fix this is to change to an ArrayList
-			@SuppressWarnings("unchecked")
 			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
 			
 			recorder.recordList( ls );
@@ -124,8 +114,6 @@ public class BassEditorModel extends AbstractEditorModel {
 			
 			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + onOffControllerName, (float) onoff );
 			
-			//TODO: Only way to fix this is to change to an ArrayList
-			@SuppressWarnings("unchecked")
 			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
 			
 			recorder.recordList( ls );

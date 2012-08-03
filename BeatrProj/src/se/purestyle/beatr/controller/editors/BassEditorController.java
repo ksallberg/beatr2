@@ -131,7 +131,7 @@ public class BassEditorController extends AbstractController {
 			
 			PointF percentages = (PointF) event.getNewValue();
 			
-			model.setOscController( percentages.x * 800 );
+			model.setOscController( percentages.x * 200 );
 			model.setVibController( percentages.y * 800 );
 		
 		} else if ( event.getPropertyName().equals( SliderTwoDirectionsController.EVENT_DOWN ) ) {
