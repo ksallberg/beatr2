@@ -9,6 +9,7 @@ import se.purestyle.beatr.editoractivities.BassEditorActivity;
 import se.purestyle.beatr.editoractivities.DrumEditorActivity;
 import se.purestyle.beatr.editoractivities.SynthEditorActivity;
 import se.purestyle.beatr.helpers.FileModifier;
+import se.purestyle.beatr.helpers.MetronomePlayer;
 import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 import se.purestyle.beatr.model.FemaleNames;
@@ -41,6 +42,10 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 		//Initialize the FileModifier, just need to give it an activity and context to work within
 		FileModifier.init( this, getApplicationContext() );
 		
+		//Initialize the MetronomePlayer and give it a default value for beats per minute
+		MetronomePlayer.init( getApplicationContext() );
+		MetronomePlayer.updateBpm( MetronomePlayer.MAX_BPM );
+		
 		FemaleNames.populate();
 		
 		mixerController = new InstrumentMixerController( getApplicationContext() );
@@ -62,6 +67,8 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 	protected void onDestroy() {
 		
 		super.onDestroy();
+		
+		MetronomePlayer.destroy();
 		
 		conn.cleanup();
 	}

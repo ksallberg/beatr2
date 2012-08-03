@@ -45,7 +45,7 @@ public class BassEditorView extends LinearLayout {
 		//Text editor
 		TextView txt = new TextView( context );
 		txt.setTextColor( Color.WHITE );
-		txt.setText( "Synth editor" );
+		txt.setText( "Bass editor" );
 		addView( txt );
 		
 		//Two dimensional slider

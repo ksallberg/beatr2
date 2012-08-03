@@ -1,5 +1,7 @@
 package se.purestyle.beatr.model.instrumentmixer;
 
+import se.purestyle.beatr.helpers.MetronomePlayer;
+
 import com.purestyle.amvc.model.AbstractModel;
 
 public class MetronomeModel extends AbstractModel {
@@ -7,8 +9,8 @@ public class MetronomeModel extends AbstractModel {
 	private final float maximumX = 212; //this is also available
 	private float drawToX = 212;
 	
-	private final int minBmp = 80;
-	private final int maxBmp = 140;
+	private final int minBmp = MetronomePlayer.MIN_BPM;
+	private final int maxBmp = MetronomePlayer.MAX_BPM;
 	
 	private int currentBmp = maxBmp;
 	
@@ -20,6 +22,8 @@ public class MetronomeModel extends AbstractModel {
 		float currentPercent = drawToX / maximumX;
 		
 		currentBmp = Math.round( minBmp + ( maxBmp - minBmp ) * currentPercent );
+		
+		MetronomePlayer.updateBpm( currentBmp );
 	}
 	
 	public float getDrawToX() { return drawToX; }
