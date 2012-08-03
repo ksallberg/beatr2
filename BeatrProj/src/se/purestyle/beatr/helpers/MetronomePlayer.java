@@ -1,5 +1,7 @@
 package se.purestyle.beatr.helpers;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -7,7 +9,6 @@ import org.puredata.android.service.R;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.util.Log;
 
 /**
  * Use the timer to schedule something at a given bpm interval
@@ -17,11 +18,13 @@ import android.util.Log;
  */
 public class MetronomePlayer {
 
-	public static final int MAX_BPM = 200;
-	public static final int MIN_BPM = 80;
+	public static final int MAX_BPM 						= 200;
+	public static final int MIN_BPM 						= 80;
+	public static final String TICK							= "newBmpTick";
 	
-	private static Timer timer = null;
-	private static MediaPlayer player = null;
+	private static PropertyChangeSupport propertyChange;
+	private static Timer timer 								= null;
+	private static MediaPlayer player 						= null;
 	private static Context context;
 	
 	/**
@@ -32,6 +35,8 @@ public class MetronomePlayer {
 	public static void init( Context ctx ) {
 		
 		if( player == null ) {
+			
+			propertyChange = new PropertyChangeSupport( ctx );
 			
 			context = ctx;
 			player = MediaPlayer.create( context, R.raw.metronome );
@@ -63,8 +68,6 @@ public class MetronomePlayer {
 	
 	private static void createNewTimer( int bpm ) {
 		
-		Log.i( "MetronomePlayer", "createNewTimer" );
-		
 		timer = new Timer();
 		timer.scheduleAtFixedRate( new TimerTask() {
 			
@@ -73,6 +76,9 @@ public class MetronomePlayer {
 				
 				//Play the metronome sound
 				player.start();
+				
+				//Tell every listening object that it's time for a new metronome tick!
+				propertyChange.firePropertyChange( TICK, null, TICK );
 			}
 			
 		}, 0, (int) Math.round( 60000 / bpm ) );
@@ -86,5 +92,15 @@ public class MetronomePlayer {
 		
 		player.reset();
 		player = null;
+	}
+	
+	public static void addObserver( PropertyChangeListener listener ) {
+		
+		propertyChange.addPropertyChangeListener( listener );
+	}
+	
+	public static void removeObserver( PropertyChangeListener listener ) {
+		
+		propertyChange.removePropertyChangeListener( listener );
 	}
 }
