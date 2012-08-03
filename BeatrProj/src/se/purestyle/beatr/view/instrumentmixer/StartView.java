@@ -1,10 +1,11 @@
 package se.purestyle.beatr.view.instrumentmixer;
 
-import org.puredata.android.service.R;
+//import org.puredata.android.service.R;
 
 import se.purestyle.beatr.view.InstrumentMixerView;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -21,7 +22,8 @@ public class StartView extends RelativeLayout {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
 		
-		setBackgroundResource( R.drawable.bg );
+		//setBackgroundResource( R.drawable.bg );
+		setBackgroundColor( Color.WHITE );
 		
 		init( context );
 	}
