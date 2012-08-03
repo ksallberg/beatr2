@@ -4,7 +4,7 @@ import com.purestyle.amvc.controller.AbstractController;
 
 public class DrumEditorController extends AbstractController {
 	
-	private String pdInternalInstrumentName; //Keep it here just to be able to pass it to the model
+	private String pdInternalInstrumentName;
 	
 	public DrumEditorController( String pdInternalInstrumentName ) {
 		
