@@ -14,6 +14,7 @@ public class InstrumentMixerView extends AbstractView {
 	public static final String	INSTRUMENT_HOLDER_VIEW	= "instrumentHolderView";
 	public static final String	ADD_INSTRUMENT_VIEW		= "addInstrumentView";
 	public static final String	MASTER_VOLUME_VIEW		= "masterVolumeView";
+	public static final String	METRONOME_VIEW			= "metronomeView";
 	public static final String	ADD_INSTRUMENT_BUTTON	= "addInstrumentButton";
 	public static final String	PREV_PAGE_BUTTON		= "prevPageButton";
 	public static final String	NEXT_PAGE_BUTTON		= "nextPageButton";
@@ -41,16 +42,14 @@ public class InstrumentMixerView extends AbstractView {
 		views.put( DRUM_BUTTON,  			startView.findViewWithTag( DRUM_BUTTON ) );
 		views.put( MASTER_VOLUME_VIEW,		startView.findViewWithTag( MASTER_VOLUME_VIEW ) );
 		views.put( BASS_BUTTON, 			startView.findViewWithTag( BASS_BUTTON ) );
+		views.put( METRONOME_VIEW, 			startView.findViewWithTag( METRONOME_VIEW ) );
 	}
 	
+	/**
+	 * Needed just to allow me to use AbstractView
+	 */
 	@Override
-	public void propertyChange(PropertyChangeEvent event) {
-		
-		
-	}
+	public void propertyChange( PropertyChangeEvent event ) {}
 	
-	public StartView getStartView() {
-		
-		return startView;
-	}
+	public StartView getStartView() { return startView; }
 }

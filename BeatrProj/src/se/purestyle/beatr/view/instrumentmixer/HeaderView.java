@@ -19,16 +19,26 @@ public class HeaderView extends RelativeLayout {
 	
 	private void init( Context context ) {
 		
-		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 60 ) );
+		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 105 ) );
 		
 		RelativeLayout.LayoutParams masterVolumeParams = new RelativeLayout.LayoutParams( (int) MasterVolumeView.TOTAL_WIDTH, (int) MasterVolumeView.TOTAL_HEIGHT );
-		masterVolumeParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-		masterVolumeParams.setMargins( 6, 6, 0, 0);
+		masterVolumeParams.addRule( RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE );
+		masterVolumeParams.setMargins( 6, 6, 0, 0 );
 		
 		MasterVolumeView masterVolume = new MasterVolumeView( context );
 		masterVolume.setTag( InstrumentMixerView.MASTER_VOLUME_VIEW );
 		masterVolume.setLayoutParams( masterVolumeParams );
 		addView( masterVolume );
+		
+		RelativeLayout.LayoutParams metronomeParams = new RelativeLayout.LayoutParams( (int) MasterVolumeView.TOTAL_WIDTH, (int) MasterVolumeView.TOTAL_HEIGHT );
+		metronomeParams.addRule( RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE );
+		metronomeParams.setMargins( 6, 55, 0, 0 );
+		
+		//metronomeView: it's the same class as masterVolume view
+		MetronomeView metronomeView = new MetronomeView( context );
+		metronomeView.setTag( InstrumentMixerView.METRONOME_VIEW );
+		metronomeView.setLayoutParams( metronomeParams );
+		addView( metronomeView );
 		
 		RelativeLayout.LayoutParams logoParams = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
 		logoParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);

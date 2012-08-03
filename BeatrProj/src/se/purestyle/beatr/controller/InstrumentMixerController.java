@@ -6,6 +6,7 @@ import java.beans.PropertyChangeSupport;
 
 import se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController;
 import se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController;
+import se.purestyle.beatr.controller.instrumentmixer.MetronomeController;
 import se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController;
 import se.purestyle.beatr.helpers.InstrumentTracker;
 import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
@@ -19,6 +20,7 @@ import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.AddInstrumentView;
 import se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView;
 import se.purestyle.beatr.view.instrumentmixer.MasterVolumeView;
+import se.purestyle.beatr.view.instrumentmixer.MetronomeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
 import android.content.Context;
@@ -34,6 +36,7 @@ public class InstrumentMixerController extends AbstractController {
 	public static final String INSTRUMENT_MIXER_MODEL			= "instrumentMixerModel";
 	public static final String INSTRUMENT_HOLDER_CONTROLLER 	= "instrumentHolderController";
 	public static final String MASTER_VOLUME_CONTROLLER			= "masterVolumeController";
+	public static final String METRONOME_CONTROLLER				= "metronomeController";
 	
 	public static final String NEW_INSTRUMENT_ADDED				= "newInstrumentAdded"; //This also exists in InstrumentHolderController, 
 																						//but I want it here as well to make this class more independent
@@ -71,6 +74,12 @@ public class InstrumentMixerController extends AbstractController {
 		masterVolumeSub.setup();
 		masterVolumeSub.setView( ( MasterVolumeView ) insMixView.getViews().get( InstrumentMixerView.MASTER_VOLUME_VIEW ) );
 		addSubcontroller( MASTER_VOLUME_CONTROLLER, masterVolumeSub );
+		
+		//Create and add subcontroller for the master volume controller
+		MetronomeController metronomeSub = new MetronomeController();
+		metronomeSub.setup();
+		metronomeSub.setView( ( MetronomeView ) insMixView.getViews().get( InstrumentMixerView.METRONOME_VIEW ) );
+		addSubcontroller( METRONOME_CONTROLLER, metronomeSub );
 		
 		insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_BUTTON ).setOnClickListener( addInstrumentHandler );
 		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( prevPageRequested );
