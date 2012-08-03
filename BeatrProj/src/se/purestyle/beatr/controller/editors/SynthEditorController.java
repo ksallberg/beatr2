@@ -8,6 +8,7 @@ import se.purestyle.beatr.helpers.InstrumentTracker;
 import se.purestyle.beatr.helpers.beatplayer.Beat;
 import se.purestyle.beatr.helpers.beatplayer.Recorder;
 import se.purestyle.beatr.model.editors.SynthEditorModel;
+import se.purestyle.beatr.model.generic.KnobModel;
 import se.purestyle.beatr.view.editors.SynthEditorView;
 import se.purestyle.beatr.view.generic.SliderTwoDirectionsView;
 
@@ -66,6 +67,7 @@ public class SynthEditorController extends AbstractController {
 		view.getStopRecordingButton().setOnClickListener( stopRecordingButtonPressed );
 		
 		knobController = new KnobController( context );
+		knobController.addObserver( this );
 		knobController.setup();
 		knobHolder = new LinearLayout( context );
 		knobHolder.setLayoutParams( new LayoutParams( 100, 100 ) );
@@ -143,6 +145,10 @@ public class SynthEditorController extends AbstractController {
 		} else if ( event.getPropertyName().equals( Recorder.TIME_UPDATED )  ) {
 			
 			view.setTimeDisplayContext( (Long) event.getNewValue() );
+		
+		} else if ( event.getPropertyName().equals( KnobModel.NEW_PERCENTAGES ) ) {
+			
+			model.setAttack( (Float) event.getNewValue() );
 		}
 	}
 }

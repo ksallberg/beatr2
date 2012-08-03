@@ -6,7 +6,7 @@ import com.purestyle.amvc.model.AbstractModel;
 
 public class KnobModel extends AbstractModel {
 
-	public static final String NEW_PERCENTAGES = "newPercentages";
+	public static final String NEW_PERCENTAGES = "knobModelNewPercentages";
 	
 	private float 		currentPercent = 0.0f;
 	private PointF 		pointOfCentre = new PointF( 0.0f, 0.0f );

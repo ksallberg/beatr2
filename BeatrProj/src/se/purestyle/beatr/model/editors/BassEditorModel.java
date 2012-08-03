@@ -6,13 +6,34 @@ import java.util.Map;
 
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.helpers.beatplayer.Beat;
+import se.purestyle.beatr.helpers.beatplayer.Recorder;
+
+import android.util.Pair;
 
 public class BassEditorModel extends AbstractEditorModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
-	private float oscController = 200.0f;
+	private final float maxOsc = 400.0f;
+	private float oscController = 400.0f;
+	private final String oscControllerName = "osccontroller";
+	
+	private float vibController = 870.0f;
+	private final String vibControllerName = "vibcontroller";
+	
+	private final float maxAttack = 5.0f;
+	private float attackController = maxAttack;
+	private final String attackControllerName = "attack";	
+	
+	private final String phasControllerName = "phascontroller";
+	private final String volControllerName = "vol";
+	private final String onOffControllerName = "onoff";
+	
+	private int onoff = 0;
 	
 	private final String pdInternalInstrumentName;
+	
+	private Recorder recorder;
 	
 	public BassEditorModel( String pdInternalInstrumentName ) {
 		
@@ -20,15 +41,21 @@ public class BassEditorModel extends AbstractEditorModel {
 		
 		//Prepare a new .pd file that has variable names unique to this model
 		Map<String, String> replacementMap = new HashMap<String, String>();
-		replacementMap.put( "osccontroller", pdInternalInstrumentName + "osccontroller-right" );
-		replacementMap.put( "vol", pdInternalInstrumentName + "vol" );
+		replacementMap.put( oscControllerName, pdInternalInstrumentName + oscControllerName );
+		replacementMap.put( phasControllerName, pdInternalInstrumentName + phasControllerName );
+		replacementMap.put( volControllerName, pdInternalInstrumentName + volControllerName );
+		replacementMap.put( onOffControllerName, pdInternalInstrumentName + onOffControllerName );
+		replacementMap.put( vibControllerName, pdInternalInstrumentName + vibControllerName );
+		replacementMap.put( attackControllerName, pdInternalInstrumentName + attackControllerName );
 		
-		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/smallright.pd" );
+		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/bass.pd" );
 		
 		FileModifier.traceFile( newSynthFile );
 		
 		//Tell the pure data environmen to add a new synth
 		PdConnector.addPatch( newSynthFile );
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, 0 ); //Turn the instrument off first thing that happens
 	}
 	
 	public float getOscController() {
@@ -41,7 +68,100 @@ public class BassEditorModel extends AbstractEditorModel {
 		//Store the 
 		oscController = wantedPitch;
 		
+		//If oscController is larger than this, set it to the maximum value
+		if( oscController > maxOsc ) {
+			
+			oscController = maxOsc;
+		}
+		
 		//Tell pd to change this individual instruments osxController value
-		PdConnector.sendToPd( pdInternalInstrumentName + "osccontroller-right", oscController );
+		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "left", oscController );
+		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
+		
+		if( recorder.isRecording() ) {
+			
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "left", oscController );
+			Pair<String, Float> p2 = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
+			
+			//TODO: Only way to fix this is to change to an ArrayList
+			@SuppressWarnings("unchecked")
+			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p, p2};
+			
+			recorder.recordList( ls );
+		}
+	}
+	
+	public float getVibController() {
+		
+		return vibController;
+	}
+	
+	public void setVibController( float wantedPitch ) {
+		
+		vibController = wantedPitch;
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + vibControllerName, vibController );
+		
+		if( recorder.isRecording() ) {
+			
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + vibControllerName, vibController );
+			
+			//TODO: Only way to fix this is to change to an ArrayList
+			@SuppressWarnings("unchecked")
+			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
+			
+			recorder.recordList( ls );
+		}
+	}
+	
+	public void setOnoff( int onoff ) {
+		
+		this.onoff = onoff;
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, onoff );
+		
+		if( recorder.isRecording() ) {
+			
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + onOffControllerName, (float) onoff );
+			
+			//TODO: Only way to fix this is to change to an ArrayList
+			@SuppressWarnings("unchecked")
+			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
+			
+			recorder.recordList( ls );
+		}
+	}
+	
+	public void setAttack( float wantedPercent ) {
+		
+		attackController = wantedPercent * maxAttack;
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + attackControllerName, attackController );
+	}
+	
+	public float getAttack() {
+		
+		return attackController;
+	}
+	
+	public int getOnoff() {
+		
+		return onoff;
+	}
+	
+	public void registerRecorder( Recorder recorder ) {
+		
+		this.recorder = recorder;
+	}
+	
+	public Beat getBeat() {
+		
+		return recorder.getBeat();
+	}
+	
+	@Override
+	public String getInstrumentName() {
+		
+		return pdInternalInstrumentName;
 	}
 }

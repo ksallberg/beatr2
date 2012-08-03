@@ -15,7 +15,7 @@ public class DrumEditorModel extends AbstractEditorModel {
 		Map<String, String> replacementMap = new HashMap<String, String>();
 		replacementMap.put( "vol", pdInternalInstrumentName + "vol" );
 		
-		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/ratios.pd" );
+		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/drum.pd" );
 		
 		FileModifier.traceFile( newSynthFile );
 		

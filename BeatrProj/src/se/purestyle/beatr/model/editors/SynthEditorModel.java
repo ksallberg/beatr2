@@ -15,10 +15,18 @@ public class SynthEditorModel extends AbstractEditorModel {
 	
 	//Instrument specific settings (stuff that's mirrored in the .pd files)
 	private float oscController = 400.0f;
-	private String oscControllerName = "osccontroller";
+	private final String oscControllerName = "osccontroller";
 	
 	private float vibController = 870.0f;
-	private String vibControllerName = "vibcontroller";
+	private final String vibControllerName = "vibcontroller";
+	
+	private final float maxAttack = 5.0f;
+	private float attackController = maxAttack;
+	private final String attackControllerName = "attack";	
+	
+	private final String phasControllerName = "phascontroller";
+	private final String volControllerName = "vol";
+	private final String onOffControllerName = "onoff";
 	
 	private int onoff = 0;
 	
@@ -33,10 +41,11 @@ public class SynthEditorModel extends AbstractEditorModel {
 		//Prepare a new .pd file that has variable names unique to this model
 		Map<String, String> replacementMap = new HashMap<String, String>();
 		replacementMap.put( oscControllerName, pdInternalInstrumentName + oscControllerName );
-		replacementMap.put( "phascontroller", pdInternalInstrumentName + "phascontroller" );
-		replacementMap.put( "vol", pdInternalInstrumentName + "vol" );
-		replacementMap.put( "onoff", pdInternalInstrumentName + "onoff" );
+		replacementMap.put( phasControllerName, pdInternalInstrumentName + phasControllerName );
+		replacementMap.put( volControllerName, pdInternalInstrumentName + volControllerName );
+		replacementMap.put( onOffControllerName, pdInternalInstrumentName + onOffControllerName );
 		replacementMap.put( vibControllerName, pdInternalInstrumentName + vibControllerName );
+		replacementMap.put( attackControllerName, pdInternalInstrumentName + attackControllerName );
 		
 		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/synth.pd" );
 		
@@ -45,7 +54,7 @@ public class SynthEditorModel extends AbstractEditorModel {
 		//Tell the pure data environmen to add a new synth
 		PdConnector.addPatch( newSynthFile );
 		
-		PdConnector.sendToPd( pdInternalInstrumentName + "onoff", 0 ); //Turn the instrument off first thing that happens
+		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, 0 ); //Turn the instrument off first thing that happens
 	}
 	
 	public float getOscController() {
@@ -56,18 +65,20 @@ public class SynthEditorModel extends AbstractEditorModel {
 	public void setOscController( float wantedPitch ) {
 		
 		//Store the 
-		oscController = wantedPitch;
+		oscController = wantedPitch + 300.0f;
 		
 		//Tell pd to change this individual instruments osxController value
 		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "left", oscController );
-		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) ); //(float) (oscController + (vibController / 870))
+		PdConnector.sendToPd( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
 		
 		if( recorder.isRecording() ) {
 			
 			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "left", oscController );
 			Pair<String, Float> p2 = new Pair<String, Float>( pdInternalInstrumentName + oscControllerName + "right", (float) (oscController + .5) );
 			
-			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p, p2};
+			//TODO: Only way to fix this is to change to an ArrayList
+			@SuppressWarnings("unchecked")
+			Pair<String, Float>[] ls = ( Pair<String, Float>[] ) new Pair[] {p, p2};
 			
 			recorder.recordList( ls );
 		}
@@ -88,7 +99,9 @@ public class SynthEditorModel extends AbstractEditorModel {
 			
 			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + vibControllerName, vibController );
 			
-			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
+			//TODO: Only way to fix this is to change to an ArrayList
+			@SuppressWarnings("unchecked")
+			Pair<String, Float>[] ls = ( Pair<String, Float>[] ) new Pair[] {p};
 			
 			recorder.recordList( ls );
 		}
@@ -98,16 +111,30 @@ public class SynthEditorModel extends AbstractEditorModel {
 		
 		this.onoff = onoff;
 		
-		PdConnector.sendToPd( pdInternalInstrumentName + "onoff", onoff );
+		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, onoff );
 		
 		if( recorder.isRecording() ) {
 			
-			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + "onoff", (float) onoff );
+			Pair<String, Float> p = new Pair<String, Float>( pdInternalInstrumentName + onOffControllerName, (float) onoff );
 			
-			Pair<String, Float>[] ls = (Pair<String, Float>[]) new Pair[] {p};
+			//TODO: Only way to fix this is to change to an ArrayList
+			@SuppressWarnings("unchecked")
+			Pair<String, Float>[] ls = ( Pair<String, Float>[] ) new Pair[] {p};
 			
 			recorder.recordList( ls );
 		}
+	}
+	
+	public void setAttack( float wantedPercent ) {
+		
+		attackController = wantedPercent * maxAttack;
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + attackControllerName, attackController );
+	}
+	
+	public float getAttack() {
+		
+		return attackController;
 	}
 	
 	public int getOnoff() {
