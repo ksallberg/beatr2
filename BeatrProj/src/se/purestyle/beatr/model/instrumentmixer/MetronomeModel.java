@@ -14,7 +14,14 @@ public class MetronomeModel extends AbstractModel {
 	
 	private int currentBmp = maxBmp;
 	
-	public void setDrawToX( float _x ) {
+	/**
+	 * 
+	 * 
+	 * @param _x
+	 * @param updateMetronome 	Only update the metronome itself when the slider has met it's ACTION_UP, because otherwise
+	 * 							the metronome will go crazy and play super fast
+	 */
+	public void setDrawToX( float _x, boolean updateMetronome ) {
 		
 		drawToX = _x > maximumX ? maximumX : _x; //Do not let it go over max
 		drawToX = drawToX < 0 ? 0 : drawToX; //Do not let it go below 0
@@ -23,7 +30,10 @@ public class MetronomeModel extends AbstractModel {
 		
 		currentBmp = Math.round( minBmp + ( maxBmp - minBmp ) * currentPercent );
 		
-		MetronomePlayer.updateBpm( currentBmp );
+		if( updateMetronome ) {
+			
+			MetronomePlayer.updateBpm( currentBmp );
+		}
 	}
 	
 	public float getDrawToX() { return drawToX; }

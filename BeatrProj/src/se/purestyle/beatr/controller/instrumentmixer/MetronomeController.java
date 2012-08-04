@@ -43,14 +43,17 @@ public class MetronomeController extends AbstractController {
 		@Override
 		public boolean onTouch( View v, MotionEvent event ) {
 			
-			//Redraw view
-			( ( MetronomeModel ) model ).setDrawToX( event.getRawX() - v.getLeft() );
-			
 			if ( event.getAction() == MotionEvent.ACTION_UP ) {
 				
+				( ( MetronomeModel ) model ).setDrawToX( event.getRawX() - v.getLeft(), true );
 				return false;
+			
+			} else {
+				
+				( ( MetronomeModel ) model ).setDrawToX( event.getRawX() - v.getLeft(), false );
 			}
 			
+			//Redraw view
 			v.postInvalidate();
 			
 			return true;
