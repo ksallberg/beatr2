@@ -35,11 +35,9 @@ public final class R {
         public static final int volumebaroverlay=0x7f02000b;
     }
     public static final class id {
-        public static final int about_item=0x7f0a0004;
-        public static final int imageView1=0x7f0a0000;
-        public static final int imageView2=0x7f0a0001;
-        public static final int imageView3=0x7f0a0002;
-        public static final int imageView4=0x7f0a0003;
+        public static final int about_item=0x7f0a0002;
+        public static final int button1=0x7f0a0000;
+        public static final int gridView1=0x7f0a0001;
     }
     public static final class layout {
         public static final int main=0x7f030000;
