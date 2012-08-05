@@ -136,6 +136,8 @@ public class FileModifier {
 			while( line != null ) {
 				
 				line = reader.readLine();
+				
+				Log.i( "FileModifier", "line: " + line );
 			}
 			
 		} catch( EOFException e ) {
