@@ -48,12 +48,12 @@ public class BassEditorModel extends AbstractEditorModel {
 		replacementMap.put( vibControllerName, pdInternalInstrumentName + vibControllerName );
 		replacementMap.put( attackControllerName, pdInternalInstrumentName + attackControllerName );
 		
-		File newSynthFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/bass.pd" );
+		File newBassFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/bass.pd" );
 		
-		FileModifier.traceFile( newSynthFile );
+		FileModifier.traceFile( newBassFile );
 		
 		//Tell the pure data environmen to add a new synth
-		PdConnector.addPatch( newSynthFile );
+		PdConnector.addPatch( newBassFile );
 		
 		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, 0 ); //Turn the instrument off first thing that happens
 	}
