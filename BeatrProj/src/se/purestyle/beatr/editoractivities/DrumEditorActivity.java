@@ -3,7 +3,6 @@ package se.purestyle.beatr.editoractivities;
 import com.purestyle.amvc.controller.AbstractController;
 
 import se.purestyle.beatr.controller.editors.DrumEditorController;
-import se.purestyle.beatr.controller.generic.SliderTwoDirectionsController;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -32,18 +31,12 @@ public class DrumEditorActivity extends Activity {
 		holder.addView( insideHolder );
 		holder.addView( txt );
 		
-		//The view I'm working on
-		SliderTwoDirectionsController controller = new SliderTwoDirectionsController( getApplicationContext() );
-		controller.setup();
-		
-		insideHolder.addView( controller.getView() );
-		
 		setContentView( holder );
 		
 		//Get the name of this instrument
 		Bundle extras = getIntent().getExtras();
 		
-		AbstractController instrumentEditorController = new DrumEditorController( extras.getString( "INSTRUMENT_NAME" ) );
+		AbstractController instrumentEditorController = new DrumEditorController( extras.getString( "INSTRUMENT_NAME" ), getApplicationContext() );
 		instrumentEditorController.setup();
 	}
 }
