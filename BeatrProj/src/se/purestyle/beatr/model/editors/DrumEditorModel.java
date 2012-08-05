@@ -23,15 +23,15 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//root
 	private final String rootControllerName 			= "root";
-	private 	  float root 							= 30.0f; //20 -> 100
+	private 	  float root 							= 33.0f; //20 -> 100
 	
 	//f01
 	private final String f01ControllerName 				= "f01";
-	private 	  float f01								= 3.0f; //1 -> 4
+	private 	  float f01								= 0.0f; //1 -> 4
 	
 	//f02
 	private final String f02ControllerName 				= "f02";
-	private 	  float f02								= 3.0f; //1 -> 4
+	private 	  float f02								= 1.0f; //1 -> 4
 	
 	//clip
 	private final String clipControllerName 			= "clip";
@@ -39,15 +39,15 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//shape
 	private final String shapeControllerName 			= "shape";
-	private 	  float shape							= 2.2f; //0 -> 0.25
+	private 	  float shape							= 0.0f; //0 -> 0.25
 	
 	//decay
 	private final String decayControllerName 			= "decay";
-	private 	  float decay							= 2.2f; //0 -> 1
+	private 	  float decay							= 1.0f; //0 -> 1
 	
 	//mod
 	private final String modControllerName 				= "mod";
-	private 	  float mod								= 2.2f; //0 -> 1
+	private 	  float mod								= 1.0f; //0 -> 1
 
 	/**
 	 * Constructor, needs the name of this instrument.
@@ -66,7 +66,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		
 		//Drum settings, make them specific for this instrument
 		replacementMap.put( rootControllerName, pdInternalInstrumentName 	+ rootControllerName );
-		replacementMap.put( f01ControllerName, pdInternalInstrumentName 	+ f01ControllerName );
+		replacementMap.put( f01ControllerName, pdInternalInstrumentName 	+ f01 );
 		replacementMap.put( f02ControllerName, pdInternalInstrumentName 	+ f02ControllerName );
 		replacementMap.put( clipControllerName, pdInternalInstrumentName 	+ clipControllerName );
 		replacementMap.put( shapeControllerName, pdInternalInstrumentName 	+ shapeControllerName );
@@ -81,6 +81,24 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		
 		//Make this class listen to changes in the metronome
 		MetronomePlayer.addObserver( this );
+		
+		//set initial values
+		setInitialPdValues();
+	}
+	
+	/**
+	 * For this instrument, set all the initial values form java, because they're
+	 * being forgotten when closing 
+	 */
+	private void setInitialPdValues() {
+		
+		PdConnector.sendToPd( pdInternalInstrumentName + rootControllerName, root );
+		PdConnector.sendToPd( pdInternalInstrumentName + f01ControllerName, f01 );
+		PdConnector.sendToPd( pdInternalInstrumentName + f02ControllerName, f02 );
+		PdConnector.sendToPd( pdInternalInstrumentName + clipControllerName, clip );
+		PdConnector.sendToPd( pdInternalInstrumentName + shapeControllerName, shape );
+		PdConnector.sendToPd( pdInternalInstrumentName + decayControllerName, decay );
+		PdConnector.sendToPd( pdInternalInstrumentName + modControllerName, mod );
 	}
 	
 	/**

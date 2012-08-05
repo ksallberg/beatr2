@@ -215,8 +215,12 @@ public class InstrumentMixerController extends AbstractController {
 			//Instrument tracker is only used for storing stuff outside of the BeatrActivity
 			InstrumentTracker.registerModel( newInstrumentName, editorModel );
 			
-			//Add the instrument to the BeatPlayer so the BeatPlayer can play recorded Beats
-			BeatPlayer.getInstance().addEditorModel( newInstrumentName, editorModel );
+			//The drum should not be recorded
+			if( !modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+				
+				//Add the instrument to the BeatPlayer so the BeatPlayer can play recorded Beats
+				BeatPlayer.getInstance().addEditorModel( newInstrumentName, editorModel );
+			}
 		}
 		
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {
