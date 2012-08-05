@@ -38,5 +38,7 @@ public class DrumEditorActivity extends Activity {
 		
 		AbstractController instrumentEditorController = new DrumEditorController( extras.getString( "INSTRUMENT_NAME" ), getApplicationContext() );
 		instrumentEditorController.setup();
+		
+		insideHolder.addView( ( ( DrumEditorController ) instrumentEditorController ).getView() );
 	}
 }
