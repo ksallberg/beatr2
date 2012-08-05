@@ -53,18 +53,18 @@ public class DrumEditorController extends AbstractController {
 		modKnobController	= new KnobController( context );
 		
 		//Make this controller listen to it's subcontrollers
-		rootKnobController.addObserver( 	this );
-		f01KnobController.addObserver( 		this );
-		f02KnobController.addObserver( 		this );
-		clipKnobController.addObserver( 	this );
-		shapeKnobController.addObserver( 	this );
-		decayKnobController.addObserver( 	this );
-		modKnobController.addObserver( 		this );
+		rootKnobController.addObserver(		this );
+		f01KnobController.addObserver(		this );
+		f02KnobController.addObserver(		this );
+		clipKnobController.addObserver(		this );
+		shapeKnobController.addObserver(	this );
+		decayKnobController.addObserver(	this );
+		modKnobController.addObserver(		this );
 		
-		view.addKnob( rootKnobController.getView() );
-		view.addKnob( f01KnobController.getView() );
-		view.addKnob( f02KnobController.getView() );
-		view.addKnob( clipKnobController.getView() );
+		view.addKnob( rootKnobController.getView() 	);
+		view.addKnob( f01KnobController.getView() 	);
+		view.addKnob( f02KnobController.getView() 	);
+		view.addKnob( clipKnobController.getView() 	);
 		view.addKnob( shapeKnobController.getView() );
 		view.addKnob( decayKnobController.getView() );
 		view.addKnob( decayKnobController.getView() );
