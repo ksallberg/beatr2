@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import android.util.Log;
-
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
 
 /**
@@ -80,11 +78,7 @@ public class BeatPlayer {
 			
 			Iterator<Entry<String, Player>> it = threads.entrySet().iterator();
 			
-			Log.i("BeatPlayer", "trying to play" + it.hasNext() );
-			
 			while( it.hasNext() ) {
-				
-				Log.i( "BeatPlayer.java", "call play" );
 				
 				it.next().getValue().play();
 			}
@@ -94,11 +88,8 @@ public class BeatPlayer {
 			
 			Iterator<Entry<String, Player>> it = threads.entrySet().iterator();
 			
-			Log.i("BeatPlayer", "trying to pause" + it.hasNext() );
-			
 			while( it.hasNext() ) {
 				
-				Log.i( "BeatPlayer.java", "calling pause" );
 				Entry<String, Player> elem = it.next(); 
 				
 				elem.getValue().pause();

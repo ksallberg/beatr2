@@ -50,8 +50,6 @@ public class BassEditorModel extends AbstractEditorModel {
 		
 		File newBassFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/bass.pd" );
 		
-		FileModifier.traceFile( newBassFile );
-		
 		//Tell the pure data environmen to add a new synth
 		PdConnector.addPatch( newBassFile );
 		

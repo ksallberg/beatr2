@@ -33,6 +33,7 @@ public class DrumEditorController extends AbstractController {
 	public DrumEditorController( String pdInternalInstrumentName, Context context ) {
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
+		this.context = context;
 	}
 	
 	@Override
@@ -45,12 +46,19 @@ public class DrumEditorController extends AbstractController {
 		
 		//Initialize subcontrollers
 		rootKnobController 	= new KnobController( context );
+		rootKnobController.setup();
 		f01KnobController 	= new KnobController( context );
+		f01KnobController.setup();
 		f02KnobController	= new KnobController( context );
+		f02KnobController.setup();
 		clipKnobController	= new KnobController( context );
+		clipKnobController.setup();
 		shapeKnobController	= new KnobController( context );
+		shapeKnobController.setup();
 		decayKnobController	= new KnobController( context );
+		decayKnobController.setup();
 		modKnobController	= new KnobController( context );
+		modKnobController.setup();
 		
 		//Make this controller listen to it's subcontrollers
 		rootKnobController.addObserver(		this );

@@ -8,7 +8,7 @@ public class DrumEditorView extends LinearLayout {
 
 	public DrumEditorView( Context context ) {
 		
-		super(context);
+		super( context );
 	}
 	
 	public void addKnob( View knob ) {

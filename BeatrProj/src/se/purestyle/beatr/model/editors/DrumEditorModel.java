@@ -76,8 +76,6 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		//Load the drum file!
 		File newDrumFile = FileModifier.createIndividualizedFile( replacementMap, "pdfiles/drum.pd" );
 		
-		FileModifier.traceFile( newDrumFile );
-		
 		//Tell the pure data environmen to add a new synth
 		PdConnector.addPatch( newDrumFile );
 		
