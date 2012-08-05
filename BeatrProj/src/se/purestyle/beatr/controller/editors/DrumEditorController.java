@@ -75,7 +75,7 @@ public class DrumEditorController extends AbstractController {
 		view.addKnob( clipKnobController.getView() 	);
 		view.addKnob( shapeKnobController.getView() );
 		view.addKnob( decayKnobController.getView() );
-		view.addKnob( decayKnobController.getView() );
+		view.addKnob( modKnobController.getView() );
 	}
 
 	@Override
