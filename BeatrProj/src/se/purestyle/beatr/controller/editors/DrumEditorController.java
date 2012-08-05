@@ -38,8 +38,8 @@ public class DrumEditorController extends AbstractController {
 	@Override
 	public void setup() {
 		
-		view 	= new DrumEditorView( context );
-		model 	= new DrumEditorModel( pdInternalInstrumentName );
+		view 				= new DrumEditorView( context );
+		model 				= new DrumEditorModel( pdInternalInstrumentName );
 		
 		model.setClip( 2.0f );
 		
