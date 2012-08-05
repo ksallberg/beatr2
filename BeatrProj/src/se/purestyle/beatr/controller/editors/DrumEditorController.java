@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 
 import se.purestyle.beatr.controller.generic.KnobController;
 import se.purestyle.beatr.model.editors.DrumEditorModel;
+import se.purestyle.beatr.model.generic.KnobModel;
 import se.purestyle.beatr.view.editors.DrumEditorView;
 
 import android.content.Context;
@@ -91,6 +92,11 @@ public class DrumEditorController extends AbstractController {
 	
 	@Override
 	public void propertyChange( PropertyChangeEvent event ) {
+		
+		if( event.getPropertyName().equals( KnobModel.NEW_PERCENTAGES ) ) {
+			
+			Log.i( "DrumEditorController: ", "New Percentages" );
+		}
 		
 	//	root is changed
 		if( event.getSource().equals( rootKnobController ) ) {

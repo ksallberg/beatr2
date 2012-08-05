@@ -6,13 +6,21 @@ import android.widget.LinearLayout;
 
 public class DrumEditorView extends LinearLayout {
 
+	private Context context;
+	
 	public DrumEditorView( Context context ) {
 		
 		super( context );
+		
+		this.context = context;
 	}
 	
 	public void addKnob( View knob ) {
 		
-		addView( knob );
+		LinearLayout wrapper = new LinearLayout( context );
+		wrapper.setLayoutParams( new LayoutParams( 50, 50 ) );
+		wrapper.addView( knob );
+		
+		addView( wrapper );
 	}
 }
