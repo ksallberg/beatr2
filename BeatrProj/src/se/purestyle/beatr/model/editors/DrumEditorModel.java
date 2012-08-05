@@ -23,31 +23,31 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//root
 	private final String rootControllerName 			= "root";
-	private 	  float root 							= 2.2f;
+	private 	  float root 							= 30.0f; //20 -> 100
 	
 	//f01
 	private final String f01ControllerName 				= "f01";
-	private 	  float f01								= 2.2f;
+	private 	  float f01								= 3.0f; //1 -> 4
 	
 	//f02
 	private final String f02ControllerName 				= "f02";
-	private 	  float f02								= 2.2f;
+	private 	  float f02								= 3.0f; //1 -> 4
 	
 	//clip
 	private final String clipControllerName 			= "clip";
-	private 	  float clip							= 2.2f;
+	private 	  float clip							= 1.0f; //0 -> 1
 	
 	//shape
 	private final String shapeControllerName 			= "shape";
-	private 	  float shape							= 2.2f;
+	private 	  float shape							= 2.2f; //0 -> 0.25
 	
 	//decay
 	private final String decayControllerName 			= "decay";
-	private 	  float decay							= 2.2f;
+	private 	  float decay							= 2.2f; //0 -> 1
 	
 	//mod
 	private final String modControllerName 				= "mod";
-	private 	  float mod								= 2.2f;
+	private 	  float mod								= 2.2f; //0 -> 1
 
 	/**
 	 * Constructor, needs the name of this instrument.

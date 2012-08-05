@@ -111,17 +111,7 @@
 #X connect 46 0 47 0;
 #X connect 47 0 44 0;
 #X connect 48 0 47 1;
-#X restore 17 211 pd 6s3cos1;
-#X obj 26 122 vsl 10 40 1 4 0 1 empty empty fO1 0 -8 1 8 -260818 -1
--1 1000 1;
-#X obj 61 122 vsl 10 40 1 4 0 1 empty empty fO2 0 -8 1 8 -260818 -1
--1 1400 1;
-#X obj 125 137 vsl 10 40 0 0.25 0 1 empty empty shape 0 -8 1 8 -260818
--1 -1 1000 1;
-#X obj 98 138 vsl 10 40 0 1 0 1 empty empty clip 0 -8 1 8 -260818 -1
--1 2800 1;
-#X obj 159 137 vsl 10 40 0 1 0 1 empty empty decay 0 -8 1 8 -260818
--1 -1 900 1;
+#X restore 17 336 pd 6s3cos1;
 #N canvas 506 190 450 300 random 0;
 #X obj 55 101 metro 100;
 #X obj 55 214 outlet;
@@ -145,21 +135,38 @@
 #X connect 9 0 5 0;
 #X connect 10 0 9 0;
 #X restore 17 71 pd random midi notes;
-#X obj 152 22 vsl 10 40 12 96 0 1 empty empty root 0 -8 1 8 -260818
--1 -1 1300 1;
-#X obj 199 134 vsl 10 40 0 1 0 1 empty empty mod 0 -8 1 8 -260818 -1
--1 1200 1;
 #X floatatom 75 -38 5 0 0 0 - - -;
 #X floatatom 17 -25 5 0 0 0 - - -;
 #X obj 17 -98 r pulse;
-#X connect 1 0 0 1;
-#X connect 2 0 0 2;
-#X connect 3 0 0 4;
-#X connect 4 0 0 3;
-#X connect 5 0 0 5;
-#X connect 6 0 0 0;
-#X connect 7 0 6 2;
-#X connect 8 0 0 6;
-#X connect 9 0 6 1;
-#X connect 10 0 6 0;
-#X connect 11 0 10 0;
+#X floatatom 185 22 5 0 0 0 - - -;
+#X obj 185 -29 r root;
+#X floatatom 26 187 5 0 0 0 - - -;
+#X obj 26 151 r f01;
+#X floatatom 65 187 5 0 0 0 - - -;
+#X obj 65 151 r f02;
+#X floatatom 112 187 5 0 0 0 - - -;
+#X obj 112 151 r clip;
+#X floatatom 162 187 5 0 0 0 - - -;
+#X obj 162 151 r shape;
+#X floatatom 219 187 5 0 0 0 - - -;
+#X obj 219 151 r decay;
+#X floatatom 276 187 5 0 0 0 - - -;
+#X obj 276 151 r mod;
+#X connect 1 0 0 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 2;
+#X connect 6 0 5 0;
+#X connect 7 0 0 1;
+#X connect 8 0 7 0;
+#X connect 9 0 0 2;
+#X connect 10 0 9 0;
+#X connect 11 0 0 3;
+#X connect 12 0 11 0;
+#X connect 13 0 0 4;
+#X connect 14 0 13 0;
+#X connect 15 0 0 5;
+#X connect 16 0 15 0;
+#X connect 17 0 0 6;
+#X connect 18 0 17 0;
