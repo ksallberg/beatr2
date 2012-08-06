@@ -1,7 +1,8 @@
 package se.purestyle.beatr;
 
-import se.purestyle.beatr.view.generic.ImageAdapter;
+import se.purestyle.beatr.view.generic.ViewAdapter;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -17,7 +18,12 @@ public class WorkBenchActivity extends Activity {
 	    setContentView(R.layout.main);
 	    
 	    GridView gridview = (GridView) findViewById(R.id.gridview);
-	    gridview.setAdapter(new ImageAdapter(this));
+	    gridview.setBackgroundColor( Color.WHITE );
+	    
+	    ViewAdapter adapter = new ViewAdapter( this );
+	    adapter.setViewArray( null );
+	    
+	    gridview.setAdapter( adapter );
 	    
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 		
