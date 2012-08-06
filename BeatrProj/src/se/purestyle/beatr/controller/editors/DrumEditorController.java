@@ -71,18 +71,26 @@ public class DrumEditorController extends AbstractController {
 		modKnobController.addObserver(		this );
 		
 		view.addKnob( rootKnobController.getView() 	);
-		view.addKnob( f01KnobController.getView() 	);
+/*		view.addKnob( f01KnobController.getView() 	);
 		view.addKnob( f02KnobController.getView() 	);
 		view.addKnob( clipKnobController.getView() 	);
 		view.addKnob( shapeKnobController.getView() );
 		view.addKnob( decayKnobController.getView() );
-		view.addKnob( modKnobController.getView() );
+		view.addKnob( modKnobController.getView() 	); */
 	}
 
 	@Override
 	public void teardown() {
 		
+		view.removeAllViews();
 		
+		rootKnobController.teardown();
+		f01KnobController.teardown();
+		f02KnobController.teardown();
+		clipKnobController.teardown();
+		shapeKnobController.teardown();
+		decayKnobController.teardown();
+		modKnobController.teardown();
 	}
 	
 	public View getView() {

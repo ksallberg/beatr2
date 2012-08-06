@@ -6,6 +6,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.util.Log;
+
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.MetronomePlayer;
 import se.purestyle.beatr.helpers.PdConnector;
@@ -137,6 +139,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	public void setOnoff( int onoff ) {
 		
 		this.onoff = onoff;
+		
+		Log.i( "DrumEditorModel", "onoff?" + onoff );
 		
 		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, this.onoff ); //This. just to avoid unused warning
 	}

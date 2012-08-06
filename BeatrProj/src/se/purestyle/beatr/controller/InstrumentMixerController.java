@@ -204,7 +204,7 @@ public class InstrumentMixerController extends AbstractController {
 				
 			} else {
 				
-				Log.e( "InstrumentMixerController", "Error: No instrument matching!" );
+				throw new RuntimeException( "InstrumentMixerController, Error: No instrument matching!" );
 			}
 			
 			//Pass the name to the model of the InstrumentController

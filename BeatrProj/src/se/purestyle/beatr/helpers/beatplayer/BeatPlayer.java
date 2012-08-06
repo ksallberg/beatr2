@@ -1,11 +1,16 @@
 package se.purestyle.beatr.helpers.beatplayer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import android.util.Log;
+
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
+import se.purestyle.beatr.model.editors.DrumEditorModel;
 
 /**
  * This is the class that automatically informs the synth what to play when in the mixer view
@@ -40,12 +45,14 @@ public class BeatPlayer {
 	public static final String NONE = "none";
 	
 	private Map<String, Player> threads; //The threads that are going to send messages to the synth in a parallel manner
+	private List<DrumEditorModel> drums;
 	
 	//Private constructor, this is not possible to call from outside of this class
 	private BeatPlayer() {
 		
 		//Create the "thread pool"
 		threads = new HashMap<String, Player>();
+		drums 	= new ArrayList<DrumEditorModel>();
 	}
 	
 	/**
@@ -67,15 +74,28 @@ public class BeatPlayer {
 	}
 	
 	/**
+	 * Separate way to add the drums, because they are not going to be recorded and run in separate threads
+	 * 
+	 * @param drum
+	 */
+	public void addDrum( DrumEditorModel drum ) {
+		
+		drums.add( drum );
+	}
+	
+	/**
 	 * This method accepts either BeatPlayer.ALL, BeatPlayer.NONE or a single instrument to be played
 	 * 
 	 * @param message ALL, NONE or an instrument name
 	 */
 	public void setMode( String message ) {
 		
+		Log.i( "BeatPlayer setMode message", message );
+		
 		//Turn all instruments on
 		if( message.equals( ALL ) ) {
 			
+			//Turn all recorded instruments on
 			Iterator<Entry<String, Player>> it = threads.entrySet().iterator();
 			
 			while( it.hasNext() ) {
@@ -83,9 +103,16 @@ public class BeatPlayer {
 				it.next().getValue().play();
 			}
 			
+			//Turn all drums on
+			for( DrumEditorModel drum : drums ) {
+				
+				drum.setOnoff( 1 );
+			}
+			
 		//Turn all instruments off
 		} else if ( message.equals( NONE ) ) {
 			
+			//Turn all recorded instruments on
 			Iterator<Entry<String, Player>> it = threads.entrySet().iterator();
 			
 			while( it.hasNext() ) {
@@ -95,6 +122,12 @@ public class BeatPlayer {
 				elem.getValue().pause();
 				elem.getValue().setInstrumentOff(); //Just a quick fix to mute all instruments before 
 														//some instrument enters its editor mode
+			}
+			
+			//Turn all drums off
+			for( DrumEditorModel drum : drums ) {
+				
+				drum.setOnoff( 0 );
 			}
 		
 		//Turn a single instrument on
