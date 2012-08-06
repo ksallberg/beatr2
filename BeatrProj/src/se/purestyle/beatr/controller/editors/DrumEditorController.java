@@ -43,6 +43,9 @@ public class DrumEditorController extends AbstractController {
 		view 				= new DrumEditorView( context );
 		model 				= new DrumEditorModel( pdInternalInstrumentName );
 		
+		//TODO: Find a better place to start the individual drum
+		model.setOnoff( 1 );
+		
 		model.setClip( 2.0f );
 		
 		//Initialize subcontrollers
@@ -71,12 +74,12 @@ public class DrumEditorController extends AbstractController {
 		modKnobController.addObserver(		this );
 		
 		view.addKnob( rootKnobController.getView() 	);
-/*		view.addKnob( f01KnobController.getView() 	);
+		view.addKnob( f01KnobController.getView() 	);
 		view.addKnob( f02KnobController.getView() 	);
 		view.addKnob( clipKnobController.getView() 	);
 		view.addKnob( shapeKnobController.getView() );
 		view.addKnob( decayKnobController.getView() );
-		view.addKnob( modKnobController.getView() 	); */
+		view.addKnob( modKnobController.getView() 	);
 	}
 
 	@Override

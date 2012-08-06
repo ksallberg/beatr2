@@ -133,6 +133,11 @@ public class BeatPlayer {
 		//Turn a single instrument on
 		} else {
 			
+			//TODO: This is never played, but it is a lot of work to make it play, then the instruments would need to be changed
+			//in the editors as the sound is changed, and it would also require a mode to stop the automatic playback
+			
+			Log.i("BeatPlayer", "Turn specific instrument on");
+			
 			if( threads.get( message ) != null ) {
 				
 				threads.get( message ).play();
