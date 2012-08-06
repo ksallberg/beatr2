@@ -32,12 +32,19 @@ public final class R {
         public static final int next=0x7f020008;
         public static final int prev=0x7f020009;
         public static final int rewindinstrument=0x7f02000a;
-        public static final int volumebaroverlay=0x7f02000b;
+        public static final int sample_0=0x7f02000b;
+        public static final int sample_1=0x7f02000c;
+        public static final int sample_2=0x7f02000d;
+        public static final int sample_3=0x7f02000e;
+        public static final int sample_4=0x7f02000f;
+        public static final int sample_5=0x7f020010;
+        public static final int sample_6=0x7f020011;
+        public static final int sample_7=0x7f020012;
+        public static final int volumebaroverlay=0x7f020013;
     }
     public static final class id {
-        public static final int about_item=0x7f0a0002;
-        public static final int button1=0x7f0a0000;
-        public static final int gridView1=0x7f0a0001;
+        public static final int about_item=0x7f0a0001;
+        public static final int gridview=0x7f0a0000;
     }
     public static final class layout {
         public static final int main=0x7f030000;

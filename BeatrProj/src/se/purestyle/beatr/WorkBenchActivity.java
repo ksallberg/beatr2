@@ -1,44 +1,30 @@
 package se.purestyle.beatr;
 
-import se.purestyle.beatr.controller.generic.DrumPadController;
 import se.purestyle.beatr.view.generic.ImageAdapter;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
+import android.view.View;
 
 public class WorkBenchActivity extends Activity {
-
-	LinearLayout holder;
 	
-	@Override
-	public void onCreate( Bundle test ) {
+	public void onCreate(Bundle savedInstanceState) {
+	    
+		super.onCreate(savedInstanceState);
+	    setContentView(R.layout.main);
+	    
+	    GridView gridview = (GridView) findViewById(R.id.gridview);
+	    gridview.setAdapter(new ImageAdapter(this));
+	    
+	    gridview.setOnItemClickListener(new OnItemClickListener() {
 		
-		super.onCreate( test );
-		
-		//Remove the standard top bar stating the application name, I use a logo instead
-		requestWindowFeature( Window.FEATURE_NO_TITLE );
-		
-		ImageAdapter adapter = new ImageAdapter( getApplicationContext() );
-		
-		GridView holder = new GridView( getApplicationContext() );
-		holder.setNumColumns( GridView.AUTO_FIT );
-		holder.setAdapter( adapter );
-		setContentView( holder );
-		
-		for( int i = 0; i < 10; i ++ ) {
-			
-			DrumPadController drumPadController = new DrumPadController( getApplicationContext() );
-			drumPadController.setup();
-			
-			LayoutParams subParams = new LayoutParams( 75, 75 );
-			
-			LinearLayout subHolder = new LinearLayout( getApplicationContext() );
-			
-			subHolder.setLayoutParams( subParams );
-			subHolder.addView( drumPadController.getView() );
-		}
+	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+	        	
+	            Toast.makeText(WorkBenchActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+	        }
+	    });
 	}
 }
