@@ -11,7 +11,6 @@ import android.util.Log;
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.MetronomePlayer;
 import se.purestyle.beatr.helpers.PdConnector;
-import se.purestyle.beatr.helpers.beatplayer.Beat;
 
 public class DrumEditorModel extends AbstractEditorModel implements PropertyChangeListener {
 	
