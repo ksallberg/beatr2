@@ -78,8 +78,9 @@ public class DrumEditorView extends LinearLayout {
 	public void addDrumPads( View[] pads ) {
 		
 		ViewAdapter adapter = new ViewAdapter();
+		
 	    adapter.setViewArray( pads );
 	    
-	    knobHolder.setAdapter( adapter );
+	    drumPadHolder.setAdapter( adapter );
 	}
 }

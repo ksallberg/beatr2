@@ -108,7 +108,7 @@ public class DrumEditorController extends AbstractController {
 		
 		View[] drumPads = pads.toArray( new View[]{} );
 		
-//		view.addDrumPads( drumPads );
+		view.addDrumPads( drumPads );
 	}
 
 	@Override
