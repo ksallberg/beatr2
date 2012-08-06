@@ -113,20 +113,26 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	/**
 	 * Get this instrument's name
 	 */
+	
+	/*
 	@Override
 	public String getInstrumentName() {
 		
 		return pdInternalInstrumentName;
 	}
+	*/
 	
 	/**
 	 * For the drum, just return an empty beat
 	 */
+	
+	/*
 	@Override
 	public Beat getBeat() {
 		
 		return new Beat();
 	}
+	*/
 	
 	public void setOnoff( int onoff ) {
 		
