@@ -28,8 +28,8 @@ public class DrumEditorActivity extends Activity {
 		txt.setTextColor( Color.WHITE );
 		txt.setText( "Drum editor " );
 		
-		holder.addView( insideHolder );
 		holder.addView( txt );
+		holder.addView( insideHolder );
 		
 		setContentView( holder );
 		

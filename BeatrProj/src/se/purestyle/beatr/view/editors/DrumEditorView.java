@@ -2,7 +2,7 @@ package se.purestyle.beatr.view.editors;
 
 import se.purestyle.beatr.view.generic.ViewAdapter;
 import android.content.Context;
-import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +25,15 @@ public class DrumEditorView extends LinearLayout {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
 		
+		setOrientation( LinearLayout.VERTICAL );
+		
 		//Create the drum pad holder
 		drumPadHolder = new GridView( context );
 		drumPadHolder.setLayoutParams( new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
 		drumPadHolder.setColumnWidth( 90 );
 		drumPadHolder.setVerticalSpacing( 10 );
 		drumPadHolder.setNumColumns( GridView.AUTO_FIT );
-		drumPadHolder.setBackgroundColor( Color.WHITE );
+		drumPadHolder.setGravity( Gravity.CENTER );
 		
 		//Create the knob holder
 		knobHolder = new GridView( context );
@@ -41,8 +43,8 @@ public class DrumEditorView extends LinearLayout {
 		knobHolder.setNumColumns( GridView.AUTO_FIT );
 		knobHolder.setGravity( Gravity.CENTER );
 
-		addView( knobHolder );
 		addView( drumPadHolder );
+		addView( knobHolder );
 	}
 	
 	/**
@@ -77,10 +79,33 @@ public class DrumEditorView extends LinearLayout {
 	
 	public void addDrumPads( View[] pads ) {
 		
+		Log.i("DrumEditorView", "pads: " + pads.length );
+		
 		ViewAdapter adapter = new ViewAdapter();
 		
-	    adapter.setViewArray( pads );
+	    adapter.setViewArray( wrapPads( pads ) );
 	    
 	    drumPadHolder.setAdapter( adapter );
+	}
+	
+	/**
+	 * Wrap a list of knobs in linearLayouts 
+	 * 
+	 * @param knobs
+	 * @return
+	 */
+	private View[] wrapPads( View[] pads ) {
+		
+		View[] ret = new View[ pads.length ];
+		
+		for( int i = 0; i < pads.length; i ++ ) {
+			
+			LinearLayout wrapper = new LinearLayout( context );
+			wrapper.setLayoutParams( new AbsListView.LayoutParams( 65, 65 ) );
+			ret[ i ] = wrapper;
+			wrapper.addView( pads[ i ] ); //Add the view from knobs to the one in wrapper
+		}
+		
+		return ret;
 	}
 }

@@ -96,7 +96,7 @@ public class DrumEditorController extends AbstractController {
 //TODO: Snygga till skapanded av pads!
 		List<DrumPadView> pads = new ArrayList<DrumPadView>();
 		
-		for( int i = 0; i < 7; i ++ ) {
+		for( int i = 0; i < 9; i ++ ) {
 			
 			DrumPadController drumPad = new DrumPadController( context );
 			drumPad.setup();
