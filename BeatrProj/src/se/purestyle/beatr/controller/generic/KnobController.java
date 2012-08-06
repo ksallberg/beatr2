@@ -33,6 +33,7 @@ public class KnobController extends AbstractController {
 		view = new KnobView( context );
 		view.setOnTouchListener( touchListener );
 		view.setModel( model );
+		view.invalidate();
 	}
 
 	@Override

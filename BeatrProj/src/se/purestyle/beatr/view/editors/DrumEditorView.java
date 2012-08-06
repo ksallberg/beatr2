@@ -3,7 +3,6 @@ package se.purestyle.beatr.view.editors;
 import se.purestyle.beatr.view.generic.ViewAdapter;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,24 +25,24 @@ public class DrumEditorView extends LinearLayout {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
 		
-		this.setBackgroundColor( Color.GREEN );
-		
 		//Create the drum pad holder
-		drumPadHolder = new GridView( context ); //(GridView) findViewById( R.id.gridview );
-		//drumPadHolder.setLayoutParams( new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
+		drumPadHolder = new GridView( context );
+		drumPadHolder.setLayoutParams( new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
+		drumPadHolder.setColumnWidth( 90 );
+		drumPadHolder.setVerticalSpacing( 10 );
+		drumPadHolder.setNumColumns( GridView.AUTO_FIT );
 		drumPadHolder.setBackgroundColor( Color.WHITE );
 		
 		//Create the knob holder
-		knobHolder = new GridView( context ); //(GridView) findViewById( R.id.gridview );
+		knobHolder = new GridView( context );
 		knobHolder.setLayoutParams( new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
-		knobHolder.setBackgroundColor( Color.MAGENTA );
 		knobHolder.setColumnWidth( 90 );
-		knobHolder.setVerticalSpacing( 20 );
+		knobHolder.setVerticalSpacing( 10 );
 		knobHolder.setNumColumns( GridView.AUTO_FIT );
 		knobHolder.setGravity( Gravity.CENTER );
-		
-//		addView( drumPadHolder );
+
 		addView( knobHolder );
+		addView( drumPadHolder );
 	}
 	
 	/**
@@ -60,8 +59,8 @@ public class DrumEditorView extends LinearLayout {
 			
 			LinearLayout wrapper = new LinearLayout( context );
 			wrapper.setLayoutParams( new AbsListView.LayoutParams( 65, 65 ) );
-			wrapper.setBackgroundColor( Color.RED );
 			ret[ i ] = wrapper;
+			wrapper.addView( knobs[ i ] ); //Add the view from knobs to the one in wrapper
 		}
 		
 		return ret;
@@ -69,28 +68,8 @@ public class DrumEditorView extends LinearLayout {
 	
 	public void addKnobs( View[] knobs ) {
 		
-		Log.i( "DrumEditorView", "addKnobs!" );
-		
 		ViewAdapter adapter = new ViewAdapter();
 		
-/*		LinearLayout layout = new LinearLayout( context );
-    	layout.setLayoutParams( new AbsListView.LayoutParams( 75, 75 ) );
-    	layout.setBackgroundColor( Color.RED );
-    	
-    	LinearLayout layout2 = new LinearLayout( context );
-    	layout2.setLayoutParams( new AbsListView.LayoutParams( 75, 75 ) );
-    	layout2.setBackgroundColor( Color.BLUE );
-    	
-    	LinearLayout layout3 = new LinearLayout( context );
-    	layout3.setLayoutParams( new AbsListView.LayoutParams( 75, 75 ) );
-    	layout3.setBackgroundColor( Color.CYAN );
-    	
-    	LinearLayout layout4 = new LinearLayout( context );
-    	layout4.setLayoutParams( new AbsListView.LayoutParams( 75, 75 ) );
-    	layout4.setBackgroundColor( Color.YELLOW );
-    	
-    	View[] knobssss = new View[] { layout, layout2, layout3, layout4 };
-	*/	
 	    adapter.setViewArray( wrapKnobs( knobs ) );
 	    
 	    knobHolder.setAdapter( adapter );

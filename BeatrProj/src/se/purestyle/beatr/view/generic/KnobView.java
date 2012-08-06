@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 
 public class KnobView extends View {
 	
@@ -15,6 +16,8 @@ public class KnobView extends View {
 	public KnobView( Context context ) {
 		
 		super( context );
+		
+		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
 	}
 	
 	public void setModel( KnobModel model ) {

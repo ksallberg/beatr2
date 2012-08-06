@@ -1,11 +1,15 @@
 package se.purestyle.beatr.controller.editors;
 
 import java.beans.PropertyChangeEvent;
+import java.util.ArrayList;
+import java.util.List;
 
+import se.purestyle.beatr.controller.generic.DrumPadController;
 import se.purestyle.beatr.controller.generic.KnobController;
 import se.purestyle.beatr.model.editors.DrumEditorModel;
 import se.purestyle.beatr.model.generic.KnobModel;
 import se.purestyle.beatr.view.editors.DrumEditorView;
+import se.purestyle.beatr.view.generic.DrumPadView;
 
 import android.content.Context;
 import android.util.Log;
@@ -31,6 +35,8 @@ public class DrumEditorController extends AbstractController {
 	private KnobController			decayKnobController;
 	private KnobController			modKnobController;
 	
+	private List<DrumPadController> drumPads;
+	
 	public DrumEditorController( String pdInternalInstrumentName, Context context ) {
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
@@ -39,6 +45,8 @@ public class DrumEditorController extends AbstractController {
 	
 	@Override
 	public void setup() {
+		
+		drumPads 			= new ArrayList<DrumPadController>();
 		
 		view 				= new DrumEditorView( context );
 		model 				= new DrumEditorModel( pdInternalInstrumentName );
@@ -73,7 +81,8 @@ public class DrumEditorController extends AbstractController {
 		decayKnobController.addObserver(	this );
 		modKnobController.addObserver(		this );
 		
-		View[] knobs = new View[] { rootKnobController.getView(),
+		View[] knobs = new View[] { 
+									rootKnobController.getView(),
 									f01KnobController.getView(),
 									f02KnobController.getView(),
 									clipKnobController.getView(),
@@ -83,6 +92,23 @@ public class DrumEditorController extends AbstractController {
 								  };
 		
 		view.addKnobs( knobs );
+		
+//TODO: Snygga till skapanded av pads!
+		List<DrumPadView> pads = new ArrayList<DrumPadView>();
+		
+		for( int i = 0; i < 7; i ++ ) {
+			
+			DrumPadController drumPad = new DrumPadController( context );
+			drumPad.setup();
+			
+			drumPads.add( drumPad );
+			
+			pads.add( (DrumPadView) drumPad.getView() );
+		}
+		
+		View[] drumPads = pads.toArray( new View[]{} );
+		
+//		view.addDrumPads( drumPads );
 	}
 
 	@Override
