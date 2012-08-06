@@ -17,10 +17,10 @@ public class WorkBenchActivity extends Activity {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 	    
-	    GridView gridview = (GridView) findViewById(R.id.gridview);
+	    GridView gridview = (GridView) findViewById( R.id.gridview );
 	    gridview.setBackgroundColor( Color.WHITE );
 	    
-	    ViewAdapter adapter = new ViewAdapter( this );
+	    ViewAdapter adapter = new ViewAdapter();
 	    adapter.setViewArray( null );
 	    
 	    gridview.setAdapter( adapter );

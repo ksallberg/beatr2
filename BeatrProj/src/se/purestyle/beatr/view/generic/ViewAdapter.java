@@ -1,12 +1,9 @@
 package se.purestyle.beatr.view.generic;
 
-import android.content.Context;
-import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 
 /**
  * Required by the Android framework to tell the GridView what it should contain
@@ -16,15 +13,17 @@ import android.widget.LinearLayout;
  */
 public class ViewAdapter extends BaseAdapter {
 	
-    private Context mContext;
+//    private Context mContext;
     private View[]	viewList;
     
-    public ViewAdapter( Context c ) {
+//    public ViewAdapter( Context c ) {
     	
-        mContext = c;
-    }
+//        mContext = c;
+//    }
 
     public int getCount() {
+    	
+    	Log.i( "ViewAdapter", "getCount: " + viewList.length );
     	
         return viewList.length;
     }
@@ -52,6 +51,7 @@ public class ViewAdapter extends BaseAdapter {
      */
     public void setViewArray( View[] viewList ) {
     	
+    	/*
     	LinearLayout layout = new LinearLayout( mContext );
     	layout.setLayoutParams( new AbsListView.LayoutParams( 75, 75 ) );
     	layout.setBackgroundColor( Color.RED );
@@ -69,5 +69,8 @@ public class ViewAdapter extends BaseAdapter {
     	layout4.setBackgroundColor( Color.YELLOW );
     	
     	this.viewList = new View[] { layout, layout2, layout3, layout4 };
+    	*/
+    	
+    	this.viewList = viewList;
     }
 }

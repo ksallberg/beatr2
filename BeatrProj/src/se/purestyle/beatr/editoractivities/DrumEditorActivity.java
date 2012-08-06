@@ -22,7 +22,7 @@ public class DrumEditorActivity extends Activity {
 		holder.setOrientation( LinearLayout.VERTICAL );
 		
 		LinearLayout insideHolder = new LinearLayout( getApplicationContext() );
-		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 300 ) );
+		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
 		
 		TextView txt = new TextView( getApplicationContext() );
 		txt.setTextColor( Color.WHITE );
