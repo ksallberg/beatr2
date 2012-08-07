@@ -6,8 +6,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.util.Log;
-
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.MetronomePlayer;
 import se.purestyle.beatr.helpers.PdConnector;
@@ -79,8 +77,6 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	 * @param pdInternalInstrumentName
 	 */
 	public DrumEditorModel( String pdInternalInstrumentName ) {
-		
-		Log.i( "DrumEditorModel", "NEW DRUM EDITOR MODEL!!!" );
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
 		
@@ -257,8 +253,6 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		
 		//Tick event dispatched by the metronome
 		if( event.getPropertyName().equals( MetronomePlayer.TICK ) ) {
-			
-			Log.i("DrumEditorModel: currentPlayingDrum: ","" +  currentPlayingDrum + ", " + Thread.currentThread() );
 			
 			if( drumIsOn[ currentPlayingDrum ] ) {
 				

@@ -105,6 +105,8 @@ public class BeatPlayer {
 			
 			//Turn all drums on
 			for( DrumEditorModel drum : drums ) {
+
+				Log.i("BeatPlayer", "Turn Drum on!" + drum );
 				
 				drum.setOnoff( 1 );
 			}
@@ -126,6 +128,8 @@ public class BeatPlayer {
 			
 			//Turn all drums off
 			for( DrumEditorModel drum : drums ) {
+				
+				Log.i("BeatPlayer", "Turn Drum off!" + drum );
 				
 				drum.setOnoff( 0 );
 			}

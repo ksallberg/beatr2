@@ -9,7 +9,6 @@ import org.puredata.android.service.R;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.util.Log;
 
 /**
  * Use the timer to schedule something at a given bpm interval
@@ -96,8 +95,6 @@ public class MetronomePlayer {
 	}
 	
 	public static void addObserver( PropertyChangeListener listener ) {
-		
-		Log.i( "MetronomePlayer", "____________________ADD OBSERVER" );
 		
 		propertyChange.addPropertyChangeListener( listener );
 	}
