@@ -67,6 +67,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 //// Scheduling of the drum beats
 	private final int 	NUMBER_OF_PADS					= 9;
+	private		  int	currentPlayingDrum				= 0;
 	private final boolean[] drumIsOn					= new boolean[ NUMBER_OF_PADS ];
 
 	/**
@@ -248,10 +249,20 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		//Tick event dispatched by the metronome
 		if( event.getPropertyName().equals( MetronomePlayer.TICK ) ) {
 			
-			//Play the drum!
-			PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 1.0f );
-			//Make the drum go quiet again
-			PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 0.0f );
+			if( drumIsOn[ currentPlayingDrum ] ) {
+				
+				//Play the drum!
+				PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 1.0f );
+				//Make the drum go quiet again
+				PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 0.0f );
+			}
+			
+			currentPlayingDrum ++;
+			
+			if( currentPlayingDrum > NUMBER_OF_PADS - 1 ) {
+				
+				currentPlayingDrum = 0;
+			}
 		}
 	}
 }
