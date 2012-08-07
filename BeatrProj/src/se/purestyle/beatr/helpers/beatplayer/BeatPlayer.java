@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import android.util.Log;
-
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
 import se.purestyle.beatr.model.editors.DrumEditorModel;
 
@@ -78,8 +76,6 @@ public class BeatPlayer {
 	 */
 	public void addDrum( String instrumentName, DrumEditorModel drum ) {
 		
-		Log.i( "BeatPlayer", "addDrum" );
-		
 		drums.put( instrumentName, drum );
 	}
 	
@@ -121,7 +117,7 @@ public class BeatPlayer {
 				
 				elem.getValue().pause();
 				elem.getValue().setInstrumentOff(); //Just a quick fix to mute all instruments before 
-														//some instrument enters its editor mode
+													//some instrument enters its editor mode
 			}
 			
 //			Turn all drums on
@@ -138,7 +134,7 @@ public class BeatPlayer {
 			//TODO: This is never played, but it is a lot of work to make it play, then the instruments would need to be changed
 			//in the editors as the sound is changed, and it would also require a mode to stop the automatic playback
 			
-			if( message.substring(0, 4).equals( "drum" ) ) {
+			if( message.substring( 0, 4 ).equals( "drum" ) ) {
 				
 				if( drums.get( message ) != null ) {
 					

@@ -3,7 +3,6 @@ package se.purestyle.beatr.view.editors;
 import se.purestyle.beatr.view.generic.DrumPadView;
 import se.purestyle.beatr.view.generic.ViewAdapter;
 import android.content.Context;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,8 +82,6 @@ public class DrumEditorView extends LinearLayout {
 	public void addDrumPads( View[] pads ) {
 		
 		this.pads = pads;
-		
-		Log.i("DrumEditorView", "pads: " + pads.length );
 		
 		ViewAdapter adapter = new ViewAdapter();
 		
