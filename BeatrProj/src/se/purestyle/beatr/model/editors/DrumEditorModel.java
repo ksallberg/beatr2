@@ -24,31 +24,45 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//root
 	private final String rootControllerName 			= "root";
-	private 	  float root 							= 33.0f; //20 -> 100
+	private 	  float root 							= 33.0f;
+	private	final float minRoot							= 20.0f;
+	private	final float maxRoot							= 100.0f;
 	
 	//f01
 	private final String f01ControllerName 				= "f01";
-	private 	  float f01								= 0.0f; //1 -> 4
+	private 	  float f01								= 0.0f;
+	private final float minF01							= 1.0f;
+	private final float maxF01							= 4.0f;
 	
 	//f02
 	private final String f02ControllerName 				= "f02";
-	private 	  float f02								= 1.0f; //1 -> 4
+	private 	  float f02								= 1.0f;
+	private final float minF02							= 1.0f;
+	private final float maxF02							= 4.0f;
 	
 	//clip
 	private final String clipControllerName 			= "clip";
-	private 	  float clip							= 1.0f; //0 -> 1
+	private 	  float clip							= 1.0f;
+	private final float minClip							= 0.0f;
+	private final float maxClip							= 1.0f;
 	
 	//shape
 	private final String shapeControllerName 			= "shape";
-	private 	  float shape							= 0.0f; //0 -> 0.25
+	private 	  float shape							= 0.0f;
+	private final float minShape						= 0.0f;
+	private final float maxShape						= 0.25f;
 	
 	//decay
 	private final String decayControllerName 			= "decay";
-	private 	  float decay							= 1.0f; //0 -> 1
+	private 	  float decay							= 1.0f;
+	private final float minDecay						= 0.0f;
+	private final float maxDecay						= 1.0f;
 	
 	//mod
 	private final String modControllerName 				= "mod";
 	private 	  float mod								= 1.0f; //0 -> 1
+	private final float minMod							= 0.0f;
+	private final float maxMod							= 1.0f;
 
 	/**
 	 * Constructor, needs the name of this instrument.
@@ -150,63 +164,63 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	 */
 	
 //	Root_________________________________________________
-	public void setRoot( float root ) {
+	public void setRoot( float pcent ) {
 		
-		this.root = root;
+		root = minRoot + ( maxRoot - minRoot ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + rootControllerName, root );
 	}
 	
 	public float getRoot() { return root; }
 
 //	f01_________________________________________________
-	public void setF01( float f01 ) {
+	public void setF01( float pcent ) {
 		
-		this.f01 = f01;
+		f01 = minF01 + ( maxF01 - minF01 ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + f01ControllerName, f01 );
 	}
 	
 	public float getF01() { return f01; }
 
 //	f02_________________________________________________
-	public void setF02( float f02 ) {
+	public void setF02( float pcent ) {
 		
-		this.f02 = f02;
+		f02 = minF02 + ( maxF02 - minF02 ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + f02ControllerName, f02 );
 	}
 	
 	public float getF02() { return f02; }
 
 //	clip_________________________________________________
-	public void setClip( float clip ) {
+	public void setClip( float pcent ) {
 		
-		this.clip = clip;
+		clip = minClip + ( maxClip - minClip ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + clipControllerName, clip );
 	}
 	
 	public float getClip() { return clip; }
 
 //	shape_________________________________________________
-	public void setShape( float shape ) {
+	public void setShape( float pcent ) {
 		
-		this.shape = shape;
+		shape = minShape + ( maxShape - minShape ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + shapeControllerName, shape );
 	}
 	
 	public float getShape() { return shape; }
 	
 //	decay_________________________________________________
-	public void setDecay( float decay ) {
+	public void setDecay( float pcent ) {
 		
-		this.decay = decay;
+		decay = minDecay + ( maxDecay - minDecay ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + decayControllerName, decay );
 	}
 	
 	public float getDecay() { return decay; }
 
 //	mod_________________________________________________
-	public void setMod( float mod ) {
+	public void setMod( float pcent ) {
 		
-		this.mod = mod;
+		mod = minMod + ( maxMod - minMod ) * pcent;
 		PdConnector.sendToPd( pdInternalInstrumentName + modControllerName, mod );
 	}
 	

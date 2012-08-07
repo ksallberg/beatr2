@@ -20,9 +20,16 @@ public class KnobController extends AbstractController {
 	
 	private Context context;
 	
+	private String label;
+	
 	public KnobController( Context context ) {
 		
 		this.context = context;
+	}
+	
+	public void setLabel( String label ) {
+		
+		this.label = label;
 	}
 	
 	@Override
@@ -30,6 +37,8 @@ public class KnobController extends AbstractController {
 		
 		model = new KnobModel();
 		model.addObserver( this );
+		model.setLabel( label );
+		
 		view = new KnobView( context );
 		view.setOnTouchListener( touchListener );
 		view.setModel( model );

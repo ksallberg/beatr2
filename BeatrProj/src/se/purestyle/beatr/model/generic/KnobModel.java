@@ -12,6 +12,17 @@ public class KnobModel extends AbstractModel {
 	private PointF 		pointOfCentre = new PointF( 0.0f, 0.0f );
 	private PointF 		xyCoords = new PointF( 0.0f, 0.0f );
 	private float		currentAngle = 0.0f;
+	private String		label;
+	
+	public void setLabel( String label ) {
+		
+		this.label = label;
+	}
+	
+	public String getLabel() {
+		
+		return label;
+	}
 	
 	public void setCurrentPercent( float currentPercent ) {
 		

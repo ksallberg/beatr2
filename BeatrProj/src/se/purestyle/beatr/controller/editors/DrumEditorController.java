@@ -12,11 +12,16 @@ import se.purestyle.beatr.view.editors.DrumEditorView;
 import se.purestyle.beatr.view.generic.DrumPadView;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 
 import com.purestyle.amvc.controller.AbstractController;
 
+/**
+ * 
+ * 
+ * @author kristian
+ *
+ */
 public class DrumEditorController extends AbstractController {
 	
 	private String 					pdInternalInstrumentName;
@@ -25,6 +30,14 @@ public class DrumEditorController extends AbstractController {
 	private DrumEditorModel 		model;
 	
 	private Context 				context;
+	
+	public static final String		rootLabel 	= "rootLabel";
+	public static final String		f01Label 	= "f01Label";
+	public static final String		f02Label 	= "f02Label";
+	public static final String		clipLabel 	= "clipLabel";
+	public static final String		shapeLabel 	= "shapeLabel";
+	public static final String		decayLabel 	= "decayLabel";
+	public static final String		modLabel 	= "modLabel";
 	
 	//Some sub controllers
 	private KnobController			rootKnobController;
@@ -58,18 +71,31 @@ public class DrumEditorController extends AbstractController {
 		
 		//Initialize subcontrollers
 		rootKnobController 	= new KnobController( context );
+		rootKnobController.setLabel( rootLabel );
 		rootKnobController.setup();
+		
 		f01KnobController 	= new KnobController( context );
+		f01KnobController.setLabel( f01Label );
 		f01KnobController.setup();
+		
 		f02KnobController	= new KnobController( context );
+		f02KnobController.setLabel( f02Label );
 		f02KnobController.setup();
+		
 		clipKnobController	= new KnobController( context );
+		clipKnobController.setLabel( clipLabel );
 		clipKnobController.setup();
+		
 		shapeKnobController	= new KnobController( context );
+		shapeKnobController.setLabel( shapeLabel );
 		shapeKnobController.setup();
+		
 		decayKnobController	= new KnobController( context );
+		decayKnobController.setLabel( decayLabel );
 		decayKnobController.setup();
+		
 		modKnobController	= new KnobController( context );
+		modKnobController.setLabel( modLabel );
 		modKnobController.setup();
 		
 		//Make this controller listen to it's subcontrollers
@@ -135,43 +161,43 @@ public class DrumEditorController extends AbstractController {
 		
 		if( event.getPropertyName().equals( KnobModel.NEW_PERCENTAGES ) ) {
 			
-			Log.i( "DrumEditorController: ", "New Percentages" );
-		}
-		
-	//	root is changed
-		if( event.getSource().equals( rootKnobController ) ) {
+			KnobModel eventModel = (KnobModel) event.getSource();
 			
-			Log.i( "DrumEditorController", "root" );
-			
-	//	f01 is changed
-		} else if( event.getSource().equals( f01KnobController ) ) {
-			
-			Log.i( "DrumEditorController", "f01" );
-			
-	//	f02 is changed
-		} else if( event.getSource().equals( f02KnobController ) ) {
-			
-			Log.i( "DrumEditorController", "f02" );
-			
-	//	clip is changed
-		} else if( event.getSource().equals( clipKnobController ) ) {
-			
-			Log.i( "DrumEditorController", "clip" );
-			
-	//	shape is changed
-		} else if( event.getSource().equals( shapeKnobController ) ) {
-			
-			Log.i( "DrumEditorController", "shape" );
-			
-	//	decay is changed
-		} else if( event.getSource().equals( decayKnobController ) ) {
-			
-			Log.i( "DrumEditorController", "decay" );
-			
-	//	mod is changed
-		} else if( event.getSource().equals( modKnobController ) ) {
-			
-			Log.i( "DrumEditorController", "mod" );
+			//	root is changed
+			if( eventModel.getLabel().equals( rootLabel ) ) {
+				
+				model.setRoot( (Float) event.getNewValue() );
+				
+		//	f01 is changed
+			} else if( eventModel.getLabel().equals( f01Label ) ) {
+				
+				model.setF01( (Float) event.getNewValue() );
+				
+		//	f02 is changed
+			} else if( eventModel.getLabel().equals( f02Label ) ) {
+				
+				model.setF02( (Float) event.getNewValue() );
+				
+		//	clip is changed
+			} else if( eventModel.getLabel().equals( clipLabel ) ) {
+				
+				model.setClip( (Float) event.getNewValue() );
+				
+		//	shape is changed
+			} else if( eventModel.getLabel().equals( shapeLabel ) ) {
+				
+				model.setShape( (Float) event.getNewValue() );
+				
+		//	decay is changed
+			} else if( eventModel.getLabel().equals( decayLabel ) ) {
+				
+				model.setDecay( (Float) event.getNewValue() );
+				
+		//	mod is changed
+			} else if( eventModel.getLabel().equals( modLabel ) ) {
+				
+				model.setMod( (Float) event.getNewValue() );
+			}
 		}
 	}
 }
