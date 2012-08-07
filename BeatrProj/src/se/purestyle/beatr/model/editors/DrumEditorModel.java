@@ -6,6 +6,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.util.Log;
+
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.MetronomePlayer;
 import se.purestyle.beatr.helpers.PdConnector;
@@ -59,7 +61,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//mod
 	private final String modControllerName 				= "mod";
-	private 	  float mod								= 1.0f; //0 -> 1
+	private 	  float mod								= 1.0f;
 	private final float minMod							= 0.0f;
 	private final float maxMod							= 1.0f;
 	
@@ -77,6 +79,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	 * @param pdInternalInstrumentName
 	 */
 	public DrumEditorModel( String pdInternalInstrumentName ) {
+		
+		Log.i( "DrumEditorModel", "NEW DRUM EDITOR MODEL!!!" );
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
 		
@@ -130,6 +134,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	 */
 	private void setInitialPdValues() {
 		
+		PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 0.0f );
 		PdConnector.sendToPd( pdInternalInstrumentName + rootControllerName, root );
 		PdConnector.sendToPd( pdInternalInstrumentName + f01ControllerName, f01 );
 		PdConnector.sendToPd( pdInternalInstrumentName + f02ControllerName, f02 );
@@ -253,6 +258,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		//Tick event dispatched by the metronome
 		if( event.getPropertyName().equals( MetronomePlayer.TICK ) ) {
 			
+			Log.i("DrumEditorModel: currentPlayingDrum: ","" +  currentPlayingDrum + ", " + Thread.currentThread() );
+			
 			if( drumIsOn[ currentPlayingDrum ] ) {
 				
 				//Play the drum!
@@ -261,7 +268,10 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 				PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 0.0f );
 			}
 			
-			view.setPadActive( currentPlayingDrum );
+			if( view != null ) {
+				
+				view.setPadActive( currentPlayingDrum );
+			}
 			
 			currentPlayingDrum ++;
 			

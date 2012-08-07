@@ -6,6 +6,7 @@ import java.util.List;
 
 import se.purestyle.beatr.controller.generic.DrumPadController;
 import se.purestyle.beatr.controller.generic.KnobController;
+import se.purestyle.beatr.helpers.InstrumentTracker;
 import se.purestyle.beatr.model.editors.DrumEditorModel;
 import se.purestyle.beatr.model.generic.KnobModel;
 import se.purestyle.beatr.view.editors.DrumEditorView;
@@ -62,7 +63,8 @@ public class DrumEditorController extends AbstractController {
 		drumPads 			= new ArrayList<DrumPadController>();
 		
 		view 				= new DrumEditorView( context );
-		model 				= new DrumEditorModel( pdInternalInstrumentName );
+
+		model				= (DrumEditorModel) InstrumentTracker.getModel( pdInternalInstrumentName );
 		model.setView( view );
 		
 		//TODO: Find a better place to start the individual drum
