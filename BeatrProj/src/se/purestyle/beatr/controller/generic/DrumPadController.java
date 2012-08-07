@@ -10,14 +10,23 @@ import com.purestyle.amvc.controller.AbstractController;
 
 public class DrumPadController extends AbstractController {
 
+	public static final String PAD_PRESSED = "padPressed";
+	
 	private Context context;
 	
 	private DrumPadModel model;
 	private DrumPadView view;
 	
+	private int id;
+	
 	public DrumPadController( Context context ) {
 		
 		this.context = context;
+	}
+	
+	public void setId( int id ) {
+		
+		this.id = id;
 	}
 	
 	@Override
@@ -48,6 +57,8 @@ public class DrumPadController extends AbstractController {
 			
 			model.toggleShouldPlay();
 			view.invalidate();
+			
+			observers.firePropertyChange( PAD_PRESSED, id, model.getShouldPlay() );
 		}
 	};
 }

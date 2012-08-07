@@ -63,6 +63,11 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	private 	  float mod								= 1.0f; //0 -> 1
 	private final float minMod							= 0.0f;
 	private final float maxMod							= 1.0f;
+	
+	
+//// Scheduling of the drum beats
+	private final int 	NUMBER_OF_PADS					= 9;
+	private final boolean[] drumIsOn					= new boolean[ NUMBER_OF_PADS ];
 
 	/**
 	 * Constructor, needs the name of this instrument.
@@ -72,6 +77,12 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	public DrumEditorModel( String pdInternalInstrumentName ) {
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
+		
+		//Set all pads to off
+		for( int i = 0; i < NUMBER_OF_PADS; i ++ ) {
+			
+			drumIsOn[ i ] = false;
+		}
 		
 		//Prepare a new .pd file that has variable names unique to this model
 		Map<String, String> replacementMap = new HashMap<String, String>();
@@ -99,6 +110,11 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		
 		//set initial values
 		setInitialPdValues();
+	}
+	
+	public void setDrumOnOff( int id, boolean on ) {
+		
+		drumIsOn[ id ] = on;
 	}
 	
 	/**

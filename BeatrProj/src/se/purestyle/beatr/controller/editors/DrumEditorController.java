@@ -125,8 +125,10 @@ public class DrumEditorController extends AbstractController {
 		for( int i = 0; i < 9; i ++ ) {
 			
 			DrumPadController drumPad = new DrumPadController( context );
+			drumPad.setId( i );
 			drumPad.setup();
 			
+			drumPad.addObserver( this ); //Add this controller as an observer to be able to tell when the pad is clicked
 			drumPads.add( drumPad );
 			
 			pads.add( (DrumPadView) drumPad.getView() );
@@ -159,6 +161,7 @@ public class DrumEditorController extends AbstractController {
 	@Override
 	public void propertyChange( PropertyChangeEvent event ) {
 		
+		//If any of the knobs were changed:
 		if( event.getPropertyName().equals( KnobModel.NEW_PERCENTAGES ) ) {
 			
 			KnobModel eventModel = (KnobModel) event.getSource();
@@ -198,6 +201,13 @@ public class DrumEditorController extends AbstractController {
 				
 				model.setMod( (Float) event.getNewValue() );
 			}
+			
+		//If any of the pads were changed
+		} else if ( event.getPropertyName().equals( DrumPadController.PAD_PRESSED ) ) {
+			
+//			Log.i("DrumEditorController: " , "Pad pressed" + event.getNewValue() + ", " + event.getOldValue() );
+			
+			model.setDrumOnOff( (Integer) event.getOldValue(), (Boolean) event.getNewValue());
 		}
 	}
 }
