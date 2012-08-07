@@ -1,5 +1,6 @@
 package se.purestyle.beatr.view.editors;
 
+import se.purestyle.beatr.view.generic.DrumPadView;
 import se.purestyle.beatr.view.generic.ViewAdapter;
 import android.content.Context;
 import android.util.Log;
@@ -16,6 +17,8 @@ public class DrumEditorView extends LinearLayout {
 	private GridView knobHolder;
 	
 	private Context context;
+	
+	private View[] pads;
 	
 	public DrumEditorView( Context context ) {
 		
@@ -79,6 +82,8 @@ public class DrumEditorView extends LinearLayout {
 	
 	public void addDrumPads( View[] pads ) {
 		
+		this.pads = pads;
+		
 		Log.i("DrumEditorView", "pads: " + pads.length );
 		
 		ViewAdapter adapter = new ViewAdapter();
@@ -107,5 +112,15 @@ public class DrumEditorView extends LinearLayout {
 		}
 		
 		return ret;
+	}
+	
+	public void setPadActive( int id ) {
+		
+		for( int i = 0; i < pads.length; i ++ ) {
+			
+			( (DrumPadView) pads[ i ] ).setIsActive( false );
+		}
+		
+		( (DrumPadView) pads[ id ] ).setIsActive( true );
 	}
 }

@@ -22,6 +22,11 @@ public class DrumPadView extends View {
 		this.model = model;
 	}
 	
+	public void setIsActive( boolean isActive ) {
+		
+		model.setIsActive( isActive );
+	}
+	
 	@Override
 	public void onDraw( Canvas canvas ) {
 		

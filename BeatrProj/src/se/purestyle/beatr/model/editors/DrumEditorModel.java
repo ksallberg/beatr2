@@ -6,11 +6,10 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.util.Log;
-
 import se.purestyle.beatr.helpers.FileModifier;
 import se.purestyle.beatr.helpers.MetronomePlayer;
 import se.purestyle.beatr.helpers.PdConnector;
+import se.purestyle.beatr.view.editors.DrumEditorView;
 
 public class DrumEditorModel extends AbstractEditorModel implements PropertyChangeListener {
 	
@@ -69,6 +68,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	private final int 	NUMBER_OF_PADS					= 9;
 	private		  int	currentPlayingDrum				= 0;
 	private final boolean[] drumIsOn					= new boolean[ NUMBER_OF_PADS ];
+	
+	private 	  DrumEditorView view;
 
 	/**
 	 * Constructor, needs the name of this instrument.
@@ -111,6 +112,11 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		
 		//set initial values
 		setInitialPdValues();
+	}
+	
+	public void setView( DrumEditorView view ) {
+		
+		this.view = view;
 	}
 	
 	public void setDrumOnOff( int id, boolean on ) {
@@ -169,8 +175,6 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	public void setOnoff( int onoff ) {
 		
 		this.onoff = onoff;
-		
-		Log.i( "DrumEditorModel", "onoff?" + onoff );
 		
 		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, this.onoff ); //This. just to avoid unused warning
 	}
@@ -256,6 +260,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 				//Make the drum go quiet again
 				PdConnector.sendToPd( pdInternalInstrumentName + pulseControllerName, 0.0f );
 			}
+			
+			view.setPadActive( currentPlayingDrum );
 			
 			currentPlayingDrum ++;
 			
