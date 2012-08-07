@@ -12,6 +12,7 @@ import se.purestyle.beatr.model.generic.KnobModel;
 import se.purestyle.beatr.view.editors.DrumEditorView;
 import se.purestyle.beatr.view.generic.DrumPadView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
@@ -31,6 +32,7 @@ public class DrumEditorController extends AbstractController {
 	private DrumEditorModel 		model;
 	
 	private Context 				context;
+	private Activity				activity;
 	
 	public static final String		rootLabel 	= "rootLabel";
 	public static final String		f01Label 	= "f01Label";
@@ -51,10 +53,11 @@ public class DrumEditorController extends AbstractController {
 	
 	private List<DrumPadController> drumPads;
 	
-	public DrumEditorController( String pdInternalInstrumentName, Context context ) {
+	public DrumEditorController( String pdInternalInstrumentName, Context context, Activity activity ) {
 		
 		this.pdInternalInstrumentName = pdInternalInstrumentName;
 		this.context = context;
+		this.activity = activity;
 	}
 	
 	@Override
@@ -127,7 +130,7 @@ public class DrumEditorController extends AbstractController {
 		
 		for( int i = 0; i < 9; i ++ ) {
 			
-			DrumPadController drumPad = new DrumPadController( context );
+			DrumPadController drumPad = new DrumPadController( context, activity );
 			drumPad.setId( i );
 			drumPad.setup();
 			

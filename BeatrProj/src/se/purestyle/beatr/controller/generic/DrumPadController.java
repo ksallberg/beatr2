@@ -2,6 +2,7 @@ package se.purestyle.beatr.controller.generic;
 
 import se.purestyle.beatr.model.generic.DrumPadModel;
 import se.purestyle.beatr.view.generic.DrumPadView;
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,15 +14,17 @@ public class DrumPadController extends AbstractController {
 	public static final String PAD_PRESSED = "padPressed";
 	
 	private Context context;
+	private Activity activity;
 	
 	private DrumPadModel model;
 	private DrumPadView view;
 	
 	private int id;
 	
-	public DrumPadController( Context context ) {
+	public DrumPadController( Context context, Activity activity ) {
 		
-		this.context = context;
+		this.context	= context;
+		this.activity	= activity;
 	}
 	
 	public void setId( int id ) {
@@ -34,7 +37,7 @@ public class DrumPadController extends AbstractController {
 		
 		model = new DrumPadModel();
 		
-		view = new DrumPadView( context );
+		view = new DrumPadView( context, activity );
 		view.setModel( model );
 		view.setOnClickListener( padPressedListener );
 	}
