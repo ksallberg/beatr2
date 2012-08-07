@@ -44,7 +44,6 @@ public class BeatPlayer {
 	
 	private Map<String, Player> threads; //The threads that are going to send messages to the synth in a parallel manner
 	private Map<String, DrumEditorModel> drums;
-	//	private List<DrumEditorModel> drums;
 	
 	//Private constructor, this is not possible to call from outside of this class
 	private BeatPlayer() {
@@ -52,7 +51,6 @@ public class BeatPlayer {
 		//Create the "thread pool"
 		threads = new HashMap<String, Player>();
 		drums	= new HashMap<String, DrumEditorModel>();
-//		drums 	= new ArrayList<DrumEditorModel>();
 	}
 	
 	/**
@@ -111,15 +109,6 @@ public class BeatPlayer {
 				itDrums.next().getValue().setOnoff( 1 );
 			}
 			
-			/*
-			//Turn all drums on
-			for( DrumEditorModel drum : drums ) {
-
-				Log.i("BeatPlayer", "Turn Drum on!" + drum );
-				
-				drum.setOnoff( 1 );
-			}*/
-			
 		//Turn all instruments off
 		} else if ( message.equals( NONE ) ) {
 			
@@ -135,15 +124,6 @@ public class BeatPlayer {
 														//some instrument enters its editor mode
 			}
 			
-		/*
-			//Turn all drums off
-			for( DrumEditorModel drum : drums ) {
-				
-				Log.i("BeatPlayer", "Turn Drum off!" + drum );
-				
-				drum.setOnoff( 0 );
-			}
-		*/
 //			Turn all drums on
 			Iterator<Entry<String, DrumEditorModel>> itDrums = drums.entrySet().iterator();
 			
@@ -157,8 +137,6 @@ public class BeatPlayer {
 			
 			//TODO: This is never played, but it is a lot of work to make it play, then the instruments would need to be changed
 			//in the editors as the sound is changed, and it would also require a mode to stop the automatic playback
-			
-//			Log.i("BeatPlayer", "Turn specific instrument on" +  );
 			
 			if( message.substring(0, 4).equals( "drum" ) ) {
 				
