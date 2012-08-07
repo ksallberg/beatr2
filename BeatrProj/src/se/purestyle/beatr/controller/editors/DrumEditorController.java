@@ -137,6 +137,9 @@ public class DrumEditorController extends AbstractController {
 			drumPad.addObserver( this ); //Add this controller as an observer to be able to tell when the pad is clicked
 			drumPads.add( drumPad );
 			
+			//Set the should play property from whatever it was set to last time
+			drumPad.getModel().setShouldPlay( model.getDrumIsOn()[ i ] );
+			
 			pads.add( (DrumPadView) drumPad.getView() );
 		}
 		

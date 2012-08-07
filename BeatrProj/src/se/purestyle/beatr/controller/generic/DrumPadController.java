@@ -32,6 +32,11 @@ public class DrumPadController extends AbstractController {
 		this.id = id;
 	}
 	
+	public DrumPadModel getModel() {
+		
+		return model;
+	}
+	
 	@Override
 	public void setup() {
 		

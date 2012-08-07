@@ -192,6 +192,16 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		PdConnector.sendToPd( pdInternalInstrumentName + rootControllerName, root );
 	}
 	
+	/**
+	 * Get the Drum Is On, so it's possible to 
+	 * 
+	 * @return
+	 */
+	public boolean[] getDrumIsOn() {
+		
+		return drumIsOn;
+	}
+	
 	public float getRoot() { return root; }
 
 //	f01_________________________________________________

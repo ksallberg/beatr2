@@ -23,6 +23,11 @@ public class DrumPadModel extends AbstractModel {
 		return isActive;
 	}
 	
+	public void setShouldPlay( boolean shouldPlay ) {
+		
+		this.shouldPlay = shouldPlay;
+	}
+	
 	public void toggleShouldPlay() {
 		
 		shouldPlay = !shouldPlay;
