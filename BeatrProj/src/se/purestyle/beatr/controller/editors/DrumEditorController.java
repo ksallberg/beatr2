@@ -63,6 +63,7 @@ public class DrumEditorController extends AbstractController {
 		
 		view 				= new DrumEditorView( context );
 		model 				= new DrumEditorModel( pdInternalInstrumentName );
+		model.setView( view );
 		
 		//TODO: Find a better place to start the individual drum
 		model.setOnoff( 1 );
