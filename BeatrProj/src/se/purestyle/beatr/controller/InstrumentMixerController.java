@@ -215,7 +215,12 @@ public class InstrumentMixerController extends AbstractController {
 			InstrumentTracker.registerModel( newInstrumentName, editorModel );
 			
 			//The drum should not be recorded
-			if( !modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+			if( modelRef.getInstrumentType().equals( InstrumentModel.DRUM ) ) {
+				
+				//This will not create a new thread
+				BeatPlayer.getInstance().addDrum( newInstrumentName, (DrumEditorModel) editorModel );
+				
+			} else {
 				
 				//Add the instrument to the BeatPlayer so the BeatPlayer can play recorded Beats
 				BeatPlayer.getInstance().addEditorModel( newInstrumentName, editorModel );

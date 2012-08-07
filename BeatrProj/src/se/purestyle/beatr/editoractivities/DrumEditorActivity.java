@@ -3,6 +3,7 @@ package se.purestyle.beatr.editoractivities;
 import com.purestyle.amvc.controller.AbstractController;
 
 import se.purestyle.beatr.controller.editors.DrumEditorController;
+import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -40,5 +41,9 @@ public class DrumEditorActivity extends Activity {
 		instrumentEditorController.setup();
 		
 		insideHolder.addView( ( ( DrumEditorController ) instrumentEditorController ).getView() );
+		
+		//Play only this instance
+		BeatPlayer.getInstance().setMode( BeatPlayer.NONE );
+		BeatPlayer.getInstance().setMode( extras.getString( "INSTRUMENT_NAME" ) );
 	}
 }
