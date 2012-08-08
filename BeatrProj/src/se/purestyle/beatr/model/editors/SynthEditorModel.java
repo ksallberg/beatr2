@@ -21,7 +21,7 @@ public class SynthEditorModel extends AbstractEditorModel {
 	private final String vibControllerName = "vibcontroller";
 	
 	private final float maxAttack = 5.0f;
-	private float attackController = maxAttack;
+	private float attackController = maxAttack / 2;
 	private final String attackControllerName = "attack";	
 	
 	private final String phasControllerName = "phascontroller";
@@ -53,6 +53,9 @@ public class SynthEditorModel extends AbstractEditorModel {
 		PdConnector.addPatch( newSynthFile );
 		
 		PdConnector.sendToPd( pdInternalInstrumentName + onOffControllerName, 0 ); //Turn the instrument off first thing that happens
+		
+		//Set the initial attack to the instrument
+		PdConnector.sendToPd( pdInternalInstrumentName + attackControllerName, attackController );
 	}
 	
 	public float getOscController() {
@@ -133,6 +136,11 @@ public class SynthEditorModel extends AbstractEditorModel {
 	public float getAttack() {
 		
 		return attackController;
+	}
+	
+	public float getMaxAttack() {
+		
+		return maxAttack;
 	}
 	
 	public int getOnoff() {

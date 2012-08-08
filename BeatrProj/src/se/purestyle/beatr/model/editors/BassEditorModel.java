@@ -22,7 +22,7 @@ public class BassEditorModel extends AbstractEditorModel {
 	private final String vibControllerName = "vibcontroller";
 	
 	private final float maxAttack = 5.0f;
-	private float attackController = maxAttack;
+	private float attackController = maxAttack / 3;
 	private final String attackControllerName = "attack";	
 	
 	private final String phasControllerName = "phascontroller";
@@ -128,6 +128,11 @@ public class BassEditorModel extends AbstractEditorModel {
 	public float getAttack() {
 		
 		return attackController;
+	}
+	
+	public float getMaxAttack() {
+		
+		return maxAttack;
 	}
 	
 	public int getOnoff() {

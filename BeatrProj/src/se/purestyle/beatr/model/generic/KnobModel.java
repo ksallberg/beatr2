@@ -24,9 +24,16 @@ public class KnobModel extends AbstractModel {
 		return label;
 	}
 	
+	/**
+	 * Set the current percent from outside this model, to be able to initialize the knob to other values than 0
+	 * 
+	 * @param currentPercent
+	 */
 	public void setCurrentPercent( float currentPercent ) {
 		
 		this.currentPercent = currentPercent;
+		
+		this.currentAngle = this.currentPercent * 270.0f;
 	}
 	
 	public float getCurrentPercent() {

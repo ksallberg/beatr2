@@ -56,6 +56,11 @@ public class KnobController extends AbstractController {
 		return view;
 	}
 	
+	public KnobModel getModel() {
+		
+		return model;
+	}
+	
 	private OnTouchListener touchListener = new OnTouchListener() {
 		
 		@Override

@@ -69,6 +69,8 @@ public class SynthEditorController extends AbstractController {
 		knobController = new KnobController( context );
 		knobController.addObserver( this );
 		knobController.setup();
+		knobController.getModel().setCurrentPercent( model.getAttack() / model.getMaxAttack() );
+		knobController.getView().invalidate(); //required to redraw the view after the model was changed
 		knobHolder = new LinearLayout( context );
 		knobHolder.setLayoutParams( new LayoutParams( 100, 100 ) );
 		knobHolder.addView( knobController.getView() );
