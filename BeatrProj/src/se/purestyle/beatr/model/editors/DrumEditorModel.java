@@ -29,13 +29,13 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//f01
 	private final String f01ControllerName 				= "f01";
-	private 	  float f01								= 0.0f;
+	private 	  float f01								= 2.0f;
 	private final float minF01							= 1.0f;
 	private final float maxF01							= 4.0f;
 	
 	//f02
 	private final String f02ControllerName 				= "f02";
-	private 	  float f02								= 1.0f;
+	private 	  float f02								= 2.0f;
 	private final float minF02							= 1.0f;
 	private final float maxF02							= 4.0f;
 	
@@ -47,7 +47,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	//shape
 	private final String shapeControllerName 			= "shape";
-	private 	  float shape							= 0.0f;
+	private 	  float shape							= 0.1f;
 	private final float minShape						= 0.0f;
 	private final float maxShape						= 0.25f;
 	
@@ -203,6 +203,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getRoot() { return root; }
+	public float getMaxRoot() { return maxRoot; }
 
 //	f01_________________________________________________
 	public void setF01( float pcent ) {
@@ -212,7 +213,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getF01() { return f01; }
-
+	public float getMaxF01() { return maxF01; }
+	
 //	f02_________________________________________________
 	public void setF02( float pcent ) {
 		
@@ -221,7 +223,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getF02() { return f02; }
-
+	public float getMaxF02() { return maxF02; }
+	
 //	clip_________________________________________________
 	public void setClip( float pcent ) {
 		
@@ -230,7 +233,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getClip() { return clip; }
-
+	public float getMaxClip() { return maxClip; }
+	
 //	shape_________________________________________________
 	public void setShape( float pcent ) {
 		
@@ -239,6 +243,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getShape() { return shape; }
+	public float getMaxShape() { return maxShape; }
 	
 //	decay_________________________________________________
 	public void setDecay( float pcent ) {
@@ -248,7 +253,8 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getDecay() { return decay; }
-
+	public float getMaxDecay() { return maxDecay; }
+	
 //	mod_________________________________________________
 	public void setMod( float pcent ) {
 		
@@ -257,6 +263,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	}
 	
 	public float getMod() { return mod; }
+	public float getMaxMod() { return maxMod; }
 	
 	@Override
 	public void propertyChange( PropertyChangeEvent event ) {

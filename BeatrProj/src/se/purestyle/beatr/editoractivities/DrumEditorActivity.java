@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.Window;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +24,9 @@ public class DrumEditorActivity extends Activity {
 	protected void onCreate( Bundle savedInstanceState ) {
 		
 		super.onCreate( savedInstanceState );
+		
+		//Remove the standard top bar stating the application name, I use a logo instead
+		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
 		LinearLayout holder = new LinearLayout( getApplicationContext() );
 		holder.setOrientation( LinearLayout.VERTICAL );

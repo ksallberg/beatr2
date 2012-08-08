@@ -79,30 +79,44 @@ public class DrumEditorController extends AbstractController {
 		rootKnobController 	= new KnobController( context );
 		rootKnobController.setLabel( rootLabel );
 		rootKnobController.setup();
+		rootKnobController.getModel().setCurrentPercent( model.getRoot() / model.getMaxRoot() );
+		rootKnobController.getView().invalidate();
 		
 		f01KnobController 	= new KnobController( context );
 		f01KnobController.setLabel( f01Label );
 		f01KnobController.setup();
+		f01KnobController.getModel().setCurrentPercent( model.getF01() / model.getMaxF01() );
+		f01KnobController.getView().invalidate();
 		
 		f02KnobController	= new KnobController( context );
 		f02KnobController.setLabel( f02Label );
 		f02KnobController.setup();
+		f02KnobController.getModel().setCurrentPercent( model.getF02() / model.getMaxF02() );
+		f02KnobController.getView().invalidate();
 		
 		clipKnobController	= new KnobController( context );
 		clipKnobController.setLabel( clipLabel );
 		clipKnobController.setup();
+		clipKnobController.getModel().setCurrentPercent( model.getClip() / model.getMaxClip() );
+		clipKnobController.getView().invalidate();
 		
 		shapeKnobController	= new KnobController( context );
 		shapeKnobController.setLabel( shapeLabel );
 		shapeKnobController.setup();
+		shapeKnobController.getModel().setCurrentPercent( model.getShape() / model.getMaxShape() );
+		shapeKnobController.getView().invalidate();
 		
 		decayKnobController	= new KnobController( context );
 		decayKnobController.setLabel( decayLabel );
 		decayKnobController.setup();
+		decayKnobController.getModel().setCurrentPercent( model.getDecay() / model.getMaxDecay() );
+		decayKnobController.getView().invalidate();
 		
 		modKnobController	= new KnobController( context );
 		modKnobController.setLabel( modLabel );
 		modKnobController.setup();
+		modKnobController.getModel().setCurrentPercent( model.getMod() / model.getMaxMod() );
+		modKnobController.getView().invalidate();
 		
 		//Make this controller listen to it's subcontrollers
 		rootKnobController.addObserver(		this );
