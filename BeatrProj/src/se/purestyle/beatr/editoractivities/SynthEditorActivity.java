@@ -1,9 +1,14 @@
 package se.purestyle.beatr.editoractivities;
 
+import org.puredata.android.service.R;
+
 import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -21,6 +26,12 @@ public class SynthEditorActivity extends Activity {
 		
 		LinearLayout holder = new LinearLayout( getApplicationContext() );		
 		setContentView( holder );
+		
+		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
+		tiles.setTileModeX( Shader.TileMode.REPEAT );
+		tiles.setTileModeY( Shader.TileMode.REPEAT );
+		
+		holder.setBackgroundDrawable( tiles );
 		
 		//Get the name of this instrument
 		Bundle extras = getIntent().getExtras();

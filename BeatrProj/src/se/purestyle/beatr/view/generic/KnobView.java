@@ -35,7 +35,7 @@ public class KnobView extends View {
 		canvas.drawCircle( getWidth() / 2, getHeight() / 2, getWidth() / 2, p );
 		
 		Paint linePaint = new Paint();
-		linePaint.setColor( Color.parseColor( "#00ffe4" ) );
+		linePaint.setColor( Color.parseColor( "#f6ff00" ) );
 		linePaint.setAntiAlias( true );
 		linePaint.setAlpha( 200 );
 		

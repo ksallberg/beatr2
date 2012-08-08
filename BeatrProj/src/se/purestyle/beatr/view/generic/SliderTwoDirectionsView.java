@@ -97,7 +97,7 @@ public class SliderTwoDirectionsView extends View {
 		can.drawRoundRect( new RectF( leftMargin, topMargin, getWidth() - leftMargin, getHeight() - topMargin ), 10.0f, 10.0f, newPaint );
 		
 		Paint circlePaint = new Paint();
-		circlePaint.setColor( Color.parseColor( "#00ffe4" ) );
+		circlePaint.setColor( Color.parseColor( "#f6ff00" ) );
 		circlePaint.setAntiAlias( true );
 		circlePaint.setAlpha( 200 );
 		

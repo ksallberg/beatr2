@@ -1,12 +1,17 @@
 package se.purestyle.beatr.editoractivities;
 
+import org.puredata.android.service.R;
+
 import com.purestyle.amvc.controller.AbstractController;
 
 import se.purestyle.beatr.controller.editors.DrumEditorController;
 import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
@@ -31,6 +36,12 @@ public class DrumEditorActivity extends Activity {
 		
 		holder.addView( txt );
 		holder.addView( insideHolder );
+		
+		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
+		tiles.setTileModeX( Shader.TileMode.REPEAT );
+		tiles.setTileModeY( Shader.TileMode.REPEAT );
+		
+		holder.setBackgroundDrawable( tiles );
 		
 		setContentView( holder );
 		

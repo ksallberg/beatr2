@@ -43,11 +43,15 @@ public class VolumeDraggerView extends AbstractVolumeView implements IModelUser 
 		Paint p = new Paint();
 		if( ( ( InstrumentModel ) model ).getInstrumentType().equals( InstrumentModel.DRUM ) ) {
 			
-			p.setColor( 0x00ffc0 );
+			p.setColor( 0x00000f );
 		
 		} else if ( ( ( InstrumentModel ) model ).getInstrumentType().equals( InstrumentModel.SYNTH ) ) {
 			
-			p.setColor( 0x642974 );
+			p.setColor( 0xff0030 );
+		
+		} else if ( ( ( InstrumentModel ) model ).getInstrumentType().equals( InstrumentModel.BASS ) ) {
+			
+			p.setColor( 0x27bbd1 );
 		}
 		
 		p.setAlpha( 255 );
