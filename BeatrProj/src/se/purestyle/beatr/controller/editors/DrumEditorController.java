@@ -125,7 +125,6 @@ public class DrumEditorController extends AbstractController {
 		
 		view.addKnobs( knobs );
 		
-//TODO: Snygga till skapanded av pads!
 		List<DrumPadView> pads = new ArrayList<DrumPadView>();
 		
 		for( int i = 0; i < 9; i ++ ) {
