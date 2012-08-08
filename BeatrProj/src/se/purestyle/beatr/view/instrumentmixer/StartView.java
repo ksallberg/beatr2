@@ -2,10 +2,14 @@ package se.purestyle.beatr.view.instrumentmixer;
 
 //import org.puredata.android.service.R;
 
+import org.puredata.android.service.R;
+
 import se.purestyle.beatr.view.InstrumentMixerView;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.BitmapFactory;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -22,8 +26,11 @@ public class StartView extends RelativeLayout {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT ) );
 		
-		//setBackgroundResource( R.drawable.bg );
-		setBackgroundColor( Color.WHITE );
+		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
+		tiles.setTileModeX( Shader.TileMode.REPEAT );
+		tiles.setTileModeY( Shader.TileMode.REPEAT );
+		
+		setBackgroundDrawable( tiles );
 		
 		init( context );
 	}
