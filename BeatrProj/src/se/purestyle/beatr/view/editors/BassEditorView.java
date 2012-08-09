@@ -3,6 +3,7 @@ package se.purestyle.beatr.view.editors;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,20 +11,21 @@ import android.widget.TextView;
 
 public class BassEditorView extends LinearLayout {
 
-	private LinearLayout twoDimensionalSliderHolder;
+	private LinearLayout 	twoDimensionalSliderHolder;
 	
-	private Button recordButton;
-	private Button stopRecordingButton;
+	private Button 			recordButton;
+	private Button 			stopRecordingButton;
 	
-	private LinearLayout recordHolder;
-	private TextView timeDisplay;
+	private LinearLayout 	recordHolder;
+	private TextView 		timeDisplay;
 	
-	private Activity activity;
+	private Activity 		activity;
+	private Context 		context;
 	
-	private boolean recordButtonShowing = true;
+	private boolean 		recordButtonShowing = true;
 	
-	public static final String RECORD_BUTTON = "recordButton";
-	public static final String STOP_RECORDING_BUTTON = "stopRecordingButton";
+	public static final String RECORD_BUTTON 			= "recordButton";
+	public static final String STOP_RECORDING_BUTTON 	= "stopRecordingButton";
 	
 	public BassEditorView( Context context, Activity activity ) {
 		
@@ -32,7 +34,11 @@ public class BassEditorView extends LinearLayout {
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
 		setOrientation( LinearLayout.VERTICAL );
 		
-		this.activity = activity;
+		this.activity 	= activity;
+		this.context 	= context;
+	}
+	
+	public void init() {
 		
 		recordButton = new Button( context );
 		recordButton.setTag( RECORD_BUTTON );
@@ -42,15 +48,23 @@ public class BassEditorView extends LinearLayout {
 		stopRecordingButton.setTag( STOP_RECORDING_BUTTON );
 		stopRecordingButton.setText( "stop recording" );
 		
+		//Create typeface
+		Typeface LHLine1Sans = Typeface.createFromAsset( context.getAssets(), "fonts/lhine1sansthin.ttf" );
+		
+		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+		params.setMargins( 10, 0, 0, 0 );
+		
 		//Text editor
-		TextView txt = new TextView( context );
-		txt.setTextColor( Color.WHITE );
-		txt.setText( "Bass editor" );
-		addView( txt );
+		TextView header = new TextView( context );
+		header.setTextColor( Color.parseColor( "#F6FF00" ) );
+		header.setTypeface( LHLine1Sans );
+		header.setText( "bass : edit mode" );
+		header.setLayoutParams( params );
+		addView( header );
 		
 		//Two dimensional slider
 		twoDimensionalSliderHolder = new LinearLayout( context );
-		twoDimensionalSliderHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 225 ) );
+		twoDimensionalSliderHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 210 ) );
 		addView( twoDimensionalSliderHolder );
 		
 		recordHolder = new LinearLayout( context );

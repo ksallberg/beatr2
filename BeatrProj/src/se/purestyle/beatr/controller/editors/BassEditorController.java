@@ -62,6 +62,7 @@ public class BassEditorController extends AbstractController {
 		model.registerRecorder( recorder );
 		
 		view = new BassEditorView( context, activity );
+		view.init();
 		view.addTwoDimensionalSlider( slider.getView() );
 		view.getRecordButton().setOnClickListener( recordButtonPressed );
 		view.getStopRecordingButton().setOnClickListener( stopRecordingButtonPressed );
@@ -72,7 +73,7 @@ public class BassEditorController extends AbstractController {
 		knobController.getModel().setCurrentPercent( model.getAttack() / model.getMaxAttack() );
 		knobController.getView().invalidate(); //required to redraw the view after the model was changed
 		knobHolder = new LinearLayout( context );
-		knobHolder.setLayoutParams( new LayoutParams( 100, 100 ) );
+		knobHolder.setLayoutParams( new LayoutParams( 65, 65 ) );
 		knobHolder.addView( knobController.getView() );
 		knobHolder.setOrientation( LinearLayout.HORIZONTAL );
 		
