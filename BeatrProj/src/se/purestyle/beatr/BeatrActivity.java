@@ -44,7 +44,7 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 		
 		//Initialize the MetronomePlayer and give it a default value for beats per minute
 		MetronomePlayer.init( getApplicationContext() );
-		MetronomePlayer.updateBpm( MetronomePlayer.MAX_BPM );
+		MetronomePlayer.updateBpm( MetronomePlayer.DEFAULT_BPM );
 		
 		FemaleNames.populate();
 		

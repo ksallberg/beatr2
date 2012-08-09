@@ -20,6 +20,8 @@ public class MetronomePlayer {
 
 	public static final int MAX_BPM 						= 200;
 	public static final int MIN_BPM 						= 80;
+	public static final int DEFAULT_BPM 					= 125;
+	
 	public static final String TICK							= "newBmpTick";
 	
 	private static PropertyChangeSupport propertyChange;

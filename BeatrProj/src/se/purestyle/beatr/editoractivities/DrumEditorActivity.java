@@ -6,17 +6,16 @@ import com.purestyle.amvc.controller.AbstractController;
 
 import se.purestyle.beatr.controller.editors.DrumEditorController;
 import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
+import se.purestyle.beatr.view.instrumentmixer.LogoView;
 
 import android.app.Activity;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class DrumEditorActivity extends Activity {
 	
@@ -31,14 +30,13 @@ public class DrumEditorActivity extends Activity {
 		LinearLayout holder = new LinearLayout( getApplicationContext() );
 		holder.setOrientation( LinearLayout.VERTICAL );
 		
+		//Create and add the logo to this activity
+		LogoView logoView = new LogoView( getApplicationContext() );
+		holder.addView( logoView );
+		
 		LinearLayout insideHolder = new LinearLayout( getApplicationContext() );
 		insideHolder.setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT ) );
 		
-		TextView txt = new TextView( getApplicationContext() );
-		txt.setTextColor( Color.WHITE );
-		txt.setText( "Drum editor " );
-		
-		holder.addView( txt );
 		holder.addView( insideHolder );
 		
 		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );

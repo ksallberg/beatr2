@@ -65,7 +65,7 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 	
 	
 //// Scheduling of the drum beats
-	private final int 	NUMBER_OF_PADS					= 9;
+	public  static final int NUMBER_OF_PADS				= 16;
 	private		  int	currentPlayingDrum				= 0;
 	private final boolean[] drumIsOn					= new boolean[ NUMBER_OF_PADS ];
 	

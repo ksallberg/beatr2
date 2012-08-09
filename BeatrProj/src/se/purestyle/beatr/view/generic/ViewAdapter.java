@@ -45,4 +45,22 @@ public class ViewAdapter extends BaseAdapter {
     	
     	this.viewList = viewList;
     }
+    
+    /**
+     * Get rid of the selection feature in the GridView
+     */
+    @Override
+    public boolean areAllItemsEnabled() {
+    	
+    	return false;
+    }
+    
+    /**
+     * Get rid of the selection feature in the GridView
+     */
+    @Override
+    public boolean isEnabled( int position ) {
+    	
+    	return false;
+    }
 }

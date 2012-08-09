@@ -137,11 +137,21 @@ public class DrumEditorController extends AbstractController {
 									modKnobController.getView()
 								  };
 		
-		view.addKnobs( knobs );
+		String[] knobHeaders = new String[] { 
+												"root",
+												"f01",
+												"f02",
+												"clip",
+												"shape",
+												"decay",
+												"mod"
+			  								};
+		
+		view.addKnobs( knobs, knobHeaders );
 		
 		List<DrumPadView> pads = new ArrayList<DrumPadView>();
 		
-		for( int i = 0; i < 9; i ++ ) {
+		for( int i = 0; i < DrumEditorModel.NUMBER_OF_PADS; i ++ ) {
 			
 			DrumPadController drumPad = new DrumPadController( context, activity );
 			drumPad.setId( i );
