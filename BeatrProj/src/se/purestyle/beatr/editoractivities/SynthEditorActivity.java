@@ -4,6 +4,7 @@ import org.puredata.android.service.R;
 
 import se.purestyle.beatr.controller.editors.SynthEditorController;
 import se.purestyle.beatr.helpers.beatplayer.BeatPlayer;
+import se.purestyle.beatr.view.instrumentmixer.LogoView;
 
 import android.app.Activity;
 import android.graphics.BitmapFactory;
@@ -24,8 +25,13 @@ public class SynthEditorActivity extends Activity {
 		//Remove the standard top bar stating the application name, I use a logo instead
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		
-		LinearLayout holder = new LinearLayout( getApplicationContext() );		
+		LinearLayout holder = new LinearLayout( getApplicationContext() );
+		holder.setOrientation( LinearLayout.VERTICAL );
 		setContentView( holder );
+		
+		//Create and add the logo to this activity
+		LogoView logoView = new LogoView( getApplicationContext() );
+		holder.addView( logoView );
 		
 		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
 		tiles.setTileModeX( Shader.TileMode.REPEAT );
@@ -43,6 +49,5 @@ public class SynthEditorActivity extends Activity {
 		
 		//Stop all players 
 		BeatPlayer.getInstance().setMode( BeatPlayer.NONE );
-		//BeatPlayer.getInstance().setMode( extras.getString( "INSTRUMENT_NAME" ) );
 	}
 }

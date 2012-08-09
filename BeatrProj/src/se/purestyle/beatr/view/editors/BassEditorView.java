@@ -58,15 +58,15 @@ public class BassEditorView extends LinearLayout {
 		//Create typeface
 		Typeface LHLine1Sans = Typeface.createFromAsset( context.getAssets(), "fonts/lhine1sansthin.ttf" );
 		
-		LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
-		params.setMargins( 10, 0, 0, 0 );
+		LayoutParams headerParams = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+		headerParams.setMargins( 10, 0, 0, 0 );
 		
 		//Text editor
 		TextView header = new TextView( context );
 		header.setTextColor( Color.parseColor( "#F6FF00" ) );
 		header.setTypeface( LHLine1Sans );
 		header.setText( "bass : edit mode" );
-		header.setLayoutParams( params );
+		header.setLayoutParams( headerParams );
 		addView( header );
 		
 		//Two dimensional slider
