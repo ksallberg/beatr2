@@ -7,12 +7,12 @@ import com.purestyle.amvc.model.AbstractModel;
 public class MetronomeModel extends AbstractModel {
 	
 	private final float maximumX = 212; //this is also available
-	private float drawToX = 212;
+	private float drawToX = 79.5f; //default to 125 beats per minute
 	
 	private final int minBmp = MetronomePlayer.MIN_BPM;
 	private final int maxBmp = MetronomePlayer.MAX_BPM;
 	
-	private int currentBmp = maxBmp;
+	private int currentBmp = 125;
 	
 	/**
 	 * 
