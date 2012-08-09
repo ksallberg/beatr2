@@ -1,6 +1,5 @@
 package se.purestyle.beatr.helpers.beatplayer;
 
-import android.util.Log;
 import android.util.Pair;
 import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.editors.AbstractEditorModel;
@@ -92,15 +91,11 @@ public class Player implements Runnable, IPlayer {
 	@Override
 	public void pause() {
 		
-		Log.i( "BeatPlayer.java", "pause" );
-		
 		paused = true;
 	}
 
 	@Override
 	public void play() {
-		
-		Log.i( "BeatPlayer.java", "play" );
 		
 		paused = false;
 	}

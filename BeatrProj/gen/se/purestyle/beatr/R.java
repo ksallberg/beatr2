@@ -30,9 +30,11 @@ public final class R {
         public static final int mastervolumefg=0x7f020006;
         public static final int next=0x7f020007;
         public static final int prev=0x7f020008;
-        public static final int rewindinstrument=0x7f020009;
-        public static final int volumebaroverlay=0x7f02000a;
-        public static final int whitediamond=0x7f02000b;
+        public static final int record=0x7f020009;
+        public static final int rewindinstrument=0x7f02000a;
+        public static final int stoprecording=0x7f02000b;
+        public static final int volumebaroverlay=0x7f02000c;
+        public static final int whitediamond=0x7f02000d;
     }
     public static final class id {
         public static final int about_item=0x7f0a0001;

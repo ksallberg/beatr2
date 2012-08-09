@@ -17,8 +17,6 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 
 import com.purestyle.amvc.controller.AbstractController;
 
@@ -31,7 +29,6 @@ public class BassEditorController extends AbstractController {
 	
 	//Subcontroller
 	private KnobController knobController;
-	private LinearLayout knobHolder;
 	
 	private SliderTwoDirectionsController slider;
 	
@@ -72,12 +69,8 @@ public class BassEditorController extends AbstractController {
 		knobController.setup();
 		knobController.getModel().setCurrentPercent( model.getAttack() / model.getMaxAttack() );
 		knobController.getView().invalidate(); //required to redraw the view after the model was changed
-		knobHolder = new LinearLayout( context );
-		knobHolder.setLayoutParams( new LayoutParams( 65, 65 ) );
-		knobHolder.addView( knobController.getView() );
-		knobHolder.setOrientation( LinearLayout.HORIZONTAL );
 		
-		view.addView( knobHolder );
+		view.addAttackKnob( knobController.getView() );
 		
 		slider.addObserver( this );
 	}
