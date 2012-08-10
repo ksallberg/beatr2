@@ -97,7 +97,7 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 				
 			} else {
 				
-				throw new RuntimeException( "" );
+				throw new RuntimeException( "BeatrActivity: No Instrument type existing for what you want to add." );
 			}
 			
 			intent.putExtra( "INSTRUMENT_NAME", pair.second );

@@ -155,6 +155,11 @@ public class SynthEditorModel extends AbstractEditorModel {
 	
 	public Beat getBeat() {
 		
+		if( recorder == null ) {
+			
+			return null;
+		}
+		
 		return recorder.getBeat();
 	}
 	

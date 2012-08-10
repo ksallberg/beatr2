@@ -33,10 +33,10 @@ public class BassEditorActivity extends Activity {
 		LogoView logoView = new LogoView( getApplicationContext() );
 		holder.addView( logoView );
 		
+		//Repeating Background
 		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
 		tiles.setTileModeX( Shader.TileMode.REPEAT );
 		tiles.setTileModeY( Shader.TileMode.REPEAT );
-		
 		holder.setBackgroundDrawable( tiles );
 		
 		//Get the name of this instrument
