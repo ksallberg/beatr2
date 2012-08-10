@@ -145,6 +145,11 @@ public class BassEditorModel extends AbstractEditorModel {
 		this.recorder = recorder;
 	}
 	
+	public Recorder getRecorder() {
+		
+		return recorder;
+	}
+	
 	/**
 	 * Return null if the recorder is null
 	 * 

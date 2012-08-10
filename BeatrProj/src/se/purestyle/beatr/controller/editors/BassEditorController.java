@@ -57,6 +57,12 @@ public class BassEditorController extends AbstractController {
 		
 		model = (BassEditorModel) InstrumentTracker.getModel( pdInternalInstrumentName );
 		
+		//If nothing has been recorded yet, add the new recorder as the default recorder
+		if( model.getRecorder() == null ) {
+			
+			model.registerRecorder( recorder );
+		}
+		
 		view = new BassEditorView( context, activity );
 		view.init();
 		view.addTwoDimensionalSlider( slider.getView() );
