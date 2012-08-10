@@ -5,9 +5,7 @@ import org.puredata.android.service.R;
 import com.purestyle.amvc.model.IModelUser;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 

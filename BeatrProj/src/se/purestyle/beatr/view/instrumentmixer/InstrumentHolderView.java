@@ -7,7 +7,6 @@ import se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel;
 import se.purestyle.beatr.view.InstrumentMixerView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.IInstrumentView;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
