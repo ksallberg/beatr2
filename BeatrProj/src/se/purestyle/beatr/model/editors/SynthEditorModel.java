@@ -158,6 +158,14 @@ public class SynthEditorModel extends AbstractEditorModel {
 		return recorder.getBeat();
 	}
 	
+	/**
+	 * Do not call rewind here, instead call the associated Player class's rewind method
+	 */
+	public void rewind() {
+		
+		throw new RuntimeException( "SynthEditorModel: Do not call rewind here, instead call the associated Player class's rewind method" );
+	}
+	
 	@Override
 	public String getInstrumentName() {
 		

@@ -150,6 +150,14 @@ public class BassEditorModel extends AbstractEditorModel {
 		return recorder.getBeat();
 	}
 	
+	/**
+	 * Do not call rewind here, instead call the associated Player class's rewind method
+	 */
+	public void rewind() {
+		
+		throw new RuntimeException( "BassEditorModel: Do not call rewind here, instead call the associated Player class's rewind method" );
+	}
+	
 	@Override
 	public String getInstrumentName() {
 		
