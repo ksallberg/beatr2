@@ -153,6 +153,12 @@ public class SynthEditorModel extends AbstractEditorModel {
 		this.recorder = recorder;
 	}
 	
+	/**
+	 * Return null if the recorder is null
+	 * 
+	 * This behavior causes the BeatPlayer to just skip this instrument, and it will start playing it
+	 * when there's something there to play
+	 */
 	public Beat getBeat() {
 		
 		if( recorder == null ) {
