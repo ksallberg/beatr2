@@ -24,7 +24,6 @@ import se.purestyle.beatr.view.instrumentmixer.MetronomeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
 import android.content.Context;
-import android.util.Pair;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -243,22 +242,12 @@ public class InstrumentMixerController extends AbstractController {
 			
 			//Bubble
 			eventFirer.firePropertyChange( InstrumentController.EDIT_EVENT, null, event.getNewValue() );
+		}
 		
-		} else if ( event.getPropertyName().equals( InstrumentController.REWIND_EVENT ) ) {
+		if ( event.getPropertyName().equals( InstrumentController.REWIND_EVENT ) ) {
 			
-			@SuppressWarnings("unchecked")
-			Pair<String, String> infoStorer = (Pair<String, String>) event.getNewValue();
-			
-			//If a drum, tell the intruments editor model to go back to 0
-			if( infoStorer.first.equals( InstrumentModel.DRUM ) ) {
-				
-				
-			
-			//If not a drum, tell it's linked player to go back to 0
-			} else {
-				
-				
-			}
+			//New value is a String here, containing the internal PD name of the instrument that's going to be rewinded
+			BeatPlayer.getInstance().rewind( (String) event.getNewValue() );
 		}
 	}
 }

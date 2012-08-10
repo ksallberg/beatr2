@@ -80,6 +80,36 @@ public class BeatPlayer {
 	}
 	
 	/**
+	 * Rewind a given instrument (assign 0 to it's currentlyAt)
+	 * 
+	 * @param message
+	 */
+	public void rewind( String message ) {
+		
+		if( isDrum( message ) ) {
+			
+			//Rewind drum
+			drums.get( message ).rewind();
+		
+		} else {
+			
+			//Rewind Player (of type runnable)
+			threads.get( message ).rewind();
+		}
+	}
+	
+	/**
+	 * Returns yes if the message starts with "drum"
+	 * 
+	 * @param message
+	 * @return
+	 */
+	private boolean isDrum( String message ) {
+		
+		return message.substring( 0, 4 ).equals( "drum" );
+	}
+	
+	/**
 	 * This method accepts either BeatPlayer.ALL, BeatPlayer.NONE or a single instrument to be played
 	 * 
 	 * @param message ALL, NONE or an instrument name
@@ -131,10 +161,10 @@ public class BeatPlayer {
 		//Turn a single instrument on
 		} else {
 			
-			//TODO: This is never played, but it is a lot of work to make it play, then the instruments would need to be changed
-			//in the editors as the sound is changed, and it would also require a mode to stop the automatic playback
+			//This only works for drums, as of now, they are the only instrument that should sound
+			//when editing it. No need to make the synth and bass sound when in the edit mode
 			
-			if( message.substring( 0, 4 ).equals( "drum" ) ) {
+			if( isDrum( message ) ) {
 				
 				if( drums.get( message ) != null ) {
 					

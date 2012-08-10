@@ -26,7 +26,7 @@ public class InstrumentController extends AbstractController {
 	private InstrumentView view;
 	private InstrumentModel model;
 
-	private PropertyChangeSupport eventFirer = new PropertyChangeSupport( this );
+	private PropertyChangeSupport eventFirer;
 	private String instrumentType;
 	
 	private Context context;
@@ -35,6 +35,8 @@ public class InstrumentController extends AbstractController {
 		
 		this.instrumentType = instrumentType;
 		this.context = context;
+		
+		eventFirer = new PropertyChangeSupport( this );
 	}
 	
 	@Override
@@ -95,7 +97,7 @@ public class InstrumentController extends AbstractController {
 	OnClickListener editHandler = new OnClickListener() {
 		
 		@Override
-		public void onClick(View v) {
+		public void onClick( View v ) {
 			
 			Pair<String, String> infoStorer = new Pair<String, String>( instrumentType, model.getPdInternalName() ); //Where first = instrumentType, second = instrumentName
 			
@@ -106,11 +108,9 @@ public class InstrumentController extends AbstractController {
 	OnClickListener rewindHandler = new OnClickListener() {
 		
 		@Override
-		public void onClick(View v) {
+		public void onClick( View v ) {
 			
-			Pair<String, String> infoStorer = new Pair<String, String>( instrumentType, model.getPdInternalName() ); //Where first = instrumentType, second = instrumentName
-			
-			eventFirer.firePropertyChange( REWIND_EVENT, null, infoStorer );
+			eventFirer.firePropertyChange( REWIND_EVENT, null, model.getPdInternalName() );
 		}
 	};
 }

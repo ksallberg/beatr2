@@ -38,8 +38,6 @@ public class InstrumentHolderView extends LinearLayout implements IInstrumentMix
 	public void init( Context context, int footerViewHeight ) {
 
 		instrumentsPerPage = (int) Math.floor( Math.round( ( getHeight() - footerViewHeight ) / InstrumentMixerView.INSTRUMENT_VIEW_HEIGHT ) );
-		
-		Log.i( "instrumentsPerPage", "" + instrumentsPerPage );
 	}
 
 	public void setModel( IModel model ) {

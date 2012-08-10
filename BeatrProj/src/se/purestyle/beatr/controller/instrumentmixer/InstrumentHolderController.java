@@ -64,6 +64,10 @@ public class InstrumentHolderController extends AbstractController {
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {
 			
 			eventFirer.firePropertyChange( InstrumentController.EDIT_EVENT, null, event.getNewValue() );
+		
+		} else if( event.getPropertyName().equals( InstrumentController.REWIND_EVENT ) ) {
+			
+			eventFirer.firePropertyChange( InstrumentController.REWIND_EVENT, null, event.getNewValue() );
 		}
 	}
 }

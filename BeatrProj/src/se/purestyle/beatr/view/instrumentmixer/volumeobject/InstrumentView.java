@@ -48,14 +48,6 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		rewindInstrumentBtn = new Button( context );
 		rewindInstrumentBtn.setTag( REWIND_BUTTON );
 		rewindInstrumentBtn.setBackgroundResource( R.drawable.rewindinstrument );
-		rewindInstrumentBtn.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick( View v ) {
-				
-				Log.i( "InstrumentView: ", "REWIND!" );
-			}
-		} );
 		
 		volumeDragger = new VolumeDraggerView( context );
 		((VolumeDraggerView) volumeDragger).setTag( VOLUME_DRAGGER );
@@ -63,14 +55,6 @@ public class InstrumentView extends LinearLayout implements IInstrumentView {
 		editInstrumentBtn = new Button( context );
 		editInstrumentBtn.setTag( EDIT_BUTTON );
 		editInstrumentBtn.setBackgroundResource( R.drawable.editinstrument );
-		editInstrumentBtn.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick( View v ) {
-				
-				Log.i( "InstrumentView: ", "EDIT!" );
-			}
-		} );
 		
 		addView( rewindInstrumentBtn );
 		addView( (VolumeDraggerView) volumeDragger );

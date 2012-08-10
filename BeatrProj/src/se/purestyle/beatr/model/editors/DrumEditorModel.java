@@ -140,6 +140,12 @@ public class DrumEditorModel extends AbstractEditorModel implements PropertyChan
 		PdConnector.sendToPd( pdInternalInstrumentName + modControllerName, mod );
 	}
 	
+	@Override
+	public void rewind() {
+		
+		currentPlayingDrum = 0;
+	}
+	
 	/**
 	 * Destroy this model!
 	 */

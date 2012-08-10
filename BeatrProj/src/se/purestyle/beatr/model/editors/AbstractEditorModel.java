@@ -15,4 +15,9 @@ public class AbstractEditorModel extends AbstractModel {
 		
 		throw new RuntimeException( "AbstractEditorModel: This is an abstract class, do not call this method!" );
 	}
+	
+	public void rewind() {
+		
+		throw new RuntimeException( "AbstractEditorModel: This is an abstract class, do not call this method!" );
+	}
 }

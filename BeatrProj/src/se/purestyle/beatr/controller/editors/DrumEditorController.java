@@ -237,8 +237,6 @@ public class DrumEditorController extends AbstractController {
 		//If any of the pads were changed
 		} else if ( event.getPropertyName().equals( DrumPadController.PAD_PRESSED ) ) {
 			
-//			Log.i("DrumEditorController: " , "Pad pressed" + event.getNewValue() + ", " + event.getOldValue() );
-			
 			model.setDrumOnOff( (Integer) event.getOldValue(), (Boolean) event.getNewValue());
 		}
 	}
