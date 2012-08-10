@@ -56,7 +56,6 @@ public class BassEditorController extends AbstractController {
 		slider.setup();
 		
 		model = (BassEditorModel) InstrumentTracker.getModel( pdInternalInstrumentName );
-		model.registerRecorder( recorder );
 		
 		view = new BassEditorView( context, activity );
 		view.init();
@@ -108,6 +107,8 @@ public class BassEditorController extends AbstractController {
 		public void onClick( View v ) {
 			
 			view.toggleRecord();
+			
+			model.registerRecorder( recorder );
 			
 			recorder.stopRecording();
 			recorder.removeObserver( _this );
