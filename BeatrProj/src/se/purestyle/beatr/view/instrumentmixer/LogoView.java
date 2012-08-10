@@ -15,6 +15,8 @@ public class LogoView extends RelativeLayout {
 
 	public static final String BACK_TO_MIXER_BUTTON = "backToMixerButton";
 	
+	private Button backToMixerButton;
+	
 	public LogoView( Context context ) {
 		
 		super( context );
@@ -33,7 +35,7 @@ public class LogoView extends RelativeLayout {
 		backToMixerParams.addRule( RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE );
 		backToMixerParams.setMargins( 6, 6, 0, 0 );
 		
-		Button backToMixerButton = new Button( context );
+		backToMixerButton = new Button( context );
 		backToMixerButton.setTypeface( LHLine1Sans );
 		backToMixerButton.setTextColor( Color.parseColor( "#F6FF00" ) );
 		backToMixerButton.setBackgroundResource( R.drawable.backtomixer );
@@ -51,5 +53,10 @@ public class LogoView extends RelativeLayout {
 		logo.setBackgroundResource( R.drawable.logo );
 		logo.setLayoutParams( logoParams );
 		addView( logo );
+	}
+	
+	public void removeBackToMixerButton() {
+		
+		removeView( backToMixerButton );
 	}
 }
