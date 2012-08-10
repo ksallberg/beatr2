@@ -46,14 +46,14 @@ public class MainMenuActivity extends Activity {
 		
 		MainMenuView menuView2 = new MainMenuView( getApplicationContext() );
 		menuView2.setName( "help" );
-		menuView2.setRadius( 125 );
+		menuView2.setRadius( 110 );
 		menuView2.init();
 		menuView2.setOnClickListener( helpClicked );
 		holder.addView( menuView2 );
 		
 		MainMenuView menuView3 = new MainMenuView( getApplicationContext() );
 		menuView3.setName( "credits" );
-		menuView3.setRadius( 70 );
+		menuView3.setRadius( 65 );
 		menuView3.init();
 		menuView3.setOnClickListener( creditsClicked );
 		holder.addView( menuView3 );
