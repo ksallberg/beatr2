@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import android.util.Pair;
 
 /**
- * Data structure to keep what happens  
+ * Data structure to record what happens when the users jams on instruments  
  * 
  * The point is to be able to store commands to the software synth and when they are supposed to be playing
  * 
