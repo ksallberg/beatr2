@@ -18,6 +18,7 @@ public class InstrumentMixerView extends AbstractView {
 	public static final String	ADD_INSTRUMENT_BUTTON	= "addInstrumentButton";
 	public static final String	PREV_PAGE_BUTTON		= "prevPageButton";
 	public static final String	NEXT_PAGE_BUTTON		= "nextPageButton";
+	public static final String	CANCEL_ADD_INS_BUTTON	= "cancelAddInsButton";
 	
 	public static final String	SYNTH_BUTTON			= "synthButton";
 	public static final String	DRUM_BUTTON				= "drumButton";
@@ -43,6 +44,7 @@ public class InstrumentMixerView extends AbstractView {
 		views.put( MASTER_VOLUME_VIEW,		startView.findViewWithTag( MASTER_VOLUME_VIEW ) );
 		views.put( BASS_BUTTON, 			startView.findViewWithTag( BASS_BUTTON ) );
 		views.put( METRONOME_VIEW, 			startView.findViewWithTag( METRONOME_VIEW ) );
+		views.put( CANCEL_ADD_INS_BUTTON, 	startView.findViewWithTag( CANCEL_ADD_INS_BUTTON ) );
 	}
 	
 	/**

@@ -81,6 +81,7 @@ public class InstrumentMixerController extends AbstractController {
 		addSubcontroller( METRONOME_CONTROLLER, metronomeSub );
 		
 		insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_BUTTON ).setOnClickListener( addInstrumentHandler );
+		insMixView.getViews().get( InstrumentMixerView.CANCEL_ADD_INS_BUTTON ).setOnClickListener( removeInstrumentHandler );
 		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( prevPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
 		insMixView.getViews().get( InstrumentMixerView.SYNTH_BUTTON ).setOnClickListener( addSynthButton );
@@ -104,6 +105,15 @@ public class InstrumentMixerController extends AbstractController {
 		public void onClick( View v ) {
 			
 			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).show();
+		}
+	};
+	
+	OnClickListener removeInstrumentHandler = new OnClickListener() {
+		
+		@Override
+		public void onClick( View v ) {
+			
+			( ( AddInstrumentView ) insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_VIEW ) ).hide();
 		}
 	};
 	
