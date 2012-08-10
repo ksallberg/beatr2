@@ -11,7 +11,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
 public class SynthEditorActivity extends Activity {
@@ -32,6 +34,7 @@ public class SynthEditorActivity extends Activity {
 		//Create and add the logo to this activity
 		LogoView logoView = new LogoView( getApplicationContext() );
 		holder.addView( logoView );
+		logoView.findViewWithTag( LogoView.BACK_TO_MIXER_BUTTON ).setOnClickListener( onBackToMixerButtonPressed );
 		
 		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
 		tiles.setTileModeX( Shader.TileMode.REPEAT );
@@ -50,4 +53,13 @@ public class SynthEditorActivity extends Activity {
 		//Stop all players 
 		BeatPlayer.getInstance().setMode( BeatPlayer.NONE );
 	}
+	
+	private OnClickListener onBackToMixerButtonPressed = new OnClickListener() {
+		
+		@Override
+		public void onClick( View v ) {
+			
+			finish();
+		}
+	};
 }
