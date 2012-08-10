@@ -7,7 +7,6 @@ import se.purestyle.beatr.helpers.PdConnector;
 import se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 import android.content.Context;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,6 +21,7 @@ public class InstrumentController extends AbstractController {
 	public static final String VOLUME_DRAGGER_MODEL		= "volumeDraggerModel";
 	
 	public static final String EDIT_EVENT				= "editEvent";
+	public static final String REWIND_EVENT				= "rewindEvent";
 	
 	private InstrumentView view;
 	private InstrumentModel model;
@@ -108,7 +108,9 @@ public class InstrumentController extends AbstractController {
 		@Override
 		public void onClick(View v) {
 			
-			Log.i( "InstrumentController", "Rewind!" );
+			Pair<String, String> infoStorer = new Pair<String, String>( instrumentType, model.getPdInternalName() ); //Where first = instrumentType, second = instrumentName
+			
+			eventFirer.firePropertyChange( REWIND_EVENT, null, infoStorer );
 		}
 	};
 }

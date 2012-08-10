@@ -24,6 +24,7 @@ import se.purestyle.beatr.view.instrumentmixer.MetronomeView;
 import se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView;
 
 import android.content.Context;
+import android.util.Pair;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -80,13 +81,13 @@ public class InstrumentMixerController extends AbstractController {
 		metronomeSub.setView( ( MetronomeView ) insMixView.getViews().get( InstrumentMixerView.METRONOME_VIEW ) );
 		addSubcontroller( METRONOME_CONTROLLER, metronomeSub );
 		
-		insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_BUTTON ).setOnClickListener( addInstrumentHandler );
-		insMixView.getViews().get( InstrumentMixerView.CANCEL_ADD_INS_BUTTON ).setOnClickListener( removeInstrumentHandler );
-		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( prevPageRequested );
-		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( nextPageRequested );
-		insMixView.getViews().get( InstrumentMixerView.SYNTH_BUTTON ).setOnClickListener( addSynthButton );
-		insMixView.getViews().get( InstrumentMixerView.BASS_BUTTON ).setOnClickListener( addBassButton );
-		insMixView.getViews().get( InstrumentMixerView.DRUM_BUTTON ).setOnClickListener( addDrumButton );
+		insMixView.getViews().get( InstrumentMixerView.ADD_INSTRUMENT_BUTTON ).setOnClickListener( 	addInstrumentHandler 	);
+		insMixView.getViews().get( InstrumentMixerView.CANCEL_ADD_INS_BUTTON ).setOnClickListener( 	removeInstrumentHandler );
+		insMixView.getViews().get( InstrumentMixerView.PREV_PAGE_BUTTON ).setOnClickListener( 		prevPageRequested 		);
+		insMixView.getViews().get( InstrumentMixerView.NEXT_PAGE_BUTTON ).setOnClickListener( 		nextPageRequested 		);
+		insMixView.getViews().get( InstrumentMixerView.SYNTH_BUTTON ).setOnClickListener( 			addSynthButton		 	);
+		insMixView.getViews().get( InstrumentMixerView.BASS_BUTTON ).setOnClickListener( 			addBassButton 			);
+		insMixView.getViews().get( InstrumentMixerView.DRUM_BUTTON ).setOnClickListener( 			addDrumButton 			);
 		
 		//Set instrumentHolderView's model to instrumentholderView from InstrumentHolderController
 		
@@ -237,10 +238,27 @@ public class InstrumentMixerController extends AbstractController {
 			}
 		}
 		
+		//If user wants to edit the instrument, bubble it up to BeatrActivity
 		if( event.getPropertyName().equals( InstrumentController.EDIT_EVENT ) ) {
 			
 			//Bubble
 			eventFirer.firePropertyChange( InstrumentController.EDIT_EVENT, null, event.getNewValue() );
+		
+		} else if ( event.getPropertyName().equals( InstrumentController.REWIND_EVENT ) ) {
+			
+			@SuppressWarnings("unchecked")
+			Pair<String, String> infoStorer = (Pair<String, String>) event.getNewValue();
+			
+			//If a drum, tell the intruments editor model to go back to 0
+			if( infoStorer.first.equals( InstrumentModel.DRUM ) ) {
+				
+				
+			
+			//If not a drum, tell it's linked player to go back to 0
+			} else {
+				
+				
+			}
 		}
 	}
 }

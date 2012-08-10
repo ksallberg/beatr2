@@ -103,6 +103,7 @@ public class BeatrActivity extends Activity implements PropertyChangeListener {
 			intent.putExtra( "INSTRUMENT_NAME", pair.second );
 			
 			startActivity( intent );
+		
 		}
 	}
 }

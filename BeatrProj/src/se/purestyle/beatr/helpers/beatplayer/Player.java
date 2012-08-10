@@ -52,7 +52,7 @@ public class Player implements Runnable, IPlayer {
 				}
 			}
 			
-			//This is what happens when the 
+			//Increment currentlyAt for the next rount
 			currentlyAt ++;
 			
 			//If there's a recorded beat
@@ -98,6 +98,14 @@ public class Player implements Runnable, IPlayer {
 	public void play() {
 		
 		paused = false;
+	}
+	
+	/**
+	 * Enable other classes to rewind the player, set it's position to 0
+	 */
+	public void rewind() {
+		
+		currentlyAt = 0;
 	}
 	
 	//TODO: Find a better way to mute all instruments
