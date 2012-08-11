@@ -1,13 +1,19 @@
 package se.purestyle.beatr;
 
+import se.purestyle.beatr.helpers.VersionKeeper;
 import se.purestyle.beatr.infoactivities.BeatrTemplate;
 import se.purestyle.beatr.infoactivities.CreditsActivity;
 import se.purestyle.beatr.infoactivities.HelpActivity;
 import se.purestyle.beatr.view.info.MainMenuView;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class BeatrActivity extends BeatrTemplate {
 
@@ -21,6 +27,21 @@ public class BeatrActivity extends BeatrTemplate {
 		super.onCreate( bundle );
 		
 		logoView.removeBackToMixerButton();
+		
+		//Add versions text to the logoView
+		RelativeLayout.LayoutParams versionsTextParams = new RelativeLayout.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
+		versionsTextParams.addRule( RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE );
+		versionsTextParams.setMargins( 10, 6, 0, 0 );
+		
+		//Create typeface
+		Typeface LHLine1Sans = Typeface.createFromAsset( getApplicationContext().getAssets(), "fonts/lhine1sansthin.ttf" );
+				
+		TextView versionsText = new TextView( getApplicationContext() );
+		versionsText.setTextColor( Color.parseColor( "#F6FF00" ) );
+		versionsText.setTypeface( LHLine1Sans );
+		versionsText.setText( "beatr v" + VersionKeeper.VERSION );
+		versionsText.setLayoutParams( versionsTextParams );
+		logoView.addView( versionsText );
 		
 		MainMenuView menuView = new MainMenuView( getApplicationContext() );
 		menuView.setName( "mixer" );
@@ -38,7 +59,7 @@ public class BeatrActivity extends BeatrTemplate {
 		
 		MainMenuView menuView3 = new MainMenuView( getApplicationContext() );
 		menuView3.setName( "credits" );
-		menuView3.setRadius( 50 );
+		menuView3.setRadius( 40 );
 		menuView3.init();
 		menuView3.setOnClickListener( creditsClicked );
 		holder.addView( menuView3 );
