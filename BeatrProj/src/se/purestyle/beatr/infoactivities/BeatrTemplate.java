@@ -7,7 +7,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
 /**
@@ -44,4 +46,13 @@ public class BeatrTemplate extends Activity {
 		
 		holder.setBackgroundDrawable( tiles );
 	}
+	
+	protected OnClickListener onBackToMenuClicked = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			finish();
+		}
+	};
 }

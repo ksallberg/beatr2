@@ -38,7 +38,7 @@ public class BeatrActivity extends BeatrTemplate {
 		
 		MainMenuView menuView3 = new MainMenuView( getApplicationContext() );
 		menuView3.setName( "credits" );
-		menuView3.setRadius( 65 );
+		menuView3.setRadius( 50 );
 		menuView3.init();
 		menuView3.setOnClickListener( creditsClicked );
 		holder.addView( menuView3 );

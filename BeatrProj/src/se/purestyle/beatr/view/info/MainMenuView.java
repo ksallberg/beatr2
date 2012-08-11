@@ -29,7 +29,7 @@ public class MainMenuView extends LinearLayout {
 		mixerButtonWrapper.addView( mixerButton );
 
 		addView( mixerButtonWrapper );
-		setPadding( 0, 5, 0, 5 );
+		setPadding( 0, 5, 0, 15 );
 		
 		setGravity( Gravity.CENTER );
 	}
