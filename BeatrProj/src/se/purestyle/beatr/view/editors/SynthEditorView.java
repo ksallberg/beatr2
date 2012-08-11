@@ -117,7 +117,7 @@ public class SynthEditorView extends LinearLayout {
 		knobHolder.setLayoutParams( new LayoutParams( 65, 65 ) );
 		
 		KnobAndHeader knobAndHeader = new KnobAndHeader( context );
-		knobAndHeader.setContent( "attack", knobHolder );
+		knobAndHeader.setContent( "dry/wet", knobHolder );
 		filterHolder.addView( knobAndHeader );
 	}
 	

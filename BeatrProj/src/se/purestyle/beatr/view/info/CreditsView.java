@@ -26,7 +26,7 @@ public class CreditsView extends LinearLayout {
 											0	);
 		addView( synthCreds );
 		
-		TextView fontCreds = getTextView( "Font by Lufthamn Studio.",
+		TextView fontCreds = getTextView( "Font: Line 1 Sans by Lufthamn Studio.",
 				Gravity.CENTER,
 				0	);
 		addView( fontCreds );

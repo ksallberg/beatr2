@@ -28,13 +28,6 @@ public class MainMenuButtonView extends View {
 	@Override
 	public void onDraw( Canvas canvas ) {
 		
-		Paint bgColor = new Paint();
-		bgColor.setColor( Color.parseColor( "#434343" ) );
-		bgColor.setAlpha( 200 );
-		bgColor.setAntiAlias( true );
-		
-		canvas.drawCircle( getWidth() / 2, getHeight() / 2, getWidth() / 2, bgColor );
-		
 		//Create typeface
 		Typeface LHLine1Sans = Typeface.createFromAsset( context.getAssets(), "fonts/lhine1sansthin.ttf" );
 		
@@ -43,6 +36,14 @@ public class MainMenuButtonView extends View {
 		textColor.setAntiAlias( true );
 		textColor.setTypeface( LHLine1Sans );
 		textColor.setTextSize( getWidth() / 5 );
+		
+		Paint bgColor = new Paint();
+		bgColor.setColor( Color.parseColor( "#434343" ) );
+		bgColor.setAntiAlias( true );
+		
+		canvas.drawCircle( getWidth() / 2, getHeight() / 2, getWidth() / 2, textColor );
+		
+		canvas.drawCircle( getWidth() / 2, getHeight() / 2, getWidth() / 2 - ( getWidth() / 30 ), bgColor );
 		
 		canvas.drawText( name, getWidth() / 2 - textColor.measureText( name ) / 2, Math.round( getHeight() / 1.75 ), textColor );
 	}
