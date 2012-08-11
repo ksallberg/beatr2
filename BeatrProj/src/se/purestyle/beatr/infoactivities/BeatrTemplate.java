@@ -1,4 +1,4 @@
-package se.purestyle.beatr.viewactivites;
+package se.purestyle.beatr.infoactivities;
 
 import se.purestyle.beatr.R;
 import se.purestyle.beatr.view.instrumentmixer.LogoView;

@@ -1,4 +1,4 @@
-package se.purestyle.beatr.view.information;
+package se.purestyle.beatr.view.info;
 
 import android.content.Context;
 import android.view.Gravity;

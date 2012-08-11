@@ -1,17 +1,19 @@
 package se.purestyle.beatr;
 
-import se.purestyle.beatr.view.information.MainMenuView;
-import se.purestyle.beatr.viewactivites.BeatrTemplate;
-import se.purestyle.beatr.viewactivites.MixerActivity;
+import se.purestyle.beatr.infoactivities.BeatrTemplate;
+import se.purestyle.beatr.infoactivities.CreditsActivity;
+import se.purestyle.beatr.infoactivities.HelpActivity;
+import se.purestyle.beatr.view.info.MainMenuView;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 
 public class BeatrActivity extends BeatrTemplate {
 
 	private Intent mixerIntent;
+	private Intent helpIntent;
+	private Intent creditsIntent;
 	
 	@Override
 	public void onCreate( Bundle bundle ) {
@@ -43,8 +45,8 @@ public class BeatrActivity extends BeatrTemplate {
 		
 		//Create the mixer intent
 		mixerIntent = new Intent( this, MixerActivity.class );
-		
-		
+		helpIntent = new Intent( this, HelpActivity.class );
+		creditsIntent = new Intent( this, CreditsActivity.class );
 	}
 	
 	private OnClickListener mixerClicked = new OnClickListener() {
@@ -52,7 +54,6 @@ public class BeatrActivity extends BeatrTemplate {
 		@Override
 		public void onClick(View v) {
 			
-			Log.i( "MainMenuActivity" , "Mixer clicked" );
 			startActivityIfNeeded( mixerIntent, 0 );
 		}
 	};
@@ -62,7 +63,7 @@ public class BeatrActivity extends BeatrTemplate {
 		@Override
 		public void onClick(View v) {
 			
-			Log.i( "MainMenuActivity" , "Help clicked" );
+			startActivity( helpIntent );
 		}
 	};
 	
@@ -71,7 +72,7 @@ public class BeatrActivity extends BeatrTemplate {
 		@Override
 		public void onClick(View v) {
 			
-			Log.i( "MainMenuActivity" , "Credits clicked" );
+			startActivity( creditsIntent );
 		}
 	};
 }

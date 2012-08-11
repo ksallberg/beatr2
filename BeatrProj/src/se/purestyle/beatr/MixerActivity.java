@@ -1,4 +1,4 @@
-package se.purestyle.beatr.viewactivites;
+package se.purestyle.beatr;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

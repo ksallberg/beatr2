@@ -10,7 +10,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".viewactivites.MixerActivity"
+		<activity android:name=".MixerActivity"
 			android:screenOrientation="portrait" android:launchMode="singleTask">
 		</activity>
 		<activity android:name=".editoractivities.SynthEditorActivity"
@@ -20,6 +20,12 @@
 			android:screenOrientation="portrait" android:launchMode="singleTask">
 		</activity>
 		<activity android:name=".editoractivities.BassEditorActivity"
+			android:screenOrientation="portrait" android:launchMode="singleTask">
+		</activity>
+		<activity android:name=".infoactivities.CreditsActivity"
+			android:screenOrientation="portrait" android:launchMode="singleTask">
+		</activity>
+		<activity android:name=".infoactivities.HelpActivity"
 			android:screenOrientation="portrait" android:launchMode="singleTask">
 		</activity>
 		<service android:name="org.puredata.android.service.PdService" />
