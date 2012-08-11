@@ -34,7 +34,7 @@ public class SynthEditorActivity extends Activity {
 		//Create and add the logo to this activity
 		LogoView logoView = new LogoView( getApplicationContext() );
 		holder.addView( logoView );
-		logoView.setButtonText( "   back to mixer" );
+		logoView.setButtonText( "   back to mixr" );
 		logoView.findViewWithTag( LogoView.BACK_TO_MIXER_BUTTON ).setOnClickListener( onBackToMixerButtonPressed );
 		
 		BitmapDrawable tiles = new BitmapDrawable( BitmapFactory.decodeResource( getResources(), R.drawable.illusion ) );
