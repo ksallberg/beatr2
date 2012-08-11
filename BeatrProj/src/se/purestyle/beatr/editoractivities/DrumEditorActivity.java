@@ -35,6 +35,7 @@ public class DrumEditorActivity extends Activity {
 		//Create and add the logo to this activity
 		LogoView logoView = new LogoView( getApplicationContext() );
 		holder.addView( logoView );
+		logoView.setButtonText( "   back to mixer" );
 		logoView.findViewWithTag( LogoView.BACK_TO_MIXER_BUTTON ).setOnClickListener( onBackToMixerButtonPressed );
 		
 		LinearLayout insideHolder = new LinearLayout( getApplicationContext() );

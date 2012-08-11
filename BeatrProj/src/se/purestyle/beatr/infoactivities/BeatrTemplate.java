@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 public class BeatrTemplate extends Activity {
 
 	public LinearLayout holder;
+	protected LogoView logoView;
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -32,8 +33,8 @@ public class BeatrTemplate extends Activity {
 		holder = new LinearLayout( getApplicationContext() );
 		holder.setOrientation( LinearLayout.VERTICAL );
 		
-		LogoView logoView = new LogoView( getApplicationContext() );
-		logoView.removeBackToMixerButton();
+		logoView = new LogoView( getApplicationContext() );
+//		logoView.removeBackToMixerButton();
 		holder.addView( logoView );
 		
 		//Repeating Background

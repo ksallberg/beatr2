@@ -20,6 +20,8 @@ public class BeatrActivity extends BeatrTemplate {
 		
 		super.onCreate( bundle );
 		
+		logoView.removeBackToMixerButton();
+		
 		MainMenuView menuView = new MainMenuView( getApplicationContext() );
 		menuView.setName( "mixer" );
 		menuView.setRadius( 200 );

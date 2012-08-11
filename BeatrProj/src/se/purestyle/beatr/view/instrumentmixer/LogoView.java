@@ -2,8 +2,6 @@ package se.purestyle.beatr.view.instrumentmixer;
 
 import org.puredata.android.service.R;
 
-import se.purestyle.beatr.view.InstrumentMixerView;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,16 +13,23 @@ public class LogoView extends RelativeLayout {
 
 	public static final String BACK_TO_MIXER_BUTTON = "backToMixerButton";
 	
-	private Button backToMixerButton;
+	private Button 		backToMixerButton;
+	private Context 	context;
 	
 	public LogoView( Context context ) {
 		
 		super( context );
+		this.context = context;
 		
-		init( context );
+		init();
 	}
 	
-	private void init( Context context ) {
+	public void setButtonText( String buttonText ) {
+		
+		backToMixerButton.setText( buttonText );
+	}
+	
+	private void init() {
 		
 		setLayoutParams( new LayoutParams( LayoutParams.FILL_PARENT, 60 ) );
 		
@@ -39,8 +44,7 @@ public class LogoView extends RelativeLayout {
 		backToMixerButton.setTypeface( LHLine1Sans );
 		backToMixerButton.setTextColor( Color.parseColor( "#F6FF00" ) );
 		backToMixerButton.setBackgroundResource( R.drawable.backtomixer );
-		backToMixerButton.setText( "     back to mixer" );
-		backToMixerButton.setTag( InstrumentMixerView.ADD_INSTRUMENT_BUTTON );
+		backToMixerButton.setText( "" );
 		backToMixerButton.setLayoutParams( backToMixerParams );
 		backToMixerButton.setTag( BACK_TO_MIXER_BUTTON );
 		addView( backToMixerButton );
