@@ -1,7 +1,6 @@
 package se.purestyle.beatr.view.info;
 
 import se.purestyle.beatr.R;
-import se.purestyle.beatr.helpers.VersionKeeper;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -25,21 +24,21 @@ public class HelpView extends LinearLayout {
 		setOrientation( LinearLayout.VERTICAL );
 		
 		//Add header and the knob
-		TextView welcomeText = getTextView( "This is version " + VersionKeeper.VERSION + " of the beatr app. We strive to use RERO, release early, relase often. Please submit your ideas for how to improve this app, it is work in progress. Right now, it's not possible to delete individual instruments. Just go back to the main menu and then enter the mixer again."
+		TextView welcomeText = getTextView( "beatr is work in progress. Please submit your ideas for how to improve it. Right now, it's not possible to delete individual instruments. Just go back to the main menu and then enter the mixer again. It's currently not possible to save recorded beats."
 											,Gravity.CENTER
 											,0 );
 		addView( welcomeText );
 		
 	//	Add an explanation of the rewind button
-		LinearLayout rewindButtonDesctiption = getPictureDescription( R.drawable.rewindinstrument, "Click this button to rewind the associated instrument's recorded beat." );
+		LinearLayout rewindButtonDesctiption = getPictureDescription( R.drawable.rewindinstrument, "Rewinds the associated instrument's recorded beat." );
 		addView( rewindButtonDesctiption );
 		
 	//	Add an explanation of the edit button
-		LinearLayout editButtonDesctiption = getPictureDescription( R.drawable.editinstrument, "Click this button to edit the associated instrument and record a beat." );
+		LinearLayout editButtonDesctiption = getPictureDescription( R.drawable.editinstrument, "Enters the edit mode of the associated instrument." );
 		addView( editButtonDesctiption );
 		
 //		Add an explanation of the edit button
-		LinearLayout nextButtonDesctiption = getPictureDescription( R.drawable.next, "When having a long list of instruments, navigate the list with the next and previous–buttons." );
+		LinearLayout nextButtonDesctiption = getPictureDescription( R.drawable.next, "Navigate the list of instruments with the next and previous–buttons." );
 		addView( nextButtonDesctiption );
 	}
 	

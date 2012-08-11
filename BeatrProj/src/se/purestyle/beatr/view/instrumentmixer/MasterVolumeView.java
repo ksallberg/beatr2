@@ -70,9 +70,9 @@ public class MasterVolumeView extends AbstractVolumeView implements IModelUser {
 		textPaint.setMaskFilter( new BlurMaskFilter( 2, Blur.OUTER ) );
 		textPaint.setAlpha( 1000 );
 		
-		can.drawText( "mastervolume", 10, 31, textPaint );
-		can.drawText( "mastervolume", 10, 31, textPaint );
-		can.drawText( "mastervolume", 10, 31, textPaint );
-		can.drawText( "mastervolume", 10, 31, textPaint );
+		for( int i = 0; i < 4; i ++ ) {
+			
+			can.drawText( "master volume", 10, 31, textPaint );
+		}
 	}
 }

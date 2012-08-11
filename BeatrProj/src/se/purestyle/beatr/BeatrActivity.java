@@ -44,7 +44,7 @@ public class BeatrActivity extends BeatrTemplate {
 		logoView.addView( versionsText );
 		
 		MainMenuView menuView = new MainMenuView( getApplicationContext() );
-		menuView.setName( "mixer" );
+		menuView.setName( "mixr" );
 		menuView.setRadius( 200 );
 		menuView.init();
 		menuView.setOnClickListener( mixerClicked );
