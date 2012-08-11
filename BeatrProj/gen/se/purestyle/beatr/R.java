@@ -35,7 +35,6 @@ public final class R {
         public static final int rewindinstrument=0x7f02000b;
         public static final int stoprecording=0x7f02000c;
         public static final int volumebaroverlay=0x7f02000d;
-        public static final int whitediamond=0x7f02000e;
     }
     public static final class id {
         public static final int about_item=0x7f0a0001;
