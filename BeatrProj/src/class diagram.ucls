@@ -1,0 +1,1094 @@
+<class-diagram version="1.0.9" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.controller.editors.DrumEditorController" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/controller/editors/DrumEditorController.java" 
+    binary="false">    
+    <position height="315" width="268" x="4581" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.controller.editors.BassEditorController" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/controller/editors/BassEditorController.java" 
+    binary="false">    
+    <position height="247" width="277" x="5684" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.controller.editors.SynthEditorController" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/controller/editors/SynthEditorController.java" 
+    binary="false">    
+    <position height="247" width="277" x="5357" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.controller.generic.SliderTwoDirectionsController" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/controller/generic/SliderTwoDirectionsController.java" binary="false">    
+    <position height="230" width="268" x="5724" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.controller.generic.DrumPadController" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/controller/generic/DrumPadController.java" 
+    binary="false">    
+    <position height="247" width="227" x="4314" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.controller.generic.KnobController" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/controller/generic/KnobController.java" binary="false">    
+    <position height="230" width="268" x="4581" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.controller.instrumentmixer.volumeobject.InstrumentController" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/controller/instrumentmixer/volumeobject/InstrumentController.java" 
+    binary="false">    
+    <position height="315" width="309" x="6331" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.controller.instrumentmixer.InstrumentHolderController" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/controller/instrumentmixer/InstrumentHolderController.java" binary="false">    
+    <position height="230" width="268" x="6322" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.controller.instrumentmixer.MasterVolumeController" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/controller/instrumentmixer/MasterVolumeController.java" binary="false">    
+    <position height="162" width="211" x="5404" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="10" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.controller.instrumentmixer.MetronomeController" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/controller/instrumentmixer/MetronomeController.java" binary="false">    
+    <position height="162" width="211" x="5120" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.controller.InstrumentMixerController" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/controller/InstrumentMixerController.java" 
+    binary="false">    
+    <position height="400" width="289" x="6940" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.editoractivities.BassEditorActivity" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/editoractivities/BassEditorActivity.java" binary="false">    
+    <position height="111" width="282" x="3359" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.editoractivities.SynthEditorActivity" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/editoractivities/SynthEditorActivity.java" 
+    binary="false">    
+    <position height="111" width="282" x="2335" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.editoractivities.DrumEditorActivity" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/editoractivities/DrumEditorActivity.java" binary="false">    
+    <position height="111" width="282" x="2013" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="15" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.beatplayer.Beat" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/beatplayer/Beat.java" binary="false">    
+    <position height="196" width="272" x="5364" y="2781"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="16" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.beatplayer.IPlayer" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/beatplayer/IPlayer.java" binary="false">    
+    <position height="94" width="180" x="4046" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="17" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.beatplayer.Player" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/beatplayer/Player.java" binary="false">    
+    <position height="213" width="180" x="4046" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="18" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.beatplayer.BeatPlayer" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/beatplayer/BeatPlayer.java" binary="false">    
+    <position height="213" width="290" x="4046" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="19" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.beatplayer.Recorder" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/beatplayer/Recorder.java" binary="false">    
+    <position height="298" width="283" x="5364" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="20" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.InstrumentTracker" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/InstrumentTracker.java" binary="false">    
+    <position height="298" width="252" x="1398" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="21" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.FileModifier" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/FileModifier.java" binary="false">    
+    <position height="196" width="325" x="3681" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="22" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.PdConnector" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/helpers/PdConnector.java" binary="false">    
+    <position height="264" width="221" x="7269" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="23" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.MetronomePlayer" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/MetronomePlayer.java" binary="false">    
+    <position height="315" width="283" x="1690" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="24" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.helpers.VersionKeeper" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/helpers/VersionKeeper.java" binary="false">    
+    <position height="94" width="128" x="355" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="25" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.infoactivities.HelpActivity" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/infoactivities/HelpActivity.java" binary="false">    
+    <position height="94" width="150" x="4266" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="26" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.infoactivities.CreditsActivity" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/infoactivities/CreditsActivity.java" binary="false">    
+    <position height="94" width="150" x="4715" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="27" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.infoactivities.BeatrTemplate" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/infoactivities/BeatrTemplate.java" binary="false">    
+    <position height="128" width="244" x="4585" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="28" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.editors.SynthEditorModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/editors/SynthEditorModel.java" binary="false">    
+    <position height="519" width="207" x="4889" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="29" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.editors.DrumEditorModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/editors/DrumEditorModel.java" binary="false">    
+    <position height="1182" width="268" x="3985" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="30" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.editors.BassEditorModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/editors/BassEditorModel.java" binary="false">    
+    <position height="519" width="207" x="5136" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="31" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.editors.AbstractEditorModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/editors/AbstractEditorModel.java" binary="false">    
+    <position height="128" width="174" x="4889" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="32" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.generic.KnobModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/generic/KnobModel.java" binary="false">    
+    <position height="332" width="188" x="4676" y="2781"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="33" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.generic.SliderTwoDirectionsModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/generic/SliderTwoDirectionsModel.java" 
+    binary="false">    
+    <position height="179" width="204" x="5687" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="34" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.generic.DrumPadModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/generic/DrumPadModel.java" binary="false">    
+    <position height="196" width="182" x="4444" y="2781"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="35" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.model.instrumentmixer.volumeobject.InstrumentModel" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/model/instrumentmixer/volumeobject/InstrumentModel.java" binary="false">    
+    <position height="349" width="261" x="6651" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="36" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.model.instrumentmixer.InstrumentHolderModel" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/model/instrumentmixer/InstrumentHolderModel.java" binary="false">    
+    <position height="128" width="259" x="6331" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="37" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.instrumentmixer.MasterVolumeModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/instrumentmixer/MasterVolumeModel.java" 
+    binary="false">    
+    <position height="162" width="197" x="5404" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="38" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.instrumentmixer.MetronomeModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/instrumentmixer/MetronomeModel.java" 
+    binary="false">    
+    <position height="213" width="197" x="5120" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="39" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.InstrumentMixerModel" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/model/InstrumentMixerModel.java" binary="false">    
+    <position height="77" width="177" x="2657" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="40" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.model.FemaleNames" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/model/FemaleNames.java" binary="false">    
+    <position height="128" width="164" x="523" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="41" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.editors.DrumEditorView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/editors/DrumEditorView.java" binary="false">    
+    <position height="230" width="204" x="3985" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="42" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.editors.SynthEditorView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/editors/SynthEditorView.java" binary="false">    
+    <position height="400" width="259" x="5404" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="43" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.editors.BassEditorView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/editors/BassEditorView.java" binary="false">    
+    <position height="400" width="259" x="6032" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="44" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.IOverlay" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/IOverlay.java" binary="false">    
+    <position height="94" width="151" x="6838" y="2781"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="45" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.KnobAndHeader" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/KnobAndHeader.java" binary="false">    
+    <position height="111" width="179" x="1179" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="46" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.DrumPadView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/DrumPadView.java" binary="false">    
+    <position height="145" width="194" x="4229" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="47" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.AbstractVolumeView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/AbstractVolumeView.java" binary="false">    
+    <position height="128" width="187" x="5655" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="48" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.KnobView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/KnobView.java" binary="false">    
+    <position height="111" width="171" x="4484" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="49" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.SliderTwoDirectionsView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/SliderTwoDirectionsView.java" 
+    binary="false">    
+    <position height="230" width="295" x="5931" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="50" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.generic.ViewAdapter" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/generic/ViewAdapter.java" binary="false">    
+    <position height="213" width="213" x="926" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="51" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.info.CreditsView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/info/CreditsView.java" binary="false">    
+    <position height="111" width="216" x="3103" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="52" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.info.HelpView" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/view/info/HelpView.java" binary="false">    
+    <position height="128" width="272" x="43" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="53" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.info.MainMenuView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/info/MainMenuView.java" binary="false">    
+    <position height="179" width="159" x="727" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="54" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.info.MainMenuButtonView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/info/MainMenuButtonView.java" binary="false">    
+    <position height="145" width="194" x="727" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="55" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.view.instrumentmixer.volumeobject.IInstrumentView" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/volumeobject/IInstrumentView.java" binary="false">    
+    <position height="60" width="253" x="6331" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="56" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.view.instrumentmixer.volumeobject.InstrumentView" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/volumeobject/InstrumentView.java" binary="false">    
+    <position height="213" width="280" x="6331" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="57" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.view.instrumentmixer.volumeobject.VolumeDraggerView" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/volumeobject/VolumeDraggerView.java" binary="false">    
+    <position height="128" width="253" x="5870" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="58" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.MasterVolumeView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/MasterVolumeView.java" 
+    binary="false">    
+    <position height="145" width="189" x="5641" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="59" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.StartView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/StartView.java" binary="false">    
+    <position height="145" width="189" x="6952" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="60" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.MetronomeView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/MetronomeView.java" binary="false">    
+    <position height="162" width="204" x="5160" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="61" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.LogoView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/LogoView.java" binary="false">    
+    <position height="179" width="219" x="4456" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="62" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.view.instrumentmixer.IInstrumentMixer" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/IInstrumentMixer.java" binary="false">    
+    <position height="94" width="270" x="6630" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="63" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.FooterView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/FooterView.java" binary="false">    
+    <position height="94" width="189" x="7067" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="64" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.AddInstrumentView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/AddInstrumentView.java" 
+    binary="false">    
+    <position height="128" width="189" x="6838" y="2443"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="65" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.instrumentmixer.HeaderView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/HeaderView.java" binary="false">    
+    <position height="94" width="189" x="2874" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="66" corner="BOTTOM_RIGHT" language="java" 
+    name="se.purestyle.beatr.view.instrumentmixer.InstrumentHolderView" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/view/instrumentmixer/InstrumentHolderView.java" binary="false">    
+    <position height="230" width="270" x="6630" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="67" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.view.InstrumentMixerView" 
+    project="BeatrProj" file="/BeatrProj/src/se/purestyle/beatr/view/InstrumentMixerView.java" binary="false">    
+    <position height="349" width="268" x="6946" y="832"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="68" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.BeatrActivity" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/BeatrActivity.java" binary="false">    
+    <position height="196" width="194" x="4905" y="392"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="69" corner="BOTTOM_RIGHT" language="java" name="se.purestyle.beatr.MixerActivity" project="BeatrProj" 
+    file="/BeatrProj/src/se/purestyle/beatr/MixerActivity.java" binary="false">    
+    <position height="145" width="268" x="7105" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="70">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="71" name="model"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <bendpoint x="5693" y="1221"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="74" name="recorder"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="77" name="recorder"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="80" name="model"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="83" name="_this"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="86">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="87" name="view"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <realization id="90">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="55"/>  
+  </realization>  
+  <association id="91">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="92" name="rootKnobController"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="95" name="instruments"/>      
+      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="98" name="model"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="100">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="44"/>  
+  </realization>  
+  <association id="101">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="102" name="slider"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="105" name="view"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="107">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="108">    
+    <bendpoint x="4453" y="2443"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="109" name="model"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="112" name="knobController"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="114">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="115">    
+    <bendpoint x="5373" y="1221"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="116" name="recorder"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="119" name="view"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="122" name="model"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <bendpoint x="4015" y="392"/>    
+    <bendpoint x="4015" y="832"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="125" name="drums"/>      
+      <multiplicity id="126" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="66" navigable="false">      
+      <attribute id="128" name="model"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="131" name="model"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="134" name="f02KnobController"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="137" name="clipKnobController"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="140" name="model"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="143" name="footerView"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="63" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="146" name="instance"/>      
+      <multiplicity id="147" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="148">    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="149" name="addInstrumentView"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <bendpoint x="4283" y="1221"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="152" name="view"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <bendpoint x="5129" y="392"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="155" name="model"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="158" name="model"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="160">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="161" name="decayKnobController"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="163">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="164" name="drumPads"/>      
+      <multiplicity id="165" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="166">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="167" name="view"/>      
+      <multiplicity id="168" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="169">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="170" name="_this"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="173" name="view"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="175">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="176" name="beat"/>      
+      <multiplicity id="177" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="178">    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <realization id="179">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="62"/>  
+  </realization>  
+  <generalization id="180">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="181">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="182" name="knobController"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="184">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="185" name="mixerController"/>      
+      <multiplicity id="186" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="187">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="188" name="model"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="190">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="191">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="192" name="logoView"/>      
+      <multiplicity id="193" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="61" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="194">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="195">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="196" name="threads"/>      
+      <multiplicity id="197" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="198">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="199" name="model"/>      
+      <multiplicity id="200" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="201">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="202">    
+    <bendpoint x="4685" y="2443"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="203" name="model"/>      
+      <multiplicity id="204" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="205">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="206" name="shapeKnobController"/>      
+      <multiplicity id="207" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="208">    
+    <end type="SOURCE" refId="67" navigable="false">      
+      <attribute id="209" name="startView"/>      
+      <multiplicity id="210" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="211">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="212" name="view"/>      
+      <multiplicity id="213" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="214">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="215" name="f01KnobController"/>      
+      <multiplicity id="216" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="217">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="218" name="mixerButton"/>      
+      <multiplicity id="219" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="220">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="221" name="modKnobController"/>      
+      <multiplicity id="222" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="223">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="224" name="recorder"/>      
+      <multiplicity id="225" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="226">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="227" name="view"/>      
+      <multiplicity id="228" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="229">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <association id="230">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="231" name="conn"/>      
+      <multiplicity id="232" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="233">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="234" name="view"/>      
+      <multiplicity id="235" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="236">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="237" name="slider"/>      
+      <multiplicity id="238" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="239">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="240" name="model"/>      
+      <multiplicity id="241" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="242">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="243" name="insMixView"/>      
+      <multiplicity id="244" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="67" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="245">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="246" name="view"/>      
+      <multiplicity id="247" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="248">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="249" name="model"/>      
+      <multiplicity id="250" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
